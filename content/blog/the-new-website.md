@@ -64,6 +64,8 @@ Codex dove right in. It used a lot of `curl` calls to fetch data and quickly rea
 The result?
 **Perfectly restored blog posts**, now rendered beautifully in the new static format with all links, formatting, and details intact.
 
+If you want to look under the hood, the entire codebase for this site now lives on GitHub: [jgordijn/inspired-it-website](https://github.com/jgordijn/inspired-it-website).
+
 ---
 
 ### The Result
