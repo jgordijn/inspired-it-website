@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <url>
+    <loc>https://inspired-it.nl</loc>
+    <lastmod>2025-10-16</lastmod>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://inspired-it.nl/blog</loc>
+    <lastmod>2025-10-16</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://inspired-it.nl/about</loc>
+    <lastmod>2025-10-16</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://inspired-it.nl/contact</loc>
+    <lastmod>2025-10-16</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://inspired-it.nl/blog/the-new-website</loc>
+    <lastmod>2025-10-16</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://inspired-it.nl/blog/unraveling-the-code-kotlin-edge-over-java-streams</loc>
+    <lastmod>2024-10-20</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://inspired-it.nl/blog/how-does-limitrate-work-in-reactor</loc>
+    <lastmod>2022-03-21</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://inspired-it.nl/blog/how-to-use-groupby-in-reactor</loc>
+    <lastmod>2022-03-12</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://inspired-it.nl/blog/debugging-demand-in-reactor</loc>
+    <lastmod>2022-03-06</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://inspired-it.nl/blog/starting-inspired-it</loc>
+    <lastmod>2018-12-18</lastmod>
+    <priority>0.7</priority>
+  </url>
+</urlset>

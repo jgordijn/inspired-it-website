@@ -1,0 +1,845 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Inspired IT - Technical Blog</title>
+    <link>https://inspired-it.nl</link>
+    <description>Professional software development insights, architecture patterns, and technical expertise from Jeroen Gordijn</description>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 16 Oct 2025 13:39:21 GMT</lastBuildDate>
+    <atom:link href="https://inspired-it.nl/rss.xml" rel="self" type="application/rss+xml" />
+
+  <item>
+    <title>The new website of Inspired IT</title>
+    <link>https://inspired-it.nl/blog/the-new-website</link>
+    <guid isPermaLink="true">https://inspired-it.nl/blog/the-new-website</guid>
+    <description>How I used Claude Code and OpenAI Codex to design, migrate, and refine my new Inspired IT website with AI assistance.</description>
+    <content:encoded><![CDATA[<hr>
+<h2>The new website of Inspired IT</h2>
+<p>Welcome to the new and improved website of <strong>Inspired IT</strong>!
+This new site wasn’t built in the traditional way, no WordPress templates, no endless evenings of tweaking colors or layouts. Instead, it was built <em>with AI</em>.</p>
+<p>As a developer (not a designer), I wanted something that looked professional, that reflected who I am and what I do, but without diving deep into the world of front-end design or CMS intricacies. What I did want, though, was <strong>simplicity</strong>:</p>
+<ul>
+<li>a clean, professional site</li>
+<li>a place for my blogs</li>
+<li>written in Markdown</li>
+<li>rendered as a static site (no databases, no forms, no complexity)</li>
+</ul>
+<p>So, as an AI programming advocate, I thought:
+<strong>“Let’s try to build this website with AI.”</strong></p>
+<hr>
+<h3>Phase 1: Building with Claude Code</h3>
+<p>I started with <strong>Claude Code</strong> from Anthropic.
+I gave it some clear instructions:</p>
+<blockquote>
+<p>“Generate a new website that’s more professional than my current one at <a href="https://www.inspired-it.nl">www.inspired-it.nl</a>. It should include a blog section, support Markdown content, and produce a static site.”</p>
+</blockquote>
+<p>Claude did its research, analyzed my existing website, and came back with a complete redesign. It was impressive, a fully generated layout, new structure, and improved visuals.</p>
+<p>Halfway through the process, Anthropic released <strong>Haiku 4.5</strong>, their new model. I decided to switch over from <strong>Sonnet 4.5</strong> to see the difference. I immediately noticed that <strong>Haiku 4.5 was much faster</strong>, which made the workflow far more interactive. I didn’t have to wait as long for responses, so the iteration cycle was smoother and easier to work with.</p>
+<p>The AI handled the overall site design beautifully. I then refined the content to make sure it reflected more about me and what I do. The information was correct, but I wanted it to be more personal and authentic.</p>
+<hr>
+<h3>Phase 2: The Blog Migration Challenge</h3>
+<p>After the design was done, I wanted all my <strong>existing blogs</strong> on the new site.
+So I asked Claude to copy them from the old website. It did, but then decided to <em>rewrite</em> them “to make them better.”</p>
+<p>Even though in some cases the rewritten versions looked better, with cleaner sentence structures, I still wanted to keep the original content. Many of the original links and references were gone. After some back-and-forth, I managed to get most of the original content back, though some links were still missing.</p>
+<p>That’s when I decided to try another AI tool.</p>
+<hr>
+<h3>Phase 3: Refining with Codex</h3>
+<p>I turned to <strong>Codex from OpenAI</strong>.
+I set up the MCP server for Chrome DevTools and gave it a precise prompt:</p>
+<blockquote>
+<p>“Inspect the current website and compare the blogs with the originals at <a href="http://www.inspired-it.nl">www.inspired-it.nl</a>.
+If there are differences, copy over the original content exactly as it was.
+Do not change the text, only improve the layout if needed.”</p>
+</blockquote>
+<p>Codex dove right in. It used a lot of <code>curl</code> calls to fetch data and quickly realized that the old site was a WordPress installation. It fetched the necessary files directly from WordPress and started comparing them.</p>
+<p>The result?
+<strong>Perfectly restored blog posts</strong>, now rendered beautifully in the new static format with all links, formatting, and details intact.</p>
+<hr>
+<h3>The Result</h3>
+<p>And here we are.
+The new <strong>Inspired IT</strong> website was built by me, with the creative power of <strong>Claude Code</strong> and <strong>Codex</strong> working alongside.</p>
+<p>It’s still fully under my control, fully static, and fully Markdown-driven, but it was <em>AI-assisted</em> from start to finish.</p>
+]]></content:encoded>
+    <pubDate>Thu, 16 Oct 2025 00:00:00 GMT</pubDate>
+    <author>contact@inspired-it.nl (Jeroen Gordijn)</author>
+    <category>announcement</category><category>AI</category><category>development</category><category>website</category>
+  </item>
+
+  <item>
+    <title>Unraveling the Code: Kotlin&apos;s Edge Over Java Streams</title>
+    <link>https://inspired-it.nl/blog/unraveling-the-code-kotlin-edge-over-java-streams</link>
+    <guid isPermaLink="true">https://inspired-it.nl/blog/unraveling-the-code-kotlin-edge-over-java-streams</guid>
+    <description>A comprehensive comparison of Kotlin vs Java for 7 coding challenges, demonstrating Kotlin&apos;s superior conciseness and readability.</description>
+    <content:encoded><![CDATA[<h1>Unraveling the Code: Kotlin’s Edge Over Java Streams</h1>
+<p>This blog is inspired by the Devoxx talk titled “If Streams Are So Great, Let’s Use Them Everywhere… Right??” by Maurice Naftalin and José Paumard. You can watch the full talk <a href="https://www.youtube.com/watch?v=GwKRRsjfBOA">here on YouTube</a>. In the talk, Maurice and José explore various examples that highlight the strengths of Java Streams, but also demonstrate how they can become overly complex and verbose in certain situations. In this blog, we will explore these examples and see how we can implement these snippets in Kotlin. Will the Kotlin code be easier, or do we run into the same complexity as with Java?</p>
+<p>In this blog, we are going to explore the following examples:</p>
+<ol>
+<li><a href="#example-1-finding-the-first-word-longer-than-three-characters">Finding the First Word Longer Than Three Characters</a></li>
+<li><a href="#example-2-finding-a-word-of-length-3-with-its-index">Finding a Word of Length 3 with Its Index</a></li>
+<li><a href="#example-3-creating-the-cross-product-of-two-ranges">Creating the Cross Product of Two Ranges</a></li>
+<li><a href="#example-4-grouping-cities-by-country">Grouping Cities by Country</a></li>
+<li><a href="#example-5-finding-the-country-with-the-least-number-of-cities">Finding the Country with the Least Number of Cities</a></li>
+<li><a href="#example-6-finding-all-countries-with-the-minimum-number-of-cities">Finding All Countries with the Minimum Number of Cities</a></li>
+<li><a href="#example-7-reading-and-processing-temperature-data-from-a-file">Reading and Processing Temperature Data from a File</a></li>
+</ol>
+<p>After examining these examples, we’ll wrap up with a <a href="#conclusion">conclusion</a> summarizing our findings.</p>
+<h2>Example 1: Finding the First Word Longer Than Three Characters</h2>
+<h3>Java Code Examples</h3>
+<h4>Classical Java Looping</h4>
+<p>Let’s start with a Java snippet that splits a line by spaces and returns the first word longer than three characters using classical Java looping:</p>
+<pre><code class="language-java">String splitLoop(String line) {
+     var pattern = Pattern.compile(&quot; &quot;);
+     var words = pattern.split(line);
+     for (var word : words) {
+         if (word.length() &gt; 3) {
+             return word;
+         }
+     }
+     throw new NoSuchElementException(&quot;No word longer than 3 characters found&quot;);
+}
+</code></pre>
+<p>This snippet demonstrates the traditional imperative approach in Java. It’s straightforward but involves several steps: compiling a pattern, splitting the string, looping through the results, and manually throwing an exception if no match is found.</p>
+<h4>Java Streams Version</h4>
+<p>With Java Streams, we can be more expressive and concise. Here’s the same functionality implemented using Streams:</p>
+<pre><code class="language-java">String splitStream(String line) {
+    var pattern = Pattern.compile(&quot; &quot;);
+    return pattern.splitAsStream(line)
+            .filter(word -&gt; word.length() &gt; 3)
+            .findFirst()
+            .orElseThrow();
+}
+</code></pre>
+<p>The Streams version is more declarative, clearly stating what we want to achieve rather than how to do it step-by-step.</p>
+<h3>Kotlin Implementation</h3>
+<p>Now, let’s see how we can implement the same functionality in Kotlin:</p>
+<pre><code class="language-kotlin">fun splitKotlin(line: String): String {
+    return line.split(&quot; &quot;)
+        .first { it.length &gt; 3 }
+}
+</code></pre>
+<h3>Analysis</h3>
+<p>The Kotlin version demonstrates a more powerful and concise approach compared to both Java implementations. The key to its effectiveness lies in the <code>first</code> function, which accepts a lambda to specify precisely what we’re looking for. It’s worth noting, however, that while this approach is more elegant, the <code>NoSuchElementException</code> that would be thrown if no matching word is found is implicit here, unlike the Java versions where the exception handling is more explicit.</p>
+<h2>Example 2: Finding a Word of Length 3 with Its Index</h2>
+<p>For our next example, we’ll try to find a word with exactly three characters and return both the word and its index in the original string. This adds a layer of complexity to our previous example.</p>
+<h3>Java Implementation</h3>
+<p>In Java, we’ll use a record to represent our result:</p>
+<pre><code class="language-java">record IndexWord(int index, String value) { }
+</code></pre>
+<h4>Classical Java Looping</h4>
+<p>Here’s how we might implement this using a traditional loop:</p>
+<pre><code class="language-java">IndexWord splitLoop(String line) {
+    var pattern = Pattern.compile(&quot; &quot;);
+    var words = pattern.split(line);
+    for (int index = 0; index &lt; words.length; index++) {
+        if (words[index].length() == 3) {
+            return new IndexWord(index, words[index]);
+        }
+    }
+    throw new NoSuchElementException(&quot;Not found&quot;);
+}
+</code></pre>
+<p>This implementation is straightforward, but requires the reader to reason through all paths. The early <code>return</code> inside the loop is crucial to understanding the function’s behavior.</p>
+<h4>Java Streams Version</h4>
+<p>To accomplish the same task using Streams, we need a way to index the elements. We can use <code>IntStream</code> for this purpose:</p>
+<pre><code class="language-java">IndexWord splitLoop(String line) {
+    var pattern = Pattern.compile(&quot; &quot;);
+    var words = pattern.split(line);
+    return IntStream.range(0, words.length)
+            .filter(index -&gt; words[index].length() == 3)
+            .mapToObj(index -&gt; new IndexWord(index, words[index]))
+            .findFirst()
+            .orElseThrow();
+}
+</code></pre>
+<p>The Java Streams version leverages the <code>groupingBy</code> collector, which is specifically designed for such grouping operations. While it’s a powerful tool, the syntax can be somewhat convoluted, especially for developers new to Streams. The nesting of collectors (<code>groupingBy</code> and <code>counting</code>) may not be immediately intuitive.</p>
+<h3>Kotlin Implementation</h3>
+<p>In Kotlin, we use a data class instead of a record:</p>
+<pre><code class="language-kotlin">data class IndexWord(val index: Int, val value: String)
+</code></pre>
+<p>The implementation then becomes:</p>
+<pre><code class="language-kotlin">fun splitIndexStream(line: String): IndexWord =
+    line.split(&quot; &quot;)
+        .withIndex()
+        .map { (index, value) -&gt; IndexWord(index, value) }
+        .first { it.value.length == 3 }
+</code></pre>
+<p>This Kotlin implementation showcases the power and readability of Kotlin’s standard library. The <code>groupBy</code> function, available on any list, allows for straightforward grouping operations. Following this, the <code>mapValues</code> call efficiently counts the items in each group. This approach combines the declarative style seen in Streams with Kotlin’s more intuitive syntax, resulting in a concise and easily understandable solution.</p>
+<h3>Analysis</h3>
+<p>This example showcases how different approaches handle grouping operations, a common task in data processing.</p>
+<p>Kotlin’s implementation stands out for its simplicity and expressiveness. It achieves the grouping and counting in a single, easily readable line of code, without the need for specialized collectors or explicit mutation of a map. This example further demonstrates how Kotlin’s design choices and rich standard library can lead to more intuitive and concise code, especially for common operations like grouping and counting.</p>
+<p>As we continue to explore these examples, we see a consistent pattern: Kotlin often provides a balance between the clarity of imperative code and the power of functional operations, resulting in solutions that are both expressive and easy to understand.</p>
+<h2>Example 3: Creating the Cross Product of Two Ranges</h2>
+<p>For our next example, we’ll create the cross product of two ranges, specifically for the range 0 to 3. This example demonstrates how different approaches handle nested operations.</p>
+<h3>Java Implementations</h3>
+<h4>Imperative Java Solution</h4>
+<p>Let’s start with the imperative Java solution:</p>
+<pre><code class="language-java">var resultLoop = new ArrayList&lt;Pair&gt;();
+for (int i = 0; i &lt; 4; i++) {
+    for (int j = 0; j &lt; 4; j++) {
+        resultLoop.add(new Pair(i, j));
+    }
+}
+</code></pre>
+<p>This imperative approach is straightforward and easily understandable for anyone familiar with Java. It uses nested loops to create all possible pairs of numbers from the given ranges.</p>
+<h4>Java Streams Version</h4>
+<p>Now, let’s look at how we can achieve the same result using Java Streams:</p>
+<pre><code class="language-java">var resultStream = IntStream.range(0, 4)
+        .boxed()
+        .flatMap(a -&gt; IntStream.range(0, 4)
+                .mapToObj(b -&gt; new Pair(a, b)))
+        .toList();
+</code></pre>
+<p>This Streams version aims to be more declarative, using <code>flatMap</code> to combine the results of the inner stream operations. The use of <code>boxed()</code> here is crucial. We need to use <code>boxed()</code> because we want to <code>flatMap</code> the inner stream into the outer stream, where the inner stream has a different type than the outer stream. Specifically, we’re going from <code>int</code> to <code>Pair</code>. But because the outer stream is initially a stream of primitives, this direct mapping is not possible. With <code>boxed()</code>, we convert it to a <code>Stream&lt;Integer&gt;</code>, changing it from primitives to objects. This allows us to then map to other object types, such as <code>Pair</code>.</p>
+<h3>Kotlin Implementation</h3>
+<p>The Kotlin version looks similar to the Java Streams version, but with some notable simplifications:</p>
+<pre><code class="language-kotlin">val result = (0..3)
+    .flatMap { i -&gt;
+        (0..3)
+            .map { j -&gt; Pair(i, j) }
+    }
+</code></pre>
+<h3>Analysis</h3>
+<p>This example showcases how different approaches handle more complex operations like creating a cross product. The imperative Java solution, while verbose, is straightforward and easily understood by most Java developers. It clearly shows the nested structure of the operation through its use of nested loops.</p>
+<p>The Java Streams version attempts to make the operation more declarative, but introduces some complexity. A key point to note is the use of <code>boxed()</code> in this version. This method is necessary because we want to <code>flatMap</code> the inner stream into the outer stream, where the inner stream has a different type than the outer stream (from <code>int</code> to <code>Pair</code>). Since the outer stream is initially a stream of primitives (<code>IntStream</code>), this direct mapping is not possible. The <code>boxed()</code> method converts the <code>IntStream</code> to a <code>Stream&lt;Integer&gt;</code>, changing it from a stream of primitives to a stream of objects. This conversion allows us to then map to other object types, such as <code>Pair</code>. This necessity for explicit type handling adds a layer of complexity to the Java Streams version.</p>
+<p>The Kotlin version strikes a balance between the declarative style of Streams and the simplicity of the imperative approach. It’s visually similar to the Java Streams version, but with some key advantages. Kotlin’s range operator <code>..</code> is more concise than <code>IntStream.range()</code>. The Kotlin version also doesn’t need <code>boxed()</code> as Kotlin handles the type conversion implicitly. Furthermore, the <code>toList()</code> call is unnecessary in Kotlin as the result is already a List.</p>
+<p>While the Kotlin and Java Streams versions are quite similar in structure, the Kotlin version appears cleaner and more straightforward. It maintains the functional style and declarative nature of the Streams approach, but with less boilerplate and type juggling. This example demonstrates how Kotlin can offer the benefits of functional programming constructs while avoiding some of the verbosity that can creep into Java Streams code.</p>
+<p>As we progress through these examples, we continue to see how Kotlin’s design choices and standard library can lead to code that is both functional and readable, often simplifying operations that require more verbose handling in Java. Kotlin’s ability to handle type conversions implicitly in such scenarios showcases its design philosophy of reducing boilerplate while maintaining type safety.</p>
+<h2>Example 4: Grouping Cities by Country</h2>
+<p>Our next example demonstrates how different approaches handle grouping operations. We’ll group a list of cities by their country and count how many cities are in each country.</p>
+<h3>Java Implementations</h3>
+<h4>Imperative Java Solution</h4>
+<p>Let’s start with the imperative Java solution:</p>
+<pre><code class="language-java">Map&lt;Country, Long&gt; cityCountPerCountry = new HashMap&lt;&gt;();
+for (var city : Cities.cities) {
+    cityCountPerCountry.merge(city.country(), 1L, Long::sum);
+}
+</code></pre>
+<p>This imperative approach is clear and straightforward. It iterates through the list of cities, using the <code>merge</code> method of <code>HashMap</code> to count the occurrences of each country. The only potential downside is the need to mutate the map during the process.</p>
+<h4>Java Streams Version</h4>
+<p>Now, let’s look at how we can achieve the same result using Java Streams:</p>
+<pre><code class="language-java">Map&lt;Country, Long&gt; cityCountPerCountry =
+        Cities.cities.stream()
+                .collect(
+                        Collectors.groupingBy(
+                                City::country,
+                                Collectors.counting()
+                        )
+                );
+</code></pre>
+<p>The Java Streams version leverages the <code>groupingBy</code> collector, which is specifically designed for such grouping operations. While it’s a powerful tool, the syntax can be somewhat convoluted, especially for developers new to Streams. The nesting of collectors (<code>groupingBy</code> and <code>counting</code>) may not be immediately intuitive.</p>
+<h3>Kotlin Implementation</h3>
+<p>Here’s how we can implement the same functionality in Kotlin:</p>
+<pre><code class="language-kotlin">val citiesSizeStream = cities.groupBy({ it.country }).mapValues { it.value.size }
+</code></pre>
+<p>This Kotlin implementation showcases the power and readability of Kotlin’s standard library. The <code>groupBy</code> function, available on any list, allows for straightforward grouping operations. Following this, the <code>mapValues</code> call efficiently counts the items in each group. This approach combines the declarative style seen in Streams with Kotlin’s more intuitive syntax, resulting in a concise and easily understandable solution.</p>
+<h3>Analysis</h3>
+<p>This example showcases how different approaches handle grouping operations, a common task in data processing.</p>
+<p>Kotlin’s implementation stands out for its simplicity and expressiveness. It achieves the grouping and counting in a single, easily readable line of code, without the need for specialized collectors or explicit mutation of a map. This example further demonstrates how Kotlin’s design choices and rich standard library can lead to more intuitive and concise code, especially for common operations like grouping and counting.</p>
+<p>As we continue to explore these examples, we see a consistent pattern: Kotlin often provides a balance between the clarity of imperative code and the power of functional operations, resulting in solutions that are both expressive and easy to understand.</p>
+<h2>Example 5: Finding the Country with the Least Number of Cities</h2>
+<p>Our next example demonstrates how to find the country with the least number of cities using different approaches.</p>
+<h3>Java Implementations</h3>
+<h4>Java Collections Approach</h4>
+<p>Let’s start with the Java Collections approach:</p>
+<pre><code class="language-java">var result = Collections.min(cityCountPerCountry.entrySet(), Map.Entry.comparingByValue());
+</code></pre>
+<p>This solution is clear and concise. It directly uses the <code>Collections.min()</code> method with a custom comparator. While effective, this approach requires knowledge of specific utility methods in the Collections framework, which might not be immediately obvious to all developers.</p>
+<h4>Java Streams Version</h4>
+<p>Now, let’s look at how we can achieve the same result using Java Streams:</p>
+<pre><code class="language-java">var result = CitiesStream.getCountryLongMap().entrySet()
+        .stream()
+        .min(Map.Entry.comparingByValue())
+        .orElseThrow();
+</code></pre>
+<p>The Streams version is more discoverable and arguably easier to understand. It clearly expresses the intent of finding the minimum value from the stream of map entries.</p>
+<h3>Kotlin Implementation</h3>
+<p>Here’s how we can implement the same functionality in Kotlin:</p>
+<pre><code class="language-kotlin">val result = citiesSizeStream.minByOrNull { it.value }!!
+</code></pre>
+<p>This Kotlin implementation is even more concise. It directly uses the <code>minByOrNull</code> function on the map, specifying that we want to find the minimum based on the value of each entry. The <code>!!</code> operator is used here to assert that the result is non-null, though in production code, a safer null-handling approach might be preferred.</p>
+<p>It’s worth noting that we can apply the <code>minByOrNull</code> function immediately on the map without calling <code>entrySet()</code> first, as would be necessary in Java. This leads to simpler, more discoverable code during development, effectively removing an extra step that’s required in the Java versions.</p>
+<p>It’s also interesting to note an inconsistency in Kotlin’s standard library. While we used <code>first</code> in earlier examples, which throws a <code>NoSuchElementException</code> if the collection is empty, here we use <code>minByOrNull</code>. The <code>min</code> function is deprecated in favor of <code>minByOrNull</code>, even though <code>firstOrNull</code> is also available alongside <code>first</code>. This inconsistency in the API design is something to be aware of when working with Kotlin collections.</p>
+<h3>Analysis</h3>
+<p>This example highlights different approaches to finding a minimum value in a collection or map.</p>
+<p>The Java Collections approach is succinct but requires specific knowledge of utility methods. The Java Streams version offers better discoverability and readability, clearly expressing the operation’s intent.</p>
+<p>Kotlin’s implementation stands out for its brevity. It leverages Kotlin’s extension functions on collections, allowing for a very concise expression of the desired operation. However, the inconsistency between <code>first</code>/<code>firstOrNull</code> and the deprecation of <code>min</code> in favor of <code>minByOrNull</code> shows that even well-designed languages can have quirks in their APIs.</p>
+<p>These implementations demonstrate how different language features and standard library designs can affect the way we express common operations. While all three achieve the same result, they differ in terms of discoverability, conciseness, and the level of language-specific knowledge required.</p>
+<h2>Example 6: Finding All Countries with the Minimum Number of Cities</h2>
+<p>Our previous example had a limitation: it only found one country with the minimum number of cities, but there could be multiple countries with the same minimum. In this example, we’ll address this by finding all countries that have the minimum number of cities.</p>
+<h3>Java Implementations</h3>
+<h4>Imperative Java Approach</h4>
+<p>Let’s start with the imperative Java approach:</p>
+<pre><code class="language-java">var map = new TreeMap&lt;Long, List&lt;Country&gt;&gt;();
+for (var countryCount : cityCountPerCountry.entrySet()) {
+    // This initial value must be a mutable List, because we add data to it later.
+        map.computeIfAbsent(countryCount.getValue(), _ -&gt; new ArrayList&lt;&gt;()).add(countryCount.getKey());
+}
+var result = map.firstEntry();
+</code></pre>
+<p>This solution leverages a <code>TreeMap</code>, which keeps its entries sorted by key. We populate this map with the count of cities as the key and a list of countries as the value. The <code>computeIfAbsent</code> method is used to initialize a new list if needed and add the country to it. Finally, we retrieve the first entry, which corresponds to the minimum count.</p>
+<p>While this code is relatively concise, it can be challenging to ensure it’s bug-free due to the use of mutable collections. The logic, involving mutable lists and maps, may not be immediately clear at first glance.</p>
+<h4>Java Streams Version</h4>
+<p>Now, let’s look at the Java Streams approach:</p>
+<pre><code class="language-java">TreeMap&lt;Long, List&lt;Country&gt;&gt; countriesCountPerCity =
+        cityCountPerCountry.entrySet()
+                .stream()
+                .collect(
+                        Collectors.groupingBy(
+                                Map.Entry::getValue,
+                                TreeMap::new,
+                                Collectors.mapping(
+                                        Map.Entry::getKey,
+                                        Collectors.toList()
+                                )
+                        )
+                );
+var result = countriesCountPerCity.firstEntry();
+</code></pre>
+<p>This Streams version uses a nested collector to group countries by their city count. While it achieves the desired result, the code is quite complex and not easily understandable at a glance. The use of nested collectors (<code>groupingBy</code> and <code>mapping</code>) makes this solution particularly challenging to write and comprehend, even for developers well-versed in Java Streams.</p>
+<h3>Kotlin Implementation</h3>
+<p>Here’s how we can implement the same functionality in Kotlin:</p>
+<pre><code class="language-kotlin">val allMinCities = citiesSizeStream.entries
+    .groupBy({ it.value }) { it.key }
+    .minByOrNull { it.key }!!
+</code></pre>
+<p>The Kotlin implementation stands out for its simplicity and readability. It first groups the entries by their value (city count), transforming the values to be the country. Then it finds the entry with the minimum key (which represents the minimum city count). The result is a pair where the key is the minimum count and the value is a list of all countries with that count.</p>
+<h3>Analysis</h3>
+<p>This example highlights the stark differences between the approaches when dealing with a more complex data manipulation task. The Kotlin version stands out as the most simple and readable, leveraging the language’s powerful standard library functions to express a complex operation in just three lines of easily understandable code. This demonstrates Kotlin’s ability to maintain clarity and conciseness even as the complexity of the task increases.</p>
+<h2>Example 7: Reading and Processing Temperature Data from a File</h2>
+<p>Our final example demonstrates how to read a file containing temperature data, skip comments, and handle invalid data. The file format looks like this:</p>
+<pre><code># temperatures
+25.12
+1.3
+@@@@@@@@@@@@@@@@@
+-3.2
+</code></pre>
+<h3>Java Implementations</h3>
+<h4>Imperative Java Approach</h4>
+<p>Let’s start with the imperative Java approach:</p>
+<pre><code class="language-java">static List&lt;Float&gt; readLoop(Path file) throws IOException {
+    try (var reader = Files.newBufferedReader(file)) {
+        var floats = new ArrayList&lt;Float&gt;();
+        var line = reader.readLine();
+        while (line != null) {
+            if (!line.startsWith(&quot;#&quot;)) {
+                try {
+                    var f = Float.parseFloat(line);
+                    floats.add(f);
+                } catch (NumberFormatException _) {
+                    // Ignoring invalid float lines
+                }
+            }
+            line = reader.readLine();
+        }
+        return Collections.unmodifiableList(floats);
+    }
+}
+</code></pre>
+<p>This imperative approach handles multiple concerns:</p>
+<ol>
+<li>File opening and closing (using try-with-resources)</li>
+<li>Line-by-line reading</li>
+<li>Skipping comments</li>
+<li>Parsing valid floats and ignoring invalid ones</li>
+<li>Collecting results in a mutable list</li>
+<li>Returning an unmodifiable list</li>
+</ol>
+<p>While functional, the code mixes business logic with technical details, making it harder to understand and maintain.</p>
+<h4>Java Streams Version 1</h4>
+<p>Now, let’s look at a Java Streams approach:</p>
+<pre><code class="language-java">static List&lt;Float&gt; readStreamV1(Path file) throws IOException {
+    try (var lines = Files.lines(file)) {
+        return lines
+                .filter(line -&gt; !line.startsWith(&quot;#&quot;))
+                .filter(line -&gt; {
+                    try {
+                        var f = Float.parseFloat(line);
+                        return true;
+                    } catch (NumberFormatException _) {
+                        return false;
+                    }
+                })
+                .map(Float::parseFloat)
+                .toList();
+    }
+}
+</code></pre>
+<p>This version is more readable, separating the concerns more clearly. However, it still requires try-with-resources for file handling and has a duplicated parsing step.</p>
+<h4>Java Streams Version 2</h4>
+<p>We can further improve the Streams version using <code>mapMulti</code>:</p>
+<pre><code class="language-java">static List&lt;Float&gt; readStreamV2(Path file) throws IOException {
+    try (var lines = Files.lines(file)) {
+        return lines
+                .filter(line -&gt; !line.startsWith(&quot;#&quot;))
+                .&lt;Float&gt;mapMulti((line, downstream) -&gt; {
+                    try {
+                        var f = Float.parseFloat(line);
+                        downstream.accept(f);
+                    } catch (NumberFormatException _) {
+                        // Ignoring invalid float lines
+                    }
+                })
+                .toList();
+    }
+}
+</code></pre>
+<p>This version eliminates the duplicate parsing but introduces the more complex <code>mapMulti</code> operation.</p>
+<h3>Kotlin Implementation</h3>
+<p>Here’s how we can implement the same functionality in Kotlin:</p>
+<pre><code class="language-kotlin">fun readStreamKt(file: Path): List&lt;Float&gt; =
+    file.useLines { lines -&gt;
+        lines
+            .filterNot { it.startsWith(&quot;#&quot;) }
+            .mapNotNull { it.toFloatOrNull() }
+            .toList()
+    }
+</code></pre>
+<p>The Kotlin implementation stands out for its simplicity and readability. It leverages Kotlin’s standard library functions to express the complex operation in just a few lines of easily understandable code.</p>
+<p>It’s crucial to note that the <code>.toList()</code> call is inside the <code>useLines</code> block. This is very important because <code>useLines</code> returns a <code>Sequence&lt;String&gt;</code>, which is lazily evaluated. If we were to return the <code>Sequence&lt;Float&gt;</code> (by omitting <code>.toList()</code> or placing it outside <code>useLines</code>), and then try to use it after the <code>useLines</code> block has completed, we would get an exception as the underlying file stream would already be closed. By calling <code>.toList()</code> inside <code>useLines</code>, we ensure that all lines are processed and collected into a list while the file is still open.</p>
+<h3>Analysis</h3>
+<p>This example highlights the stark differences between the approaches when dealing with a complex file processing task involving multiple concerns.</p>
+<p>The imperative Java version, while comprehensive, mixes different levels of abstraction, making it harder to understand and maintain. The Java Streams versions improve readability but still require explicit resource management and exception handling.</p>
+<p>The Kotlin version shines in its simplicity and expressiveness. It uses <code>useLines</code> for automatic resource management, <code>filterNot</code> for clear intent in skipping comments, and <code>mapNotNull</code> with <code>toFloatOrNull</code> to elegantly handle parsing and invalid data. This approach separates concerns effectively and reduces boilerplate, resulting in code that’s both concise and easy to understand.</p>
+<p>This final example powerfully demonstrates Kotlin’s ability to simplify complex operations through its thoughtful standard library design and language features, leading to more maintainable and readable code.</p>
+<h2>Conclusion</h2>
+<p>Throughout this exploration of various coding challenges, from simple string manipulations to complex file processing tasks, we’ve seen a consistent pattern emerge. Kotlin, in comparison to both imperative Java and Java Streams, consistently demonstrates a remarkable ability to simplify code while maintaining readability and functionality.</p>
+<p>Key takeaways from our comparison:</p>
+<ol>
+<li>
+<p><strong>Simplicity</strong>: Kotlin code generally appears simpler to both read and write. The language’s design and standard library functions often allow for more intuitive expressions of complex operations.</p>
+</li>
+<li>
+<p><strong>Discoverability</strong>: Most, if not all, of the Kotlin APIs we used were easily discoverable through IDE autocompletion. This feature significantly enhances the developer experience, making it easier to explore and utilize the language’s capabilities.</p>
+</li>
+<li>
+<p><strong>Conciseness</strong>: Kotlin solutions were consistently shorter than their Java counterparts. This brevity allows developers to express complex operations in fewer lines of code, potentially reducing the chances of errors and improving maintainability.</p>
+</li>
+<li>
+<p><strong>Readability</strong>: Despite being more concise, Kotlin code maintains, and often enhances, readability. The language’s design choices and expressive syntax allow for code that clearly communicates intent.</p>
+</li>
+<li>
+<p><strong>Powerful Standard Library</strong>: Kotlin’s standard library provides a rich set of functions that make common programming tasks more straightforward. Functions like <code>groupBy</code>, <code>mapNotNull</code>, and <code>useLines</code> demonstrate how well-designed library functions can significantly simplify code.</p>
+</li>
+<li>
+<p><strong>Balance</strong>: Kotlin seems to strike a good balance between the clarity of imperative code and the power of functional programming constructs, often resulting in solutions that combine the best of both worlds.</p>
+</li>
+</ol>
+<p>While Java, especially with the addition of Streams, has made significant strides in enabling more functional and expressive code, Kotlin appears to take this a step further. It offers a language design and standard library that consistently allow for cleaner, more intuitive solutions across a wide range of programming tasks. Notably, while working with Java often requires choosing between imperative and functional styles (as we’ve seen in cases where imperative code sometimes looks easier than the equivalent Streams version), Kotlin seems to eliminate this dilemma. In Kotlin, the most straightforward and readable solution often naturally combines both paradigms, removing the need for an explicit choice between styles.</p>
+]]></content:encoded>
+    <pubDate>Sun, 20 Oct 2024 00:00:00 GMT</pubDate>
+    <author>contact@inspired-it.nl (Jeroen Gordijn)</author>
+    <category>java</category><category>kotlin</category><category>streams</category>
+  </item>
+
+  <item>
+    <title>How does limitRate work in Reactor</title>
+    <link>https://inspired-it.nl/blog/how-does-limitrate-work-in-reactor</link>
+    <guid isPermaLink="true">https://inspired-it.nl/blog/how-does-limitrate-work-in-reactor</guid>
+    <description>An in-depth explanation of the limitRate operator in Project Reactor and how it improves performance by batching demand requests.</description>
+    <content:encoded><![CDATA[<p><a href="https://projectreactor.io/">Project Reactor</a> is a great reactive streams project that you will probably run into when you want to write reactive code in Spring. It is very powerful and can also be complex to wrap your head around. In this article I will look at the <a href="https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html#limitRate-int-"><code>limitRate</code></a> function of a <a href="https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html">Flux</a>.</p>
+<p>The first time I ran into <code>limitRate</code> I thought it would help in limiting/throttling the amount of events flowing downstream. And according to the documentation this is the case:</p>
+<blockquote>
+<p>Ensure that backpressure signals from downstream subscribers are split into batches capped at the provided <code>prefetchRate</code> when propagated upstream, effectively rate limiting the upstream <a href="https://www.reactive-streams.org/reactive-streams-1.0.3-javadoc/org/reactivestreams/Publisher.html?is-external=true" title="class or interface in org.reactivestreams"><code>Publisher</code></a>.</p>
+</blockquote>
+<p>This means that <code>limitRate</code> will split big requests from downstream into smaller requests. It also states that this is effectively rate limiting the publisher.</p>
+<blockquote>
+<p>Typically used for scenarios where consumer(s) request a large amount of data (eg. <code>Long.MAX_VALUE</code>) but the data source behaves better or can be optimized with smaller requests (eg. database paging, etc…). All data is still processed, unlike with <a href="https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html#limitRequest-long-"><code>limitRequest(long)</code></a> which will cap the grand total request amount.</p>
+</blockquote>
+<p>According to this documentation it will typically be useful when the requests to upstream is unlimited. The rate limiter can cut this up in smaller pieces. While there might be a usecase for this, I think it is far more useful for rate limiting the number of requests from downstream to upstream.</p>
+<h2>To many demand requests</h2>
+<p>Let’s look at a scenario where we want to process messages from PubSub using <a href="https://googlecloudplatform.github.io/spring-cloud-gcp/3.1.0/reference/html/index.html#reactive-stream-subscriber">Spring</a>.</p>
+<pre><code class="language-kotlin">
+fun process(msg: AcknowledgeablePubsubMessage): Mono&lt;String&gt; = ...
+
+pubSubReactiveFactory.poll(&quot;exampleSubscription&quot;, 1000 /* not important with limited demand*/)
+  .flatMap(::process, 16)
+  ...
+  .subscribe()
+</code></pre>
+<p>In above sample, there will be an initial demand of 16 element going up to the source. The <code>PubSubReactiveFactory</code> will request 16 elements from PubSub and send them downstream. Whenever one of the workers in the flatMap is done, it will send a <code>request(1)</code> upstream. The <code>pubSubReactiveFactory</code> will request one element from PubSub. A fraction later, another demand may reach the source and it needs to do an extra call to pubsub to get 1 extra element. The pipeline is effectively transformed such that it will pull message per message from PubSub. Message handling time is <code>pull latency + processing time</code>. Doing a request for just 1 element is very wasteful, certainly when <code>processing time</code> is well within the deadline bounds and having a buffer makes sense.</p>
+<h2>Limiting number of demand requests</h2>
+<p>Best way to minimize the impact of pulling messages from a source is make sure we pull more than 1 message per request. This is exactly what <code>limitRate</code> can do. It limits the number of demand requests to the source by grouping them together. Internally, <code>limitRate</code> has a buffer from which it can feed the consumers downstream, while making sure to fill the buffer in time, by requesting elements from the source. By default, in time means when the buffer is 75% depleted.</p>
+<p>When <code>limitRate(100)</code> is used, it will first demand 100 elements from the source, to fill the buffer. The moment elements arrive, the <code>limitRate</code> can send them downstream as long as there is demand. When the buffer only has 25 elements left (75% depleted), it will request elements 75 elements <code>request(75)</code> from the source to fill the buffer.</p>
+<p>This makes sure the source can emit batches of events, making the latency overhead much less of an issue. The <code>limitRate</code> function is then more of a performance increaser than a throttler.</p>
+<h2>Example</h2>
+<p>Let’s create an example to show the impact of <code>limitRate</code>. The source in this example can have unlimited outstanding requests and will add a 200ms latency to getting the elements that are requested. Processing take somewhere between 10-15ms.</p>
+<pre><code class="language-kotlin">val start = Instant.now()
+val job = Flux.create&lt;Int&gt; { sink -&gt;
+  sink.onRequest { demand -&gt;
+    scheduler.schedule({
+      repeat(demand.toInt()) {
+        sink.next(nextInt())
+      }
+    }, 200, TimeUnit.MILLISECONDS)
+  }
+}
+  .log(&quot;demandflow&quot;, Level.INFO, SignalType.REQUEST)
+  .limitRate(100)
+  .flatMap({ nr -&gt;
+    Mono.fromCallable { nr.toString() }.delayElement(Duration.ofMillis(nextLong(10, 15)))
+  }, 16)
+  .subscribeOn(Schedulers.parallel())
+  .take(1000)
+  .doOnComplete {
+    println(&quot;Time: ${Duration.between(start, Instant.now())}&quot;)
+  }
+  .subscribe()
+</code></pre>
+<h3>Without limitRate</h3>
+<p>If we start the code above with the line <code>limitRate(100)</code> commented, we get the following result:</p>
+<pre><code>20:46:29.092 [parallel-1 ] INFO  demandflow - request(16)
+20:46:29.367 [parallel-3 ] INFO  demandflow - request(1)
+20:46:29.367 [parallel-8 ] INFO  demandflow - request(1)
+20:46:29.368 [parallel-9 ] INFO  demandflow - request(1)
+20:46:29.369 [parallel-1 ] INFO  demandflow - request(1)
+20:46:29.369 [parallel-1 ] INFO  demandflow - request(1)
+20:46:29.370 [parallel-10] INFO  demandflow - request(3)
+20:46:29.370 [parallel-10] INFO  demandflow - request(1)
+20:46:29.371 [parallel-2 ] INFO  demandflow - request(1)
+20:46:29.371 [parallel-2 ] INFO  demandflow - request(1)
+20:46:29.371 [parallel-2 ] INFO  demandflow - request(1)
+...
+20:46:42.551 [parallel-7 ] INFO  demandflow - request(1)
+20:46:42.561 [parallel-10] INFO  demandflow - request(1)
+20:46:42.732 [parallel-2 ] INFO  demandflow - request(1)
+20:46:42.733 [parallel-3 ] INFO  demandflow - request(1)
+20:46:42.735 [parallel-6 ] INFO  demandflow - request(1)
+20:46:42.736 [parallel-4 ] INFO  demandflow - request(1)
+20:46:42.736 [parallel-5 ] INFO  demandflow - request(1)
+20:46:42.737 [parallel-7 ] INFO  demandflow - request(1)
+20:46:42.739 [parallel-8 ] INFO  demandflow - request(1)
+
+Time: PT13.752124S
+</code></pre>
+<p>After the first 16 elements that were demanded, it wil request mostly 1 at a time. Sometimes multiple request are bundled together. As you can see, processing this took over 13s. When ran with the <code>limitRate(100)</code> enable we have a completely different result:</p>
+<pre><code>20:49:55.068 [parallel-1 ] INFO  demandflow - request(100)
+20:49:55.407 [parallel-7 ] INFO  demandflow - request(75)
+20:49:55.644 [parallel-4 ] INFO  demandflow - request(75)
+20:49:55.884 [parallel-9 ] INFO  demandflow - request(75)
+20:49:56.125 [parallel-3 ] INFO  demandflow - request(75)
+20:49:56.362 [parallel-8 ] INFO  demandflow - request(75)
+20:49:56.601 [parallel-12] INFO  demandflow - request(75)
+20:49:56.843 [parallel-12] INFO  demandflow - request(75)
+20:49:57.082 [parallel-8 ] INFO  demandflow - request(75)
+20:49:57.320 [parallel-8 ] INFO  demandflow - request(75)
+20:49:57.560 [parallel-8 ] INFO  demandflow - request(75)
+20:49:57.794 [parallel-5 ] INFO  demandflow - request(75)
+20:49:58.034 [parallel-9 ] INFO  demandflow - request(75)
+20:49:58.270 [parallel-3 ] INFO  demandflow - request(75)
+
+Time: PT3.273889S
+</code></pre>
+<p>The first request is 100 to fill the initial buffer and the every so often we’ll see a request for 75 elements to fill the buffer. With this configuration the processing took only a bit over 3 seconds. The impact of the 200ms latency is now minimized by requesting batches of elements.</p>
+<h2>Conclusion</h2>
+<p>The <code>limitRate</code> function is very useful to limit the number of demand requests flowing upstream. Instead of limiting the number of messages that can be processed by the pipeline, it actually greatly improves the performance. This function has helped me a lot to improve the performance of processing pipelines subscribing to a PubSub source.</p>
+]]></content:encoded>
+    <pubDate>Mon, 21 Mar 2022 00:00:00 GMT</pubDate>
+    <author>contact@inspired-it.nl (Jeroen Gordijn)</author>
+    <category>kotlin</category><category>reactive</category><category>reactor</category>
+  </item>
+
+  <item>
+    <title>How to use groupBy in Reactor</title>
+    <link>https://inspired-it.nl/blog/how-to-use-groupby-in-reactor</link>
+    <guid isPermaLink="true">https://inspired-it.nl/blog/how-to-use-groupby-in-reactor</guid>
+    <description>A detailed guide on using the groupBy operator in Reactor, including common pitfalls like stream stalling.</description>
+    <content:encoded><![CDATA[<h1>How to use groupBy in Reactor</h1>
+<p><a href="https://projectreactor.io/">Project Reactor</a> is a great reactive streams project that you will probably run into when you want to write reactive code in Spring. It is very powerful and can also be complex to wrap your head around. In this article I will look at the <a href="https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html#groupBy-java.util.function.Function-">groupBy</a> function of a <a href="https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html">Flux</a>.</p>
+<h2>groupBy</h2>
+<p>The <code>groupBy</code> function will split the current flux into multiple fluxes. See it like a router. Based on a function you specify it will route the message to one of the groups. For example, when you you have a stream of numbers and perform <code>intFlux.groupBy { it % 2 == 0 }</code> , it will cut the flux in 2 fluxes. One will have a stream of even numbers and the other will have a stream with odd numbers. The resulting type of this groupBy is <code>Flux&lt;GroupedFlux&lt;Boolean, Int&gt;&gt;</code>. The outer flux is actually a finite stream of 2 <code>GroupedFlux&lt;Boolean, Int&gt;</code> elements. If the source on which the <code>groupBy</code> was applied was infinite, the 2 <code>GroupedFlux</code> objects are also infinite.</p>
+<h2>Processing the groups</h2>
+<p>Given the above example, there are 2 groups in a flux. Now we can write the logic to be performed on each group. Each <code>GroupedFlux</code> can be treated like a regular flux, but with an extra function: <code>key()</code>. This key function will return the result of the grouping function for all elements in this group. So in our example <code>true</code> for all the even numbers.</p>
+<p>There is one little detail which is quite important. We need to make sure that we subscribe to all groups. This sounds trivial, but because it is part of a stream this could easily go wrong.</p>
+<p>Let’s work with another example in which we divide the numbers in 10 groups: <code>intFlux.groupBy { it % 10 }</code>. Each group function will just count how many numbers came through. This is what the <code>countNumbers</code> function does with the help of the <code>increment</code> function:</p>
+<pre><code class="language-kotlin">val countOccurrences = ConcurrentHashMap&lt;Int, Long&gt;()  
+
+fun increment(group: Int) = countOccurrences.compute(group) { _, k -&gt; (k ?: 0) + 1 }  
+
+fun countNumbers(group: GroupedFlux&lt;Int, Int&gt;): Flux&lt;Int&gt; =  
+    group.doOnNext { increment(group.key()) }
+</code></pre>
+<p>The <code>countNumbers</code> function has to be wired together in the flux with the <code>groupBy</code>:</p>
+<pre><code class="language-kotlin">Flux.generate&lt;Int&gt; { it.next(emitCounter.incrementAndGet()) }  
+ .groupBy { it % 10 }  
+ .flatMap(::countNumbers)  
+ .subscribeOn(Schedulers.parallel())  
+ .subscribe()
+</code></pre>
+<p>Simple enough isn’t it. This works and when we inspect the <code>countOccurrences</code> every so often we would see something like:</p>
+<pre><code class="language-shell">nrs emited: 6324660 Occurrences per group: 0: 634584, 1: 634802, 2: 634804, 3: 634804, 4: 634805, 5: 634805, 6: 634805, 7: 634805, 8: 634806, 9: 634806
+nrs emited: 13912044 Occurrences per group: 0: 1391214, 1: 1391220, 2: 1391221, 3: 1391221, 4: 1391222, 5: 1391222, 6: 1391222, 7: 1391222, 8: 1391223, 9: 1391223
+nrs emited: 22109057 Occurrences per group: 0: 2210915, 1: 2210921, 2: 2210935, 3: 2210936, 4: 2210936, 5: 2210937, 6: 2210964, 7: 2210966, 8: 2210966, 9: 2210967
+nrs emited: 30416867 Occurrences per group: 0: 3041697, 1: 3041703, 2: 3041704, 3: 3041704, 4: 3041704, 5: 3041704, 6: 3041704, 7: 3041705, 8: 3041705, 9: 3041705
+nrs emited: 38748273 Occurrences per group: 0: 3874837, 1: 3874843, 2: 3874844, 3: 3874844, 4: 3874844, 5: 3874844, 6: 3874844, 7: 3874845, 8: 3874845, 9: 3874845
+nrs emited: 47157048 Occurrences per group: 0: 4715713, 1: 4715719, 2: 4715720, 3: 4715720, 4: 4715720, 5: 4715720, 6: 4715720, 7: 4715720, 8: 4715721, 9: 4715721
+nrs emited: 55470463 Occurrences per group: 0: 5547095, 1: 5547106, 2: 5547107, 3: 5547120, 4: 5547121, 5: 5547121, 6: 5547122, 7: 5547122, 8: 5547122, 9: 5547122
+nrs emited: 62455436 Occurrences per group: 0: 6245552, 1: 6245557, 2: 6245557, 3: 6245558, 4: 6245558, 5: 6245558, 6: 6245558, 7: 6245558, 8: 6245558, 9: 6245559
+nrs emited: 69543352 Occurrences per group: 0: 6954345, 1: 6954351, 2: 6954351, 3: 6954351, 4: 6954351, 5: 6954352, 6: 6954352, 7: 6954352, 8: 6954352, 9: 6954352
+</code></pre>
+<p>The elements are nicely distributed over the groups. Notice that we did not specify an explicit concurrency on the <code>flatMap</code>. If it is left out it will default to <code>Queues.SMALL_BUFFER_SIZE</code>, which is 256 (unless configured differently). The <code>groupBy</code> made it such that we only have a limited amount of groups and as long as the number of groups stay below 256, this will work perfectly.</p>
+<p>Let’s look at what will happen when we tune the concurrency to be lower than the number of groups:</p>
+<pre><code class="language-kotlin">Flux.generate&lt;Int&gt; { it.next(emitCounter.incrementAndGet()) }  
+ .groupBy { it % 10 }  
+ .flatMap(::countNumbers, 9)  
+ .subscribeOn(Schedulers.parallel())  
+ .subscribe()
+</code></pre>
+<p>The resulting output is:</p>
+<pre><code class="language-kotlin">nrs emitted: 2560 Occurrences per group: 1: 256, 2: 256, 3: 256, 4: 256, 5: 256, 6: 256, 7: 256, 8: 256, 9: 256
+nrs emitted: 2560 Occurrences per group: 1: 256, 2: 256, 3: 256, 4: 256, 5: 256, 6: 256, 7: 256, 8: 256, 9: 256
+nrs emitted: 2560 Occurrences per group: 1: 256, 2: 256, 3: 256, 4: 256, 5: 256, 6: 256, 7: 256, 8: 256, 9: 256
+</code></pre>
+<p>This will continue forever without any progress. The problem is that we have 10 groups, but only 9 workers. Each worker consumes 1 <code>GroupedFlux</code>, which means that there will be 1 group remaining without a worker. But why does the stream get stuck?</p>
+<h2>No more demand</h2>
+<p>To understand why the stream grinds to a halt we should look at the demand. You can read more about it in my blog <a href="https://inspired-it.nl/2022/03/06/debugging-demand-in-reactor/">“Debugging demand in Reactor”</a>. After adding the log statements:</p>
+<pre><code class="language-kotlin">fun countNumbers(group: GroupedFlux&lt;Key, Int&gt;): Flux&lt;Int&gt; =  
+    group  
+ .log(&quot;countNumbers&quot;, Level.INFO, SignalType.REQUEST, SignalType.ON_SUBSCRIBE, SignalType.ON_NEXT, SignalType.ON_NEXT)  
+ .doOnNext { increment(group.key()) }
+
+Flux.generate&lt;Int&gt; { it.next(emitCounter.incrementAndGet()) }  
+ .log(&quot;groupBy&quot;, Level.INFO, SignalType.REQUEST, SignalType.ON_SUBSCRIBE, SignalType.ON_NEXT)
+ .groupBy { it % 10 }
+ .log(&quot;flatMap&quot;, Level.INFO, SignalType.REQUEST, SignalType.ON_SUBSCRIBE, SignalType.ON_NEXT)
+ .flatMap(::countNumbers, 9)
+ .subscribeOn(Schedulers.parallel())  
+ .subscribe()
+</code></pre>
+<p>The resulting output is like this:</p>
+<pre><code class="language-shell">[groupBy] - onSubscribe([Fuseable] FluxGenerate.GenerateSubscription)
+[flatMap] - onSubscribe([Fuseable] FluxGroupBy.GroupByMain)
+[subscribe] - onSubscribe(FluxFlatMap.FlatMapMain)
+[subscribe] - request(unbounded)
+[flatMap] - request(9)
+[groupBy] - request(256)
+[groupBy] - onNext(1)
+[countNumbers-1] - onSubscribe([Fuseable] FluxGroupBy.UnicastGroupedFlux)
+[countNumbers-1] - request(32)
+[countNumbers-1] - onNext(1)
+[groupBy] - request(1)
+[groupBy] - onNext(2)
+[countNumbers-2] - onSubscribe([Fuseable] FluxGroupBy.UnicastGroupedFlux)
+[countNumbers-2] - request(32)
+[countNumbers-2] - onNext(2)
+[groupBy] - request(1)
+[groupBy] - onNext(3)
+[countNumbers-3] - onSubscribe([Fuseable] FluxGroupBy.UnicastGroupedFlux)
+[countNumbers-3] - request(32)
+[countNumbers-3] - onNext(3)
+[groupBy] - request(1)
+[groupBy] - onNext(4)
+[countNumbers-4] - onSubscribe([Fuseable] FluxGroupBy.UnicastGroupedFlux)
+[countNumbers-4] - request(32)
+[countNumbers-4] - onNext(4)
+[groupBy] - request(1)
+[groupBy] - onNext(5)
+[countNumbers-5] - onSubscribe([Fuseable] FluxGroupBy.UnicastGroupedFlux)
+[countNumbers-5] - request(32)
+[countNumbers-5] - onNext(5)
+[groupBy] - request(1)
+[groupBy] - onNext(6)
+[countNumbers-6] - onSubscribe([Fuseable] FluxGroupBy.UnicastGroupedFlux)
+[countNumbers-6] - request(32)
+[countNumbers-6] - onNext(6)
+[groupBy] - request(1)
+[groupBy] - onNext(7)
+[countNumbers-7] - onSubscribe([Fuseable] FluxGroupBy.UnicastGroupedFlux)
+[countNumbers-7] - request(32)
+[countNumbers-7] - onNext(7)
+[groupBy] - request(1)
+[groupBy] - onNext(8)
+[countNumbers-8] - onSubscribe([Fuseable] FluxGroupBy.UnicastGroupedFlux)
+[countNumbers-8] - request(32)
+[countNumbers-8] - onNext(8)
+[groupBy] - request(1)
+[groupBy] - onNext(9)
+[countNumbers-9] - onSubscribe([Fuseable] FluxGroupBy.UnicastGroupedFlux)
+[countNumbers-9] - request(32)
+[countNumbers-9] - onNext(9)
+[groupBy] - request(1)
+[groupBy] - onNext(10)
+[groupBy] - onNext(11)
+[countNumbers-1] - onNext(11)
+[groupBy] - request(1)
+[groupBy] - onNext(12)
+[countNumbers-2] - onNext(12)
+[groupBy] - request(1)
+[groupBy] - onNext(13)
+[countNumbers-3] - onNext(13)
+[groupBy] - request(1)
+[groupBy] - onNext(14)
+[countNumbers-4] - onNext(14)
+[groupBy] - request(1)
+[groupBy] - onNext(15)
+[countNumbers-5] - onNext(15)
+[groupBy] - request(1)
+[groupBy] - onNext(16)
+[countNumbers-6] - onNext(16)
+[groupBy] - request(1)
+[groupBy] - onNext(17)
+[countNumbers-7] - onNext(17)
+[groupBy] - request(1)
+[groupBy] - onNext(18)
+[countNumbers-8] - onNext(18)
+[groupBy] - request(1)
+[groupBy] - onNext(19)
+...
+[countNumbers-8] - onNext(468)
+[groupBy] - request(1)
+[groupBy] - onNext(469)
+[countNumbers-9] - onNext(469)
+[groupBy] - request(1)
+[groupBy] - onNext(470)
+[groupBy] - onNext(471)
+[countNumbers-1] - onNext(471)
+[countNumbers-1] - request(24)
+[groupBy] - request(1)
+[groupBy] - onNext(472)
+[countNumbers-2] - onNext(472)
+[countNumbers-2] - request(24)
+[groupBy] - request(1)
+[groupBy] - onNext(473)
+[countNumbers-3] - onNext(473)
+[countNumbers-3] - request(24)
+[groupBy] - request(1)
+[groupBy] - onNext(474)
+[countNumbers-4] - onNext(474)
+[countNumbers-4] - request(24)
+[groupBy] - request(1)
+[groupBy] - onNext(475)
+[countNumbers-5] - onNext(475)
+[countNumbers-5] - request(24)
+[groupBy] - request(1)
+[groupBy] - onNext(476)
+[countNumbers-6] - onNext(476)
+[countNumbers-6] - request(24)
+[groupBy] - request(1)
+[groupBy] - onNext(477)
+[countNumbers-7] - onNext(477)
+[countNumbers-7] - request(24)
+[groupBy] - request(1)
+[groupBy] - onNext(478)
+[countNumbers-8] - onNext(478)
+[countNumbers-8] - request(24)
+[groupBy] - request(1)
+[groupBy] - onNext(479)
+[countNumbers-9] - onNext(479)
+[countNumbers-9] - request(24)
+[groupBy] - request(1)
+[groupBy] - onNext(480)
+[groupBy] - onNext(481)
+[countNumbers-1] - onNext(481)
+[groupBy] - request(1)
+[groupBy] - onNext(482)
+[countNumbers-2] - onNext(482)
+[groupBy] - request(1)
+[groupBy] - onNext(483)
+[countNumbers-3] - onNext(483)
+[groupBy] - request(1)
+[groupBy] - onNext(484)
+[countNumbers-4] - onNext(484)
+[groupBy] - request(1)
+[groupBy] - onNext(485)
+[countNumbers-5] - onNext(485)
+...
+[groupBy] - request(1)
+[groupBy] - onNext(2558)
+[countNumbers-8] - onNext(2558)
+[groupBy] - request(1)
+[groupBy] - onNext(2559)
+[countNumbers-9] - onNext(2559)
+[groupBy] - request(1)
+[groupBy] - onNext(2560)
+nrs emitted: 2560 Occurrences per group: 1: 256, 2: 256, 3: 256, 4: 256, 5: 256, 6: 256, 7: 256, 8: 256, 9: 256
+nrs emitted: 2560 Occurrences per group: 1: 256, 2: 256, 3: 256, 4: 256, 5: 256, 6: 256, 7: 256, 8: 256, 9: 256
+nrs emitted: 2560 Occurrences per group: 1: 256, 2: 256, 3: 256, 4: 256, 5: 256, 6: 256, 7: 256, 8: 256, 9: 256
+nrs emitted: 2560 Occurrences per group: 1: 256, 2: 256, 3: 256, 4: 256, 5: 256, 6: 256, 7: 256, 8: 256, 9: 256
+</code></pre>
+<p>The logs give a lot of information about what is going on under the hood. At first the <code>onSubscribe</code> event that starts the <code>Flux</code> is passed along. Keep in mind that a <code>Flux</code> is nothing but a definition until you subscribe, <a href="https://projectreactor.io/docs/core/release/reference/#_from_imperative_to_reactive_programming">“nothing happens until you <strong>subscribe</strong>”</a>. This is called a cold stream. When the subscribe reaches the last element in the stream, the demand will start flowing back.</p>
+<p>The <code>subscribe</code> has not back-pressure and can handle everything, so it wil request an <code>unbouded</code> demand. The <code>flatMap</code> has a concurrency of 9, so it will send a demand upstream of 9. Note that this is a demand for 9 elements of type <code>GroupedFlux&lt;Int&gt;</code>, so we request 9 groups. The <code>groupBy</code> has the default behaviour to request a demand of 256 elements. This will reach the source and the source will start emitting 256 elements (if possible, which it is in this case). These 256 elements will be distributed over the 10 groups that are defined in the grouping function. The output above shows that the first time an element is emitted (<code>onNext(1)</code>) it will subscribe to the that group and we immediately see demand flowing.</p>
+<p>This shows that the subscription to a <code>GroupedFlux</code> only happens once the first element for that group is available. We also see that the first element was dispatched to a group and immediately the <code>groupBy</code> will signal new demand upstream. This will happen 8 more times until we reach element 10 which would end up in a <code>countNumbers-10</code>, but we do not have a processor for that group. So it will stay in the groupBy, which has a 256 demand, but now 1 element cannot dispatched. Element 11 will be dispatched to group 1 again. Every subflux has a demand of 32 as we can see. The elements will be divided over the active 9 groups, but the elements that are for group 10 will get stuck.</p>
+<p>When 3/4 of the demand for a group is fulfilled it will re-signal demand. This is the <code>request(24)</code>. The <code>groupBy</code> with a buffer of <code>256</code> will continuously pass elements downstream when they are available. This will happen a few times until the <code>groupBy</code> has 256 elements for group 10 and needs to keep that. The <code>groupBy</code> indicated a demand of 256 and now all demand is filled with elements for group 10. There is no more demand and we have full back-pressure. Therefore, the pipeline is now stuck “waiting” for demand for the elements of group 10.</p>
+<h1>Conclusion</h1>
+<p>If you use the <code>groupBy</code> function in a <code>Flux</code>, you must make sure that there are enough subscribers in the <code>flatMap</code>, otherwise your stream will get stuck. To <a href="https://inspired-it.nl/2022/03/06/debugging-demand-in-reactor/">“Debugging demand in Reactor”</a> the loggin functionality is really helpful. I learned a lot while I was writing this blog and got even more insight into the internals of Reactor.</p>
+]]></content:encoded>
+    <pubDate>Sat, 12 Mar 2022 00:00:00 GMT</pubDate>
+    <author>contact@inspired-it.nl (Jeroen Gordijn)</author>
+    <category>kotlin</category><category>reactive</category><category>reactor</category>
+  </item>
+
+  <item>
+    <title>Debugging demand in Reactor</title>
+    <link>https://inspired-it.nl/blog/debugging-demand-in-reactor</link>
+    <guid isPermaLink="true">https://inspired-it.nl/blog/debugging-demand-in-reactor</guid>
+    <description>Learn how to use the log function to debug demand flow in Project Reactor and understand backpressure behavior.</description>
+    <content:encoded><![CDATA[<h1>Debugging demand in Reactor</h1>
+<p><a href="https://projectreactor.io/">Project Reactor</a> is a great reactive streams project that you will probably run into when you want to write reactive code in Spring. It is very powerful and can also be complex to wrap your head around. Something that can be confusing is how demand flows upstream and messages flow downstream.</p>
+<h2>Getting insight in flow of demand</h2>
+<p>In any <a href="https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html">Flux</a> it is possible to show demand by using the <code>log</code> function on a flux. With this function you can specify what <code>SignalType</code> you want to be logged. Let’s look at an example:</p>
+<pre><code class="language-kotlin">val counter = AtomicLong()  
+
+fun process(nr: Long): Mono&lt;Long&gt; =  
+    Mono.just(nr).delayElement(Duration.ofMillis(nextLong(1, 25)))  
+
+Flux.generate&lt;Long&gt; { it.next(counter.incrementAndGet()) }  
+ .log(&quot;beforeFlatmap&quot;, Level.INFO, SignalType.REQUEST)  
+ .flatMap(::process)  
+ .log(&quot;beforeTake&quot;, Level.INFO, SignalType.REQUEST)  
+ .take(100)  
+ .log(&quot;beforeSubscribe&quot;, Level.INFO, SignalType.REQUEST)  
+ .subscribeOn(Schedulers.parallel())  
+ .subscribe()  
+
+Thread.sleep(4000)  
+println(&quot;Counter: ${counter.get()}&quot;)
+</code></pre>
+<p>When run this will print:</p>
+<pre><code class="language-kotlin">13:43:15.197 [parallel-1] INFO beforeSubscribe - request(unbounded)
+13:43:15.200 [parallel-1] INFO beforeTake - request(unbounded)
+13:43:15.200 [parallel-1] INFO beforeFlatmap - | request(256)
+13:43:15.251 [parallel-6] INFO beforeFlatmap - | request(1)
+13:43:15.251 [parallel-6] INFO beforeFlatmap - | request(1)
+13:43:15.251 [parallel-6] INFO beforeFlatmap - | request(1)
+13:43:15.252 [parallel-6] INFO beforeFlatmap - | request(1)
+13:43:15.252 [parallel-8] INFO beforeFlatmap - | request(1)
+...
+13:43:15.260 [parallel-2] INFO beforeFlatmap - | request(4)
+13:43:15.260 [parallel-2] INFO beforeFlatmap - | request(12)
+13:43:15.260 [parallel-2] INFO beforeFlatmap - | request(2)
+13:43:15.261 [parallel-2] INFO beforeFlatmap - | request(6)
+13:43:15.261 [parallel-2] INFO beforeFlatmap - | request(7)
+13:43:15.261 [parallel-2] INFO beforeFlatmap - | request(3)
+13:43:15.261 [parallel-2] INFO beforeFlatmap - | request(2)
+13:43:15.262 [parallel-2] INFO beforeFlatmap - | request(3)
+13:43:15.262 [parallel-2] INFO beforeFlatmap - | request(3)
+13:43:15.262 [parallel-2] INFO beforeFlatmap - | request(1)
+Counter: 350
+</code></pre>
+<p>The logs we showing the <code>request</code> is the demand flowing up (towards the source) and gives us insight in what happens with the demand. The first demand that is sent is when the stream is subscribed to. Remember, demand flows upstream, so in our code bottom to top. The <code>subscribe</code> function will always request an <code>unbounded</code> amount of events. Next we will reach the <code>take</code> function that doesn’t change the demand and also sends <code>unbounded</code> demand. So up until this point we do not have any back pressure control. Or said differently, these function can keep up with anything upstream may send. Next we will hit the <code>flatMap</code>, with it’s default concurrency (256). The <code>flatMap</code> changes the demand. There are only 256 workers, so it can only process 256 messages at this time. Therefore it signals a demand of 256. This demand will reach the source and the source can now emit 256 elements. When a task in the <code>flatMap</code> is done it will not encounter any back pressure, because the demand downstream is <code>unbounded</code>. This means, that when a task is done it can immediately emit the message and signal it has new demand, by requesting 1 extra message.</p>
+<p>When 100 messages reached the <code>take</code> function the stream will be completed. However, in the end we see much more messages were submitted from the source, namely 350. This happens, because everything is happening at the same time. When a task in the <code>flatMap</code> is done, it will signal demand by requesting a new element. Therefore it can happen, that there are more messages emitted than the 100 requested.</p>
+<h2>Conclusion</h2>
+<p>Using the <code>log</code> on a <code>Flux</code> can greatly help in understanding what’s going on under the covers. We’ve seen in above example that even in trivial flows it leads to interesting discoveries.</p>
+]]></content:encoded>
+    <pubDate>Sun, 06 Mar 2022 00:00:00 GMT</pubDate>
+    <author>contact@inspired-it.nl (Jeroen Gordijn)</author>
+    <category>kotlin</category><category>reactive</category><category>reactor</category>
+  </item>
+
+  <item>
+    <title>Starting Inspired IT</title>
+    <link>https://inspired-it.nl/blog/starting-inspired-it</link>
+    <guid isPermaLink="true">https://inspired-it.nl/blog/starting-inspired-it</guid>
+    <description>The inaugural announcement of the founding of Inspired IT</description>
+    <content:encoded><![CDATA[<p>Vanaf januari 2019 ben ik de trotse oprichter van <strong>Inspired IT</strong>. Met mijn kennis en ervaring van Software Development in het algemeen en Scala &amp; Akka in het bijzonder, ga ik als bevlogen freelancer bedrijven helpen om complexe problemen op te lossen.</p>
+<p>Ik wens iedereen fijne feestdagen en een inspirerend 2019!</p>
+<hr>
+<p>Starting January 2019 I am the proud founder of <strong>Inspired IT</strong>. As an inspired freelancer I will help companies, with my knowledge of Software Development in general and Scala &amp; Akka in particular, to solve complex problems.</p>
+<p>I wish everybody happy holidays and an inspiring 2019!</p>
+<p><img src="http://inspired-it.nl/wp-content/uploads/2018/12/inspire-300x225.png" alt=""></p>
+]]></content:encoded>
+    <pubDate>Tue, 18 Dec 2018 00:00:00 GMT</pubDate>
+    <author>contact@inspired-it.nl (Jeroen Gordijn)</author>
+    <category>announcement</category>
+  </item>
+  </channel>
+</rss>
