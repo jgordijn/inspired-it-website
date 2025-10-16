@@ -10,16 +10,13 @@ interface HomeProps {
 export default function Home({ posts = [] }: HomeProps) {
 
   return (
-    <Layout>
+    <Layout title="Jeroen Gordijn" description="Software architecture, AI development advocacy, and technical consulting">
       {/* Hero Section */}
       <section className="py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div>
-            <h1 className="text-5xl font-bold text-slate-900 mb-6">
-              Jeroen Gordijn
-            </h1>
-            <p className="text-xl text-gray-600 mb-4">
-              Software Architect, Senior Developer
+            <p className="text-sm text-blue-700 font-semibold uppercase tracking-[0.5em] mb-4">
+              My mission
             </p>
             <p className="text-lg text-gray-700 leading-relaxed mb-8">
               I am inspired to make impact on software development in the projects I work for.

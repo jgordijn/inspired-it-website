@@ -84,14 +84,16 @@ function Header() {
               Contact
             </Link>
           </li>
-          <li>
-            <Link
-              href="/admin/markdown-converter"
-              className="text-blue-600 hover:text-blue-700 transition-colors font-medium"
-            >
-              Tools
-            </Link>
-          </li>
+          {process.env.NODE_ENV !== 'production' && (
+            <li>
+              <Link
+                href="/admin/markdown-converter"
+                className="text-blue-600 hover:text-blue-700 transition-colors font-medium"
+              >
+                Tools
+              </Link>
+            </li>
+          )}
         </ul>
       </nav>
     </header>
