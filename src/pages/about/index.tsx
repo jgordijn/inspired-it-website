@@ -128,7 +128,7 @@ export default function About() {
               </li>
               <li>
                 <span className="font-semibold block text-slate-900">Primary Languages</span>
-                <span className="text-gray-600">Kotlin, Scala</span>
+                <span className="text-gray-600">Kotlin, Java</span>
               </li>
               <li>
                 <span className="font-semibold block text-slate-900">Location</span>

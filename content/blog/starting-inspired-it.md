@@ -16,4 +16,4 @@ Starting January 2019 I am the proud founder of **Inspired IT**. As an inspired 
 
 I wish everybody happy holidays and an inspiring 2019!
 
-![](http://inspired-it.nl/wp-content/uploads/2018/12/inspire-300x225.png)
+![Inspired IT logo](/images/inspire.png)
