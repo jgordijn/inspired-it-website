@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -38,8 +39,16 @@ function Header() {
   return (
     <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
       <nav className="container-max flex items-center justify-between py-4">
-        <Link href="/" className="text-2xl font-bold text-slate-900">
-          Inspired IT
+        <Link href="/" className="flex items-center gap-4 text-slate-900 font-bold text-2xl">
+          <Image
+            src="/logo.svg"
+            alt="Inspired IT logo"
+            width={56}
+            height={56}
+            priority
+            className="h-14 w-auto"
+          />
+          <span className="tracking-tight text-[28px] leading-none">Inspired IT</span>
         </Link>
         
         <ul className="flex gap-8">
