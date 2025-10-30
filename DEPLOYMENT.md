@@ -15,9 +15,28 @@ Before deploying, make sure you've:
 - [ ] Built successfully with `npm run build`
 - [ ] Customized About and Contact pages
 
-## Option 1: Vercel (⭐ Recommended)
+## Deployment to FastMail (Current Setup)
 
-**Vercel is the creator of Next.js and offers the best integration.**
+This site is deployed as a static website to FastMail using rclone.
+
+### Build and Deploy
+
+```bash
+npm run build && rclone sync out SoftwaremaniacWebsite: && rclone sync out InspiredITWebsite:
+```
+
+- **SoftwaremaniacWebsite** - Testing environment
+- **InspiredITWebsite** - Production environment
+
+The build creates static files in the `out/` directory which are then synced to FastMail's static hosting.
+
+---
+
+## Alternative Options
+
+## Option 1: Vercel
+
+**Vercel is the creator of Next.js and offers excellent integration.**
 
 ### Setup (5 minutes)
 
@@ -356,18 +375,6 @@ After deployment:
 - Ensure posts are in `content/blog/` folder
 - Check YAML frontmatter format
 - Rebuild and redeploy
-
----
-
-## Recommended: Vercel Setup
-
-For most users, I recommend Vercel because:
-- ✅ Free tier available
-- ✅ Automatic deployments from GitHub
-- ✅ Excellent performance
-- ✅ Built for Next.js
-- ✅ Simple custom domain setup
-- ✅ No complicated configuration
 
 ---
 
