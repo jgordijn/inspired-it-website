@@ -11,6 +11,10 @@ coverage/
 /build/
 /.next/
 
+# Generated files
+public/rss.xml
+public/sitemap.xml
+
 # Misc
 .DS_Store
 *.pem
