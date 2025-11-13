@@ -108,7 +108,6 @@ export default function BlogIndex({ allPosts = [], allTags = [] }: BlogIndexProp
                       <div className="flex gap-6 text-sm text-gray-500">
                         <span>📅 {post.date}</span>
                         <span>⏱️ {post.readingTime} min read</span>
-                        <span>✍️ {post.author}</span>
                       </div>
                     </div>
 
