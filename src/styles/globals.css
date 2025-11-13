@@ -86,3 +86,8 @@ pre.hljs code {
 .blog-content a {
   @apply text-blue-600 hover:underline;
 }
+
+.blog-content disclaimer {
+  @apply block mt-6 mb-4 text-sm italic text-gray-500 border-l-2 border-gray-300 pl-4 py-2;
+  display: block;
+}
