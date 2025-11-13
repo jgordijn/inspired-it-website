@@ -75,16 +75,6 @@ export default function BlogPost({
           dangerouslySetInnerHTML={{ __html: post.html }}
         />
 
-        {/* Article Footer */}
-        <div className="bg-gray-50 rounded-lg p-6 my-12 border-l-4 border-blue-600">
-          <h3 className="font-bold text-lg mb-2">About the Author</h3>
-          <p className="text-gray-700">
-            {post.author} is a senior software developer and AI development advocate, focused on applying
-            emerging AI capabilities in real-world systems while mentoring teams through the pace of
-            change. Share your thoughts or reach out on <a href="https://www.linkedin.com/in/jeroengordijn/" className="text-blue-600 hover:underline">LinkedIn</a>.
-          </p>
-        </div>
-
         {/* Related Posts */}
         {relatedPosts.length > 0 && (
           <section className="mt-16">
