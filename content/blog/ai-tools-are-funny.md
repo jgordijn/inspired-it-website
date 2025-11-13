@@ -3,7 +3,7 @@ title: "AI tools can be funny"
 description: "When I asked Claude to build something technically impossible, it refused to do the work. Is this AI pushing back? A humorous look at what happens when you push an AI assistant's limits."
 date: "2025-11-13"
 author: "Jeroen Gordijn"
-tags: ["AI", "development", "tools", "claude"]
+tags: ["AI", "claude"]
 ---
 
 # AI tools can be funny
