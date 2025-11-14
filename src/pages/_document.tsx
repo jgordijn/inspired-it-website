@@ -9,7 +9,7 @@ export default function Document() {
         <meta name="theme-color" content="#ffffff" />
         
         {/* SEO Meta Tags */}
-        <meta name="description" content="Professional IT consulting and technical blog by Jeroen Gordijn. Software architecture, Kotlin, Java, and cloud technologies." />
+        <meta name="description" content="AI development advocate and software architect. Helping teams adopt practical AI capabilities while building robust distributed systems." />
         <meta name="keywords" content="Kotlin, Java, Software Architecture, Software Development, IT Consulting, Cloud" />
         <meta name="author" content="Jeroen Gordijn" />
         <meta name="robots" content="index, follow" />
@@ -18,7 +18,7 @@ export default function Document() {
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://inspired-it.nl" />
         <meta property="og:title" content="Inspired IT - Professional Software Development" />
-        <meta property="og:description" content="Technical expertise in Kotlin, Java, software architecture and consulting." />
+        <meta property="og:description" content="AI development advocate and software architect. Helping teams adopt practical AI capabilities while building robust distributed systems." />
         <meta property="og:site_name" content="Inspired IT" />
         <meta property="og:locale" content="en_US" />
         
@@ -26,7 +26,7 @@ export default function Document() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:url" content="https://inspired-it.nl" />
         <meta name="twitter:title" content="Inspired IT - Professional Software Development" />
-        <meta name="twitter:description" content="Technical expertise in Kotlin, Java, software architecture and consulting." />
+        <meta name="twitter:description" content="AI development advocate and software architect. Helping teams adopt practical AI capabilities while building robust distributed systems." />
         
         {/* Canonical URL */}
         <link rel="canonical" href="https://inspired-it.nl" />

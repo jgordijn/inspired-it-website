@@ -10,7 +10,7 @@ interface HomeProps {
 export default function Home({ posts = [] }: HomeProps) {
 
   return (
-    <Layout title="Jeroen Gordijn" description="Software architecture, AI development advocacy, and technical consulting">
+    <Layout title="Jeroen Gordijn" description="AI development advocate, software architect, technical consultant">
       {/* Hero Section */}
       <section className="py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
