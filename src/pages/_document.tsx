@@ -17,7 +17,7 @@ export default function Document() {
         {/* Open Graph / Social Media */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://inspired-it.nl" />
-        <meta property="og:title" content="Inspired IT - Professional Software Development" />
+        <meta property="og:title" content="Inspired IT - AI Development Advocate" />
         <meta property="og:description" content="AI development advocate and software architect. Helping teams adopt practical AI capabilities while building robust distributed systems." />
         <meta property="og:site_name" content="Inspired IT" />
         <meta property="og:locale" content="en_US" />
@@ -25,7 +25,7 @@ export default function Document() {
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:url" content="https://inspired-it.nl" />
-        <meta name="twitter:title" content="Inspired IT - Professional Software Development" />
+        <meta name="twitter:title" content="Inspired IT - AI Development Advocate" />
         <meta name="twitter:description" content="AI development advocate and software architect. Helping teams adopt practical AI capabilities while building robust distributed systems." />
         
         {/* Canonical URL */}

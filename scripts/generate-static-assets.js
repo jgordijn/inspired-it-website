@@ -114,7 +114,7 @@ function generateRss(posts) {
   <channel>
     <title>Inspired IT - Technical Blog</title>
     <link>${BASE_URL}</link>
-    <description>Professional software development insights, architecture patterns, and technical expertise from Jeroen Gordijn</description>
+    <description>AI Development Advocate insights, architecture patterns, and technical expertise from Jeroen Gordijn</description>
     <language>en-us</language>
     <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
     <atom:link href="${BASE_URL}/rss.xml" rel="self" type="application/rss+xml" />
