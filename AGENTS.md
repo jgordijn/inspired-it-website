@@ -6,6 +6,13 @@
 - **Type check**: `npx tsc --noEmit`
 - **No test framework configured** - this is a static blog site
 
+## Deployment
+- **Full instructions**: See [DEPLOYMENT.md](./DEPLOYMENT.md)
+- **Quick deploy**: `npm run build && rclone sync out SoftwaremaniacWebsite: && rclone sync out InspiredITWebsite:`
+  - `SoftwaremaniacWebsite:` - Test environment
+  - `InspiredITWebsite:` - Production environment
+- **Test only**: `npm run build && rclone sync out SoftwaremaniacWebsite:`
+
 ## Project Type
 Next.js 14 static site export with TypeScript, React 18, Tailwind CSS. Markdown-based blog with gray-matter frontmatter.
 
@@ -38,3 +45,10 @@ Next.js 14 static site export with TypeScript, React 18, Tailwind CSS. Markdown-
 ### Error Handling
 - Defensive checks: `if (!fs.existsSync(BLOG_DIR)) return []`
 - Graceful fallbacks: `data.title || 'Untitled'`
+
+## Writing Style
+- **Tone**: Conversational, personal, slightly humorous, "tech enthusiast" but grounded.
+- **Structure**: Short, punchy paragraphs. Use rhetorical questions to engage the reader.
+- **Perspective**: First-person ("I").
+- **Content**: Use specific examples, screenshots, and dialogues where possible.
+- **Ending**: End with a reflective question or thought.

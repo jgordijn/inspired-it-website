@@ -25,10 +25,16 @@ This site is deployed as a static website to FastMail using rclone.
 npm run build && rclone sync out SoftwaremaniacWebsite: && rclone sync out InspiredITWebsite:
 ```
 
-- **SoftwaremaniacWebsite** - Testing environment
-- **InspiredITWebsite** - Production environment
+**Environments:**
+- **SoftwaremaniacWebsite:** - Test environment (verify changes here first)
+- **InspiredITWebsite:** - Production environment (live site)
 
 The build creates static files in the `out/` directory which are then synced to FastMail's static hosting.
+
+**Note:** Always test changes in the test environment before deploying to production. You can deploy to only the test environment by running:
+```bash
+npm run build && rclone sync out SoftwaremaniacWebsite:
+```
 
 ---
 
