@@ -9,6 +9,7 @@
     "export": "node scripts/generate-static-assets.js && next build && next export"
   },
   "dependencies": {
+    "@next/third-parties": "^16.0.4",
     "gray-matter": "^4.0.3",
     "highlight.js": "^11.11.1",
     "markdown-it": "^13.0.2",
