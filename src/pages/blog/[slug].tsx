@@ -45,6 +45,17 @@ export default function BlogPost({
   return (
     <Layout title={post.title} description={post.description}>
       <article className="max-w-3xl mx-auto">
+        {/* Cover Image */}
+        {post.cover && (
+          <div className="mb-8 -mx-4 sm:mx-0">
+            <img
+              src={post.cover}
+              alt={post.title}
+              className="w-full h-auto rounded-lg shadow-lg"
+            />
+          </div>
+        )}
+
         {/* Article Header */}
         <div className="mb-8">
           <div className="flex gap-2 mb-4 flex-wrap">

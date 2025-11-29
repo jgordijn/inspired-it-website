@@ -32,6 +32,7 @@ export interface BlogPost {
   date: string;
   author: string;
   tags: string[];
+  cover: string | null;
   content: string;
   html: string;
   readingTime: number;
@@ -63,6 +64,7 @@ export function getBlogPosts(): BlogPost[] {
         date: data.date || new Date().toISOString().split('T')[0],
         author: data.author || 'Jeroen Gordijn',
         tags: data.tags || [],
+        cover: data.cover || null,
         content: rawContent,
         html,
         readingTime,
