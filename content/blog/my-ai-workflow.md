@@ -11,6 +11,7 @@ tags:
   - openspec
 ---
 
+![A software engineer orchestrating an AI-assisted workflow, supervising digital agents as they build software architecture using tools like OpenCode.](/images/ai-puppeteer.png)
 "AI tools don't work," "AI generates junk," "It never does what I want." These are common complaints I hear from developers skeptical about AI workflows. And honestly? They're not wrong. These frustrations are real. But I've found that with the right structure, these tools become genuinely useful. Over the past few months, I've dedicated myself to mastering these tools in my daily work. Here is my personal AI workflow and how it has transformed the way I develop software.
 
 ## The Tools
@@ -112,5 +113,7 @@ Looking back at the skepticism I mentioned at the start: yes, AI tools can gener
 - **Context survives.** I can step away from a task and pick it up the next day.
 - **Quality is higher.** The multi-agent review catches issues I would have missed.
 - **I work confidently in unfamiliar territory.** The agent handles syntax and boilerplate while I focus on architecture and business logic.
+
+Today, I write nearly 100% of my code this way.
 
 Is it perfect? No. I still course-correct, still restart when plans go sideways, still find myself nudging the agent back on track. But this is the worst AI will ever be, and it's already useful. I'd rather learn to work with it now than catch up later.
