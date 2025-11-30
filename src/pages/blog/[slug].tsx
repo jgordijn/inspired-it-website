@@ -43,7 +43,12 @@ export default function BlogPost({
   relatedPosts: any[] 
 }) {
   return (
-    <Layout title={post.title} description={post.description}>
+    <Layout
+      title={post.title}
+      description={post.description}
+      slug={`blog/${post.slug}`}
+      ogImage={post.cover ? `https://inspired-it.nl${post.cover}` : undefined}
+    >
       <article className="max-w-3xl mx-auto">
         {/* Cover Image */}
         {post.cover && (

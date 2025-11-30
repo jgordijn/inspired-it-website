@@ -1,17 +1,37 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import Head from 'next/head';
 
 interface LayoutProps {
   children: React.ReactNode;
   title?: string;
   description?: string;
+  ogImage?: string;
+  slug?: string;
 }
 
-export default function Layout({ children, title, description }: LayoutProps) {
+export default function Layout({ children, title, description, ogImage, slug }: LayoutProps) {
+  const pageTitle = title ? `${title} | Inspired IT` : 'Inspired IT';
+  const pageDescription = description || 'AI development advocate and software architect';
+  const pageUrl = slug ? `https://inspired-it.nl/${slug}` : 'https://inspired-it.nl';
+  const imageUrl = ogImage || 'https://inspired-it.nl/logo.png';
+
   return (
-    <div className="flex flex-col min-h-screen bg-white">
-      <Header />
+    <>
+      <Head>
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDescription} />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription} />
+        <meta property="og:url" content={pageUrl} />
+        <meta property="og:image" content={imageUrl} />
+        <meta name="twitter:title" content={pageTitle} />
+        <meta name="twitter:description" content={pageDescription} />
+        <meta name="twitter:image" content={imageUrl} />
+      </Head>
+      <div className="flex flex-col min-h-screen bg-white">
+        <Header />
       
       <main className="flex-grow">
         {title && (
@@ -30,8 +50,9 @@ export default function Layout({ children, title, description }: LayoutProps) {
         </div>
       </main>
       
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </>
   );
 }
 

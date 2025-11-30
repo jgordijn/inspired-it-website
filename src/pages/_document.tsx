@@ -8,25 +8,18 @@ export default function Document() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#ffffff" />
         
-        {/* SEO Meta Tags */}
-        <meta name="description" content="AI development advocate and software architect. Helping teams adopt practical AI capabilities while building robust distributed systems." />
-        <meta name="keywords" content="Kotlin, Java, Software Architecture, Software Development, IT Consulting, Cloud" />
+        {/* SEO Meta Tags - page-specific description/title handled by Layout */}
+        <meta name="keywords" content="AI, Claude, OpenCode, Kotlin, Java, Software Architecture, Software Development, IT Consulting, Cloud" />
         <meta name="author" content="Jeroen Gordijn" />
         <meta name="robots" content="index, follow" />
-        
-        {/* Open Graph / Social Media */}
+
+        {/* Open Graph / Social Media - page-specific og:title/description/url handled by Layout */}
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://inspired-it.nl" />
-        <meta property="og:title" content="Inspired IT - AI Development Advocate" />
-        <meta property="og:description" content="AI development advocate and software architect. Helping teams adopt practical AI capabilities while building robust distributed systems." />
         <meta property="og:site_name" content="Inspired IT" />
         <meta property="og:locale" content="en_US" />
-        
-        {/* Twitter */}
+
+        {/* Twitter - page-specific handled by Layout */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:url" content="https://inspired-it.nl" />
-        <meta name="twitter:title" content="Inspired IT - AI Development Advocate" />
-        <meta name="twitter:description" content="AI development advocate and software architect. Helping teams adopt practical AI capabilities while building robust distributed systems." />
         
         {/* Canonical URL */}
         <link rel="canonical" href="https://inspired-it.nl" />
