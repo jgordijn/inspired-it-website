@@ -7,9 +7,7 @@ const nextConfig = {
   pageExtensions: ['ts', 'tsx'],
   reactStrictMode: true,
   trailingSlash: true,
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
+
 };
 
 module.exports = nextConfig;
