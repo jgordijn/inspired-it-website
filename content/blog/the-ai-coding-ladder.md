@@ -1,96 +1,84 @@
 ---
 title: "The AI Coding Ladder"
 description: "A look at the different levels of AI."
-date: "2025-12-01"
-tags: ["AI", "Coding", "Career"]
+date: "2025-12-07"
+tags: ["AI", "Coding"]
 ---
 
 # The AI Coding Ladder
 
-<Intro text description of different levels of AI.> The different levels appeared over the past few years and more might appear in the future. The levels are not fexed and one is not better than the other.
+AI coding is changing fast. A few years ago, we wrote every line by hand. Now, we have AI agents that can build entire features. But not all AI help is the same. I see different "levels" of AI, from simple chat interface to fully independent workers. These levels aren't official rules, and higher isn't always better. It's a way to think about the way you use AI. During a coding session, you can switch between the different levels, depending on the task at hand.
 
 ## Level 0: The purist (No AI)
 
 In this level, there is no AI involved. The developer is the only one who writes the code. It's just you, the blinking cursor, and searching Stack overflow for hours. It may feel old fashioned, but until very recently, this was the only way to go. Many people still find pride in crafting code by hand.
 
-* Autonomy: None. You drive 100%
-* Context: No AI, so the AI has no context.
-* The Upgrade: Total Mastery. You have zero dependencies. You understand exactly how every line works.
-* The Frustration: The Blank Canvas. Getting stuck on syntax. Spending 45 minutes searching for a solution to a problem you know is simple. The physical fatigue of typing boilerplate.
+* **Control**: None. You do everything.
+* **Context**: None. The computer knows nothing about what you want.
+* **The Good Part**: Total Understanding. You rely on no one. You know exactly how every single line of code works.
+* **The Bad Part**: You get stuck on a problem. You spend hours searching for a solution to a small problem. You get tired of typing the same standard code over and over.
 
 ## Level 1: The Copy-Paster
 
-In this level, AI is slowly replacing Googling for solutions. The Chat interface of the chosen AI is used to ask questions, or ask for a specific piece of code. The AI will then answer and you can copy paste the code into your project. This is also where many people start using AI. It is stunning to see how a piece of code magically appears in front of you after just a short question. You start to get amazed by the power of AI and afraid for your job. Then you copy the code and paste it into your project to find out that it used non existing functions. This is where people get frustrated.
+This is where most of us started. Instead of Googling for answers, you ask a chatbot. You ask for a piece of code, and like magic, it appears on your screen. At first, you are amazed. You even worry about your job! But when you paste the code into your project, it doesn't work. It uses functions that don't exist, or provides incorrect arguments. AI can be very helpful in this level, but it can also be very frustrating.
 
-The AI is not aware of your project and only knows what you tell it. Of course, it has impressive training knowledge, which can help you to find the right solution. Compared to Stackoverflow, it can give a better tailored answer to your problem / question.
+The AI has read almost every book on programming and whole Stack overflow, so it knows a lot. And if you provide it some context, it can give a more tailored answer. But it doesn't know *your* whole codebase. 
 
-* Autonomy: No autonomy. You ask, it answers, you paste.
-* Context: Global Knowledge (Zero Local). It knows programming languages perfectly based on internet training data, but it has no idea what your specific variable names or file structures are unless you paste them in.
-* The Upgrade: Replacement of the Stack overflow search. You can ask it questions and it will answer them. You have a senior developer with encyclopedic knowledge on speed dial. Great for generic algorithms or learning new syntax.
-* The Frustration: Context Switching & Hallucinations. You have to manually bridge the gap between the browser and your IDE. It invents libraries that don't exist. You spend time debugging code that doesn't fit your existing style.
+* **Control**: None. You ask, it answers, you paste.
+* **Context**: It knows only what you tell it. Putting some effort in creating nice prompts and provide context about your problem can help get better results.
+* **The Good Part**: A better Stack overflow. You can get results more tailored to your problem. It's also great for learning new things.
+* **The Bad Part**: Switching Context. You have to switch between your browser and your code constantly. Also, the AI might make up libraries that don't exist, leading to frustration.
 
 ## Level 2: The Autocompleter
 
-Now we incorporate AI into the editor. The editor will predict the next few words, paragraph, or function based on the context of the current file and maybe a few other files you have open in your editor (the "context window"). Sometimes it feels like magic, like the AI is reading your mind. But other times, it creates a big function that looks like something you want, but on closer look is just not it. Refactoring that feels like it is more work than that you would have written it yourself immediately. It is possible to steer it better by starting with comments to indicate to the AI what you want to do next. The upgrade compared to level 1 is that you don't have to switch between your browser and your IDE and copy-paste the result. Completion is also additive only. It will not change existing code.
+This is basically super-powered text prediction. The AI lives inside your code editor and guesses what you want to type next. Sometimes it feels like it reads your mind and knows exactly what you need. Other times, it writes a whole block of code that looks perfect but is actually just not it. Refactoring that feels like it takes more work than when you have written it yourself. The big win here is that you don't have to leave your editor to copy-paste code from a browser.
 
- * Autonomy: Reactive. It predicts the next few words, paragraph, or function.
- * Context: The Cursor & Open Tabs. It sees the current file and maybe a few other files you have open in your editor (the "context window"). It creates a "bag of words" association.
- * The Upgrade: Flow State. It handles the boring syntax (brackets, semicolons, standard patterns) so you can focus on logic. It reduces physical typing significantly. Compared to level 1, you don't have to switch between your browser and your IDE and copy pasting the result. Code may still be invalid.
- * The Frustration: The "Wait, What?" Effect. You accept a suggestion because it looks right structurally, but later realize this wasn't exactly what you wanted. It used a variable that doesn't exist or hallucinated a method. Depending how much guidance you provided via comments up front, it has little knowledge of your intention.
+ * **Control**: None. It reacts to your cursus and suggests the next block of code.
+ * **Context**: Current File and open tabs. You can provide it with better context of you intend by starting to type a comment, good function name, or variable name.
+ * **The Good Part**: No need to leave your editor. If steered well it can save you some typing. And simple clear cases generally work quite nice.
+ * **The Bad Part**: The "Wait, What?" Effect. You accept a suggestion because it looks right, but later find out it's wrong. It might use a variable that doesn't exist, or hallicunates functions (like in level 1).
 
-## Level 3: The Inline Editor (The Helper)
+## Level 3: The Inline Editor 
 
-Auto completion can only add code, but with the inline editor, we can select pieces of code and ask the AI to change code. Or ask to create a new function or class. In code completion we needed to write a comment to indicate intent and then remove the comment if it didn't add any value. Now we can instruct the AI immediately and indicate intent. It's also very powerful to be able to ask the AI to refactor a function or class. This feels like a companion you can direct at specific pieces of code. Asking for clarification when code is difficult to understand. Ask for change when you want to refactor/improve a piece of code. The developer is still very deeply involved in every line that gets written. The downside is that the companion sometimes really feels stupid. If you ask it to add a parameter to a function, it will add it perfectly. However, it does not oversee the impact of the change and just adds the parameter, breaking all call sites, or breaking interface.
+In this level, you can talk to your code editor. In level 2, we could only add code, but in this level, we can change, add or remove code. You highlight a piece of code and tell the AI: "Simplify this" or "Add error checks." It's like having a helpful assistant sitting next to you. It's great for cleaning up messy code or understanding how a complex function works. But the AI only changes the selected code, or injects code at the cursor position. If the function name or arguments are changed here, it might break code elsewhere in your project because the AI doesn't see the full picture.
 
- * Autonomy: Direct Command. "Refactor this."
- * Context: The Selection & open tabs. With giving an explicit command, you give more context about the intent. What do you want to be changed/implemented. It has a strong understanding of the specific block of code you highlighted and the immediate file structure, allowing for transformation rather than just prediction.
- * The Upgrade: AI knows what you want. Micro-Refactoring Speed. You can highlight a messy function and say "Make this cleaner" or "Add error handling," and it’s done. 
- * The Frustration: It fixes the local function, sometimes breaking the call site. It doesn't see the bigger picture.
+ * **Control**: Some. The AI can now change some code, based of a description of what you want.
+ * **Context**: Selected Code and open tabs. It understands the specific block of code you highlighted and the files around it. The prompt you give directs it what to do.
+ * **The Good Part**: Fast Cleanup. You can highlight a messy function and say "Clean this up," and it’s done. AI can now change code, not only add code.
+ * **The Bad Part**: Limited scope. It fixes the function perfectly, but might break the code that *uses* that function because it doesn't look at the rest of the project. It still hallicunates non existing functions.
 
-## Level 4: The Vibe Coder
+## Level 4: The Prompt Coder
 
-In this level we do a step up from the inline editor. We no longer live in a file, but in another dedicated window where we can interact with the AI Agent. With this change, the context of the AI also changes. In the previous level, the AI knew about the open files, but now it can also see the entire codebase. This feels like you got some superpower. Ask for bigger refactoring. Ask for architecture changes. See it all materialize before your eyes. 
+Now the AI steps out of the single file and looks at your entire project. It's not just fixing one function; it can add a whole new feature across multiple files. You feel like you have superpowers. You describe what you want, and the AI builds it. But it can be risky. If the AI misunderstands you, it might mess up files all over your project. And if you try to fix it with more prompts, you can get stuck in a loop where nothing seems to work right.
 
-It can also go wrong in many occasions. You give a command and the AI will think what it needs to do and happily starts changing your files. If it does the correct thing it is perfect, but if it goes into the wrong direction you end up with a lot of code you don't want. Trying to give a new prompt to steer it in the correct direction may lead into some sort of a doom loop, where you just keep trying, but it never seems to give the right result.
+* **Control**: Full. The AI can now change any code in your project.
+* **Context**: The Whole Project. It can read all files in your project.
+* **The Good Part**: Super Speed. You can make big changes across 20 files in minutes. It sees your whole codebase, so it makes changes which are more in line with the projects code style.
+* **The Bad Part**: If the AI misunderstands your command, it writes bad code across many files. Cleaning up a big mess is often harder than doing the work by hand.
 
-This level also has acces to tools. So it can run commands on your system to build the code, call MCPs to get extra information, or perform an action.
+## Level 5: The Agentic Coder
 
-* Autonomy: Multi-step / Task-based. "Rename this model and update all references."
-* Context: The Repository. It can "read" your entire codebase, understanding dependencies and project structure.
-* The Upgrade: The Force Multiplier. You move from "typing code" to "managing changes." You can perform architectural moves (migrating a library, renaming a core model) across 20 files in minutes.
-* The Frustration: The "Blast Radius." If the AI misunderstands the architecture, it sprays bad code across multiple files. Cleaning up a multi-file mess is often harder than doing the work manually.
+At this level, the AI gets access to tools (mcps, skills, sub-agents). You don't only give it your projects code as context, but you can feed it more information, such that it has some knowledge about your organization. It also knows how to use the tools, such that it can compile your code, run tests or even use a browser to see the result of its changes. You can teach it your team's rules, like how to format code or handle security. It can take a vague task like "fix this bug," run tests to find the problem, and solve it. But like a junior developer, it sometimes gets confused and needs your guidance to stop it from trying the same wrong solution over and over.
 
-## Level 5: The Agentic Loop (The Junior Dev)
+ * **Control**: Full+. Can change all code, but can also reach out and depending on the tools you allowed, the possibilities are endless.
+ * **Context**: The project + all the tools you gave it.
+ * **The Good Part**: Level 4, but with checks if the code works. Follows the rules you set and access to more tools. It can investigate k8s logs for instance.
+ * **The Bad Part**: The Infinite Loop. Without perfect instructions, it can get stuck trying the same wrong fix over and over, wasting time.
 
-In this level there is the option for sub-agents and skills. You create context around your Agent, such that it knows not only about your codebase, but also about standards within your organization. For instance, certain frameworks that are used, or how security is organized within your company. What are standards, like commit message format. There is a significant change compared to the previous level, as you get better results that meet your standards. In this level you can ask to add security to an endpoint and it knows how that works in your organization.
+## Level 6: The Architect
 
- * Autonomy: Iterative / Self-Correcting. It writes, runs, fails, fixes.
- * Context: The Runtime Environment. It doesn't just see code; it sees Tool Outputs. It can read terminal logs, compiler errors, database schemas, and documentation.
- * The Upgrade: Asynchronous Problem Solving. You can give it a vague error ("Fix the memory leak"), and it can investigate, reproduce, and verify the fix on its own.
- * The Frustration: The Infinite Loop. Without perfect instructions (specs), it can get stuck in a loop of trying the same wrong fix over and over, wasting money and time. You have to "manage" it like a very literal intern.
-
-
-## Level 6: The Architect (Spec-Driven)
-
-In this level we change the role of the developer. We no longer think about how to implement a feature, but what we want to achieve. This is a structured way of working. We start specifying what we want to achieve. Use the AI to investigate what needs to happen and process that into a spec with a plan how to achieve it. 
-We lift the whole process to a higher level. By putting a lot of effort into the spec phase, we try to set the AI up for success. We can steer here in the right direction before the AI started changing any line of code. Once we aimed at the goal precisely, we can pull the trigger and let the AI do its job. There are different frameworks to do this, such as GitHub Spec-kit and OpenSpec. I landed on OpenSpec for now.
+At this stage, you stop being a coder and start being an architect. Instead of directing what needs to change in the code, you write a clear plan (a specification) of what you want. You tell the AI the goal, and it figures out the steps to get there. We lift the whole process to a higher level. By putting a lot of effort into the spec phase, we try to set the AI up for success. This is what I described in [My AI Writes Code. Yours Can Too].(https://inspired-it.nl/blog/my-ai-workflow)
 
 
-* Autonomy: Delegated. You define what and structure, AI figures out how.
-* Context: The Specification + Repository. It works from a structured document (SPEC.md, AGENTS.md) that captures intent, constraints, and acceptance criteria - combined with codebase awareness. Also provide further context via `skills`, such that the AI can understand certain tools or standards in your company.
-* The Upgrade: Thinking at the Right Altitude. You stop context-switching between "what do I want" and "how do I code it." You become a reviewer and course-corrector, not a typist.
-* The Frustration: Spec Quality = Output Quality. Garbage spec, garbage code. You discover that writing good specs is a skill - and it's harder than you thought. Also: the AI confidently builds the wrong thing if your spec has gaps.
+* **Control**: Full+. The same control as in level 6, the process changes, not the AI.
+* **Context**: The project + the tools + the plan.
+* **The Good Part**: Thinking Big Picture. You stop thinking about *how* to write the code and start thinking about *what* the code should do. In the spec phase, we create a plan that guides the AI during the build, to get the right result.
+* **The Bad Part**: Bad Plan = Bad Code. If your plan is vague, the AI will build the wrong thing. Writing good plans takes time and effort. 
 
-## Level 7: The Product Owner
+## More levels?
 
-This level is not achievable yet. At this moment, we still need developers that can evaluate the result of the AI. When we achieve this level, the AI can continue asking questions for clarification and continue to improve the result. Giving push back on the ideas that are fed to the AI. It can take up the full role of developers and the Product Owner can interact directly with the AI. 
+What will the next level be? I can imagine that AI at some point takes more responsibility. After a vague fea,ture request it will set out to get clarification. Maybe other levels will pop up, but from this point it is only speculation. 
 
-Maybe other levels will pop up, but from this point it is only speculation. 
+## Relevance of the levels
 
-* Autonomy: Full. Product Owner -> AI -> App.
- * Context: Business & User Value. It understands the intent of the software and the user requirements, not just the code syntax.
- * The Upgrade: Pure Value Creation. Development becomes purely about specifying what you want, not how to build it.
- * The Frustration (Hypothetical): Loss of Control (The Black Box). If the AI builds the whole system, humans may lose the ability to maintain or understand the underlying logic. You become an operator, not a creator.
-
-
-
+There's no right or wrong level. It depends on the task at hand. I mostly start at level 4/5 to brainstorm with AI about the feature. I want to understand how something currently works in the codebase and figure out the best appoach, or clearify the idea. When that is clear I switch to level 6 and specify the feature. During the build phase, I switch to level 5 to make some changes. 
