@@ -3,6 +3,7 @@ title: "The AI Coding Ladder"
 description: "A look at the different levels of AI."
 date: "2025-12-07"
 tags: ["AI", "Coding"]
+cover: /images/ai-coding-ladder.png
 ---
 
 # The AI Coding Ladder
