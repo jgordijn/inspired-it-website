@@ -86,6 +86,11 @@ export default function BlogIndex({ allPosts = [], allTags = [] }: BlogIndexProp
                   <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
                     <div className="flex-grow">
                       <div className="flex gap-2 mb-3 flex-wrap">
+                        {post.publish_status === 'draft' && (
+                          <span className="inline-block bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-bold border border-yellow-200">
+                            DRAFT
+                          </span>
+                        )}
                         {post.tags.map((tag) => (
                           <button
                             key={tag}

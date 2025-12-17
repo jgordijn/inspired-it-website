@@ -12,16 +12,16 @@ const markdown = new MarkdownIt({
     if (lang && hljs.getLanguage(lang)) {
       try {
         return '<pre class="hljs"><code>' +
-               hljs.highlight(str, { language: lang, ignoreIllegals: true }).value +
-               '</code></pre>';
-      } catch (__) {}
+          hljs.highlight(str, { language: lang, ignoreIllegals: true }).value +
+          '</code></pre>';
+      } catch (__) { }
     }
     // Escape special HTML characters
     return '<pre class="hljs"><code>' +
-           str.replace(/[&<>"]/g, (c) => {
-             return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c] || c;
-           }) +
-           '</code></pre>';
+      str.replace(/[&<>"]/g, (c) => {
+        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c] || c;
+      }) +
+      '</code></pre>';
   },
 });
 
@@ -36,6 +36,7 @@ export interface BlogPost {
   content: string;
   html: string;
   readingTime: number;
+  publish_status?: 'draft' | 'published';
 }
 
 const BLOG_DIR = path.join(process.cwd(), 'content', 'blog');
@@ -68,7 +69,14 @@ export function getBlogPosts(): BlogPost[] {
         content: rawContent,
         html,
         readingTime,
+        publish_status: data.publish_status || null,
       } as BlogPost;
+    })
+    .filter((post) => {
+      if (process.env.NODE_ENV === 'production') {
+        return post.publish_status !== 'draft';
+      }
+      return true;
     })
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
@@ -89,20 +97,20 @@ export function getRelatedPosts(slug: string, limit: number = 3): BlogPost[] {
   if (!post) return [];
 
   const allPosts = getBlogPosts().filter((p) => p.slug !== slug);
-  
+
   const scored = allPosts.map((p) => {
     let score = 0;
-    
+
     // Score based on shared tags
     const sharedTags = post.tags.filter((tag) => p.tags.includes(tag)).length;
     score += sharedTags * 10;
-    
+
     // Slightly prefer recent posts
     const daysDiff = Math.abs(
       new Date(post.date).getTime() - new Date(p.date).getTime()
     ) / (1000 * 60 * 60 * 24);
     score -= daysDiff / 100;
-    
+
     return { post: p, score };
   });
 
