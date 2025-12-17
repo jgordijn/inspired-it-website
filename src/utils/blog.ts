@@ -50,7 +50,7 @@ export function getBlogPosts(): BlogPost[] {
   const posts = files
     .filter((file) => file.endsWith('.md'))
     .map((file) => {
-      const slug = file.replace('.md', '');
+      const slug = file.replace(/\.md$/, '').replace(/^\d{4}-\d{2}-\d{2}-/, '');
       const filePath = path.join(BLOG_DIR, file);
       const content = fs.readFileSync(filePath, 'utf-8');
       const { data, content: rawContent } = matter(content);
