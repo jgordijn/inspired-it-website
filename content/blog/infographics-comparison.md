@@ -27,3 +27,11 @@ Wow! This image really impresses me. It shows a really nice, rich picture with a
 Honestly? I'm impressed by the Gemini version. It just feels more comprehensive and visually stunning. The GPT version is nice and tidy, but Gemini wins for me.
 
 Which one do you like more?
+
+## Update
+
+On LinkedIn, someone pointed out to me that I should have used the ChatGPT image feature. I thought that it would automatically use that feature. So I tried again.
+
+![GPT 5.2 with Image Feature](/images/Workflow_infographic_gpt52_image_feature.png)
+
+The result was not much better. It is logically even wrong, because you will not change the `AGENTS.md` for every feature.
