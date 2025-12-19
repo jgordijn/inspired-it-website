@@ -33,7 +33,7 @@ export default function About() {
             <h3 className="text-xl font-bold mb-4">Specialties</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
               <div className="space-y-3">
-                {['Software Architecture', 'AI Development Advocate', 'Software Development', 'Domain-Driven Design (DDD)'].map((skill) => (
+                {['AI Development Advocate', 'Software Architecture', 'Software Development', 'Domain-Driven Design (DDD)'].map((skill) => (
                   <div key={skill} className="flex items-center gap-2">
                     <span className="text-blue-600 font-bold">✓</span>
                     <span>{skill}</span>
@@ -155,9 +155,25 @@ export default function About() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="border border-gray-200 rounded-lg p-6">
+              <h3 className="font-bold text-lg mb-3">AI-Assisted Development</h3>
+              <p className="text-gray-700">
+                Learn how to leverage AI tools to accelerate your development workflow.
+                Practical guidance on integrating AI assistants into your daily coding practice.
+              </p>
+            </div>
+
+            <div className="border border-gray-200 rounded-lg p-6">
+              <h3 className="font-bold text-lg mb-3">Technical Team Leadership</h3>
+              <p className="text-gray-700">
+                Mentoring and leadership for development teams. Help establish processes,
+                standards, and foster a culture of continuous improvement.
+              </p>
+            </div>
+
+            <div className="border border-gray-200 rounded-lg p-6">
               <h3 className="font-bold text-lg mb-3">Architecture Consultation</h3>
               <p className="text-gray-700">
-                Help design scalable, maintainable systems that grow with your business. 
+                Help design scalable, maintainable systems that grow with your business.
                 From monoliths to microservices, I provide guidance on architectural decisions.
               </p>
             </div>
@@ -165,24 +181,8 @@ export default function About() {
             <div className="border border-gray-200 rounded-lg p-6">
               <h3 className="font-bold text-lg mb-3">Code Review & Optimization</h3>
               <p className="text-gray-700">
-                Comprehensive reviews of your codebase focusing on quality, performance, 
+                Comprehensive reviews of your codebase focusing on quality, performance,
                 and best practices. Actionable recommendations for improvement.
-              </p>
-            </div>
-
-            <div className="border border-gray-200 rounded-lg p-6">
-              <h3 className="font-bold text-lg mb-3">Technical Team Leadership</h3>
-              <p className="text-gray-700">
-                Mentoring and leadership for development teams. Help establish processes, 
-                standards, and foster a culture of continuous improvement.
-              </p>
-            </div>
-
-            <div className="border border-gray-200 rounded-lg p-6">
-              <h3 className="font-bold text-lg mb-3">Custom Development</h3>
-              <p className="text-gray-700">
-                Build custom solutions tailored to your specific needs. From backend 
-                services to full-stack applications.
               </p>
             </div>
           </div>
