@@ -153,7 +153,13 @@ export default function About() {
               </li>
               <li>
                 <span className="font-semibold block text-slate-900">Current Role</span>
-                <span className="text-gray-600">Senior Software Developer & AI Development Advocate at Ahold Delhaize</span>
+                <span className="text-gray-600">
+                  Senior Software Developer &
+                  <br />
+                  AI Development Advocate
+                  <br />
+                  <span className="text-blue-600 font-medium">@</span> Ahold Delhaize
+                </span>
               </li>
               <li>
                 <span className="font-semibold block text-slate-900">Primary Languages</span>
