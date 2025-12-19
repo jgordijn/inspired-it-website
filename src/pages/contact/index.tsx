@@ -29,8 +29,8 @@ export default function Contact() {
             <div className="text-3xl mb-4">💼</div>
             <h3 className="font-bold text-lg mb-3">Consultation Requests</h3>
             <p className="text-gray-700 text-sm">
-              Need help with software architecture, system design, or technical strategy?
-              Let's discuss your project on LinkedIn.
+              Need help adopting AI tools in your development workflow, or guidance on software architecture?
+              Let's discuss your project.
             </p>
           </div>
 
@@ -39,7 +39,7 @@ export default function Contact() {
             <h3 className="font-bold text-lg mb-3">Collaboration</h3>
             <p className="text-gray-700 text-sm">
               Interested in collaborating on a project or discussing technical topics?
-              Reach out via LinkedIn message.
+              Let's connect.
             </p>
           </div>
 
@@ -47,7 +47,7 @@ export default function Contact() {
             <div className="text-3xl mb-4">💡</div>
             <h3 className="font-bold text-lg mb-3">Technical Discussion</h3>
             <p className="text-gray-700 text-sm">
-              Want to discuss Kotlin, Scala, Event Driven Architecture, or AI development?
+              Want to discuss AI development, Kotlin, software architecture, or other technical topics?
               I'm always happy to connect.
             </p>
           </div>

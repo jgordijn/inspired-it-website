@@ -131,7 +131,7 @@ function Footer() {
           <div>
             <h3 className="text-lg font-bold mb-4">Inspired IT</h3>
             <p className="text-slate-400">
-              Professional IT consulting, software development, and technical expertise.
+              Software development with AI, architecture, and technical expertise.
             </p>
           </div>
           

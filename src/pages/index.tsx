@@ -22,7 +22,7 @@ export default function Home({ posts = [] }: HomeProps) {
               I am inspired to make impact on software development in the projects I work for.
               Working as a consultant since 2005, I've had the opportunity to see many different
               companies and work within diverse domains. I combine software architecture design with
-              hands-on delivery, joining teams to build the systems we envision.
+              hands-on delivery, helping clients build the systems they envision.
             </p>
             <p className="text-lg text-gray-700 leading-relaxed mb-8">
               Today my focus is on being an AI development advocate, keeping pace with the rapid change
@@ -47,12 +47,12 @@ export default function Home({ posts = [] }: HomeProps) {
           <div className="bg-gradient-to-br from-blue-500 to-slate-700 rounded-lg p-12 text-white">
             <div className="space-y-4">
               <div className="flex items-center gap-3">
-                <span className="text-3xl">💻</span>
-                <span>Software Architecture</span>
-              </div>
-              <div className="flex items-center gap-3">
                 <span className="text-3xl">🤖</span>
                 <span>AI Development Advocate</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <span className="text-3xl">💻</span>
+                <span>Software Architecture</span>
               </div>
               <div className="flex items-center gap-3">
                 <span className="text-3xl">📚</span>
@@ -123,10 +123,11 @@ export default function Home({ posts = [] }: HomeProps) {
       {/* CTA Section */}
       <section className="bg-slate-900 text-white rounded-lg p-12 my-20">
         <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-4">Need Expert Consultation?</h2>
+          <h2 className="text-3xl font-bold mb-4">Ready to Develop Faster with AI?</h2>
           <p className="text-lg text-slate-200 mb-8">
-            I provide consulting services for software architecture, system design,
-            and technical strategy. Let's connect and discuss your project.
+            I can help your team learn to work effectively with AI development tools.
+            I also provide consulting services for software architecture and implementation.
+            Let's connect and discuss how I can help.
           </p>
           <a
             href="https://www.linkedin.com/in/jeroengordijn/"

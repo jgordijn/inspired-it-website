@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Professional blog site for Jeroen Gordijn",
   "scripts": {
-    "dev": "next dev",
+    "dev": "BASE_URL=http://localhost:3000 node scripts/generate-static-assets.js && next dev",
     "build": "node scripts/generate-static-assets.js && next build",
     "start": "next start",
     "export": "node scripts/generate-static-assets.js && next build && next export"
