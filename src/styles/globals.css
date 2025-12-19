@@ -10,7 +10,11 @@
   }
 
   body {
-    @apply bg-white text-gray-900;
+    @apply bg-white text-gray-900 m-0 p-0;
+  }
+
+  main {
+    @apply w-full;
   }
 }
 

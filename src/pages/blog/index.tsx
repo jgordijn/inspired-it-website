@@ -12,6 +12,7 @@ export default function BlogIndex({ allPosts = [], allTags = [] }: BlogIndexProp
 
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
+  const [filterOpen, setFilterOpen] = useState(false);
 
   const filteredPosts = allPosts.filter((post) => {
     const matchesTag = !selectedTag || post.tags.includes(selectedTag);
@@ -23,9 +24,29 @@ export default function BlogIndex({ allPosts = [], allTags = [] }: BlogIndexProp
 
   return (
     <Layout title="Blog" description="Technical articles about software development, architecture, and best practices">
+      {/* Mobile filter toggle */}
+      <div className="lg:hidden mb-4">
+        <button
+          onClick={() => setFilterOpen(!filterOpen)}
+          className="flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors w-full justify-between"
+        >
+          <span className="font-medium">
+            {selectedTag ? `Filter: ${selectedTag}` : 'Search & Filter'}
+          </span>
+          <svg
+            className={`w-5 h-5 transition-transform ${filterOpen ? 'rotate-180' : ''}`}
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+      </div>
+
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
         {/* Sidebar */}
-        <aside className="lg:col-span-1">
+        <aside className={`lg:col-span-1 ${filterOpen ? 'block' : 'hidden'} lg:block`}>
           <div className="bg-gray-50 rounded-lg p-6 sticky top-24">
             <h3 className="font-bold text-lg mb-4">Search</h3>
             <input
@@ -39,7 +60,7 @@ export default function BlogIndex({ allPosts = [], allTags = [] }: BlogIndexProp
             <h3 className="font-bold text-lg mb-4">Tags</h3>
             <div className="space-y-2">
               <button
-                onClick={() => setSelectedTag(null)}
+                onClick={() => { setSelectedTag(null); setFilterOpen(false); }}
                 className={`block w-full text-left px-3 py-2 rounded-lg transition-colors ${
                   selectedTag === null
                     ? 'bg-blue-600 text-white'
@@ -51,7 +72,7 @@ export default function BlogIndex({ allPosts = [], allTags = [] }: BlogIndexProp
               {allTags.map((tag) => (
                 <button
                   key={tag}
-                  onClick={() => setSelectedTag(tag)}
+                  onClick={() => { setSelectedTag(tag); setFilterOpen(false); }}
                   className={`block w-full text-left px-3 py-2 rounded-lg transition-colors ${
                     selectedTag === tag
                       ? 'bg-blue-600 text-white'
