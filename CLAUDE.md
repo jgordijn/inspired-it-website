@@ -1,1 +1,1 @@
-Use 'bd' for task tracking
+Read @AGENTS.md

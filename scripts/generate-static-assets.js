@@ -3,7 +3,7 @@ const path = require('path');
 const matter = require('gray-matter');
 const MarkdownIt = require('markdown-it');
 
-const BASE_URL = 'https://inspired-it.nl';
+const BASE_URL = process.env.BASE_URL || 'https://inspired-it.nl';
 const BLOG_DIR = path.join(process.cwd(), 'content', 'blog');
 const PUBLIC_DIR = path.join(process.cwd(), 'public');
 
@@ -22,7 +22,7 @@ function getBlogPosts() {
 
   return files
     .map((file) => {
-      const slug = file.replace(/\.md$/, '');
+      const slug = file.replace(/\.md$/, '').replace(/^\d{4}-\d{2}-\d{2}-/, '');
       const filePath = path.join(BLOG_DIR, file);
       const raw = fs.readFileSync(filePath, 'utf-8');
       const { data, content } = matter(raw);
@@ -35,8 +35,10 @@ function getBlogPosts() {
         tags: Array.isArray(data.tags) ? data.tags : [],
         content,
         html: markdown.render(content),
+        publish_status: data.publish_status || null,
       };
     })
+    .filter((post) => post.publish_status !== 'draft')
     .sort((a, b) => new Date(b.date) - new Date(a.date));
 }
 

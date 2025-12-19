@@ -1,0 +1,10 @@
+#!/bin/bash
+set -e
+
+echo "Building for PRODUCTION environment (inspired-it.nl)..."
+BASE_URL=https://inspired-it.nl npm run build
+
+echo "Deploying to InspiredITWebsite..."
+rclone sync out InspiredITWebsite:
+
+echo "Done! Production site deployed to https://inspired-it.nl"

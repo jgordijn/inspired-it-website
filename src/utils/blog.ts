@@ -26,8 +26,13 @@ const markdown = new MarkdownIt({
 });
 
 // Custom plugin to handle GFM alerts / admonitions w/ icons and fixed title duplication
-function admonitions(md: MarkdownIt) {
-  md.core.ruler.push('admonition', (state) => {
+type MdToken = ReturnType<InstanceType<typeof MarkdownIt>['parse']>[0];
+interface StateCore {
+  tokens: MdToken[];
+  Token: new (type: string, tag: string, nesting: number) => MdToken;
+}
+function admonitions(md: InstanceType<typeof MarkdownIt>) {
+  md.core.ruler.push('admonition', (state: StateCore) => {
     const tokens = state.tokens;
     for (let i = 0; i < tokens.length; i++) {
       if (tokens[i].type !== 'blockquote_open') continue;

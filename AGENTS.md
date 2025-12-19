@@ -1,5 +1,7 @@
 # Agent Guide for Inspired IT Website
 
+Use 'bd' for task tracking
+
 ## Build & Development
 - **Dev server**: `npm run dev` (http://localhost:3000)
 - **Build**: `npm run build` (generates static site in `out/`)
@@ -7,11 +9,20 @@
 - **No test framework configured** - this is a static blog site
 
 ## Deployment
+
+Each environment requires its own build because RSS/sitemap URLs are baked in at build time.
+
+- **Deploy to TEST**: `./scripts/deploy-test.sh`
+  - Builds with `BASE_URL=https://www.softwaremaniac.nl`
+  - Deploys to `SoftwaremaniacWebsite:` rclone remote
+  - Site: https://www.softwaremaniac.nl
+
+- **Deploy to PROD**: `./scripts/deploy-prod.sh`
+  - Builds with `BASE_URL=https://inspired-it.nl`
+  - Deploys to `InspiredITWebsite:` rclone remote
+  - Site: https://inspired-it.nl
+
 - **Full instructions**: See [DEPLOYMENT.md](./DEPLOYMENT.md)
-- **Quick deploy**: `npm run build && rclone sync out SoftwaremaniacWebsite: && rclone sync out InspiredITWebsite:`
-  - `SoftwaremaniacWebsite:` - Test environment
-  - `InspiredITWebsite:` - Production environment
-- **Test only**: `npm run build && rclone sync out SoftwaremaniacWebsite:`
 
 ## Project Type
 Next.js 14 static site export with TypeScript, React 18, Tailwind CSS. Markdown-based blog with gray-matter frontmatter.
