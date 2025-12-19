@@ -91,3 +91,76 @@ pre.hljs code {
   @apply block mt-6 mb-4 text-sm italic text-gray-500 border-l-2 border-gray-300 pl-4 py-2;
   display: block;
 }
+
+/* Admonitions / Callouts */
+.admonition {
+  @apply my-6 p-4 rounded-md border-l-4 bg-gray-50;
+  border-left-width: 4px;
+}
+
+.admonition-title {
+  @apply font-bold mb-2 flex items-center;
+}
+
+.admonition-title svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-right: 0.5rem;
+}
+
+.admonition-content {
+  @apply text-sm;
+}
+
+/* Specific colors for types */
+.admonition-info {
+  background-color: rgb(240, 245, 255);
+  border-left-color: rgb(66, 133, 244);
+}
+
+.admonition-info .admonition-title {
+  color: rgb(66, 133, 244);
+}
+
+.admonition-note {
+  background-color: rgb(240, 240, 240);
+  border-left-color: rgb(128, 128, 128);
+}
+
+.admonition-note .admonition-title {
+  color: rgb(80, 80, 80);
+}
+
+.admonition-tip {
+  background-color: rgb(240, 250, 245);
+  border-left-color: rgb(15, 157, 88);
+}
+
+.admonition-tip .admonition-title {
+  color: rgb(15, 157, 88);
+}
+
+.admonition-warning {
+  background-color: rgb(255, 250, 235);
+  border-left-color: rgb(244, 180, 0);
+}
+
+.admonition-warning .admonition-title {
+  color: rgb(200, 140, 0);
+}
+
+.admonition-important,
+.admonition-caution {
+  background-color: rgb(254, 242, 242);
+  border-left-color: rgb(219, 68, 55);
+}
+
+.admonition-important .admonition-title,
+.admonition-caution .admonition-title {
+  color: rgb(219, 68, 55);
+}
+
+/* Dark mode overrides if needed - assuming simple dark mode class or media query isn't set up yet, 
+   but user mentioned Obsidian which is often dark. Let's make them neutral dark-ish compatible or use CSS vars later.
+   For now, sticking to light mode base as per globals.css context, or using transparency.
+*/
