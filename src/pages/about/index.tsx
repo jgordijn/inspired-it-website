@@ -116,6 +116,24 @@ export default function About() {
           </div>
 
           <div className="bg-blue-50 rounded-lg p-6">
+            {/* Profile picture - try different styles */}
+            <div className="mb-6 flex flex-col items-center gap-4">
+
+              {/* Option 2: Rounded rectangle - uncomment to try*/}
+              <img
+                src="/images/profile_pic_front.png"
+                alt="Jeroen Gordijn"
+                className="w-32 h-40 rounded-xl object-cover shadow-lg"
+              />
+              
+              {/* Option 3: Circle with ring - uncomment to try*/}
+              {/* <img
+                src="/images/profile_pic_front.png"
+                alt="Jeroen Gordijn"
+                className="w-32 h-32 rounded-full object-cover ring-4 ring-blue-200 shadow-lg"
+              /> */}
+              
+            </div>
             <h3 className="font-bold text-lg mb-6">Quick Facts</h3>
             <ul className="space-y-4 text-sm">
               <li>
