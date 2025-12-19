@@ -53,20 +53,30 @@ export default function About() {
             <h3 className="text-xl font-bold mb-4">Recent Experience</h3>
             <div className="space-y-6 mb-8">
               <div className="border-l-4 border-blue-600 pl-4">
-                <h4 className="font-bold text-lg">Senior Software Developer</h4>
-                <p className="text-gray-600">Ahold Delhaize · Apr 2025 - Present</p>
+                <h4 className="font-bold text-lg">Senior Software Developer & AI Development Advocate</h4>
+                <p className="text-gray-600">
+                  Ahold Delhaize
+                  <span className="ml-2 px-2 py-0.5 bg-blue-100 text-blue-800 text-xs font-medium rounded">via Inspired IT</span>
+                  <span className="mx-1">·</span>
+                  Apr 2025 - Present
+                </p>
                 <p className="text-gray-700 mt-2">
                   Building the Gambit ad platform. As an AI advocate at Gambit, I'm learning more about AI
                   technologies and exploring how to effectively apply them in the organization.
                 </p>
                 <p className="text-sm text-gray-600 mt-1">
-                  Technologies: GitHub Copilot, Kotlin, Spring Boot
+                  Technologies: GitHub Copilot, ChatGPT, Claude, Gemini, Kotlin, Spring Boot
                 </p>
               </div>
 
               <div className="border-l-4 border-gray-300 pl-4">
                 <h4 className="font-bold text-lg">Senior Software Developer</h4>
-                <p className="text-gray-600">DHL Parcel Nederland · Jul 2022 - Apr 2025</p>
+                <p className="text-gray-600">
+                  DHL Parcel Nederland
+                  <span className="ml-2 px-2 py-0.5 bg-blue-100 text-blue-800 text-xs font-medium rounded">via Inspired IT</span>
+                  <span className="mx-1">·</span>
+                  Jul 2022 - Apr 2025
+                </p>
                 <p className="text-gray-700 mt-2">
                   Designed and developed the Track & Trace system for DHL Parcel. Member of the architecture
                   team, driving Domain-Driven Design and Ports and Adapters architecture. Co-leader of the
@@ -79,7 +89,12 @@ export default function About() {
 
               <div className="border-l-4 border-gray-300 pl-4">
                 <h4 className="font-bold text-lg">Software Architect & Tech Lead</h4>
-                <p className="text-gray-600">bol.com · Jan 2021 - Jul 2022</p>
+                <p className="text-gray-600">
+                  bol.com
+                  <span className="ml-2 px-2 py-0.5 bg-blue-100 text-blue-800 text-xs font-medium rounded">via Inspired IT</span>
+                  <span className="mx-1">·</span>
+                  Jan 2021 - Jul 2022
+                </p>
                 <p className="text-gray-700 mt-2">
                   Designed and developed a new event-driven architecture to process thousands of offer
                   changes per second. Led teams in implementing the new architecture while also developing
@@ -92,7 +107,12 @@ export default function About() {
 
               <div className="border-l-4 border-gray-300 pl-4">
                 <h4 className="font-bold text-lg">Software Architect / Senior Developer</h4>
-                <p className="text-gray-600">Port of Rotterdam · Apr 2018 - Jul 2019</p>
+                <p className="text-gray-600">
+                  Port of Rotterdam
+                  <span className="ml-2 px-2 py-0.5 bg-blue-100 text-blue-800 text-xs font-medium rounded">via Inspired IT</span>
+                  <span className="mx-1">·</span>
+                  Apr 2018 - Jul 2019
+                </p>
                 <p className="text-gray-700 mt-2">
                   Designed and built a platform for railway transport to the Port of Rotterdam, providing
                   an integrated view for collaboration between parties.
