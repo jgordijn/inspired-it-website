@@ -57,7 +57,7 @@ By moving away from the nicer language and back towards a language with a robust
 
 - If you are on the [AI Ladder Level 0-3](/blog/the-ai-coding-ladder): You write the code. You need the language to be concise.\
 **Winner: Kotlin**.
-- If you are moving towards the higher levels [Level 4 and up](/blog/the-ai-coding-ladder, the verbose syntax of Java matters less (since you aren't typing it), and the deep understanding the AI will get from the LSP matters more.\
+- If you are moving towards the higher levels [Level 4 and up](/blog/the-ai-coding-ladder), the verbose syntax of Java matters less (since you aren't typing it), and the deep understanding the AI will get from the LSP matters more.\
 **Winner: Java**.
 
 ## The Choice for 2026
