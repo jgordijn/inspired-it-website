@@ -61,8 +61,9 @@ export default function About() {
                   Apr 2025 - Present
                 </p>
                 <p className="text-gray-700 mt-2">
-                  Building the Gambit ad platform. As an AI advocate at Gambit, I'm learning more about AI
-                  technologies and exploring how to effectively apply them in the organization.
+                  Building the Gambit ad platform. As an AI advocate, I help developers leverage AI tools
+                  to increase their productivity and share best practices for effectively utilizing these
+                  technologies across the organization.
                 </p>
                 <p className="text-sm text-gray-600 mt-1">
                   Technologies: GitHub Copilot, ChatGPT, Claude, Gemini, Kotlin, Spring Boot
