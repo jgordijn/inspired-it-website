@@ -8,4 +8,12 @@ Java was built on open standards that give AI the "vision" it needs to be truly 
 
 Are we entering an era where we prioritize machine-readability over human-conciseness?
 
-Read the full breakdown of the Kotlin Paradox here: [Link to your blog]
+I've shared the link to the full breakdown of the Kotlin Paradox in the first comment below. Let’s talk about the future of our tech stacks there. 👇
+
+
+----- First comment below, change the original post later to have the link -----
+
+
+A little holiday reading for those looking ahead to 2026. Is it time to rethink our tech stacks for the Agentic Era?
+
+Full post here: coming soon 🤖☕️
