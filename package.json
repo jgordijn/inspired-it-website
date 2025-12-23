@@ -6,7 +6,9 @@
     "dev": "BASE_URL=http://localhost:3000 node scripts/generate-static-assets.js && next dev",
     "build": "node scripts/generate-static-assets.js && next build",
     "start": "next start",
-    "export": "node scripts/generate-static-assets.js && next build && next export"
+    "export": "node scripts/generate-static-assets.js && next build && next export",
+    "deploy:test": "./scripts/deploy-test.sh",
+    "deploy:prod": "./scripts/deploy-prod.sh"
   },
   "dependencies": {
     "@next/third-parties": "^16.0.4",

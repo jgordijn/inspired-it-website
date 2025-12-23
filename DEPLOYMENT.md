@@ -22,7 +22,7 @@ This site is deployed as a static website to FastMail using rclone.
 ### Build and Deploy
 
 ```bash
-npm run build && rclone sync out SoftwaremaniacWebsite: && rclone sync out InspiredITWebsite:
+npm run deploy:test && npm run deploy:prod
 ```
 
 **Environments:**
@@ -33,7 +33,7 @@ The build creates static files in the `out/` directory which are then synced to 
 
 **Note:** Always test changes in the test environment before deploying to production. You can deploy to only the test environment by running:
 ```bash
-npm run build && rclone sync out SoftwaremaniacWebsite:
+npm run deploy:test
 ```
 
 ---

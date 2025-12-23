@@ -5,6 +5,6 @@ echo "Building for PRODUCTION environment (inspired-it.nl)..."
 BASE_URL=https://inspired-it.nl npm run build
 
 echo "Deploying to InspiredITWebsite..."
-rclone sync out InspiredITWebsite:
+rclone sync out InspiredITWebsite: --progress --checksum
 
 echo "Done! Production site deployed to https://inspired-it.nl"
