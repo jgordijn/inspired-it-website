@@ -1,9 +1,9 @@
 ---
 title: "Technical Deflation"
-description: "Changing code tomorrow is cheaper than writing it today."
-date: "2025-12-23"
+description: "Changing code tomorrow is cheaper than doing it today."
+date: "2025-12-24"
 tags: ["AI", "Programming"]
-publish_status: draft
+cover: /images/technical-deflation.png
 ---
 
 # Technical Deflation: Why Your "Clean Code" is a Bad Investment

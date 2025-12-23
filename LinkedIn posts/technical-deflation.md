@@ -1,9 +1,13 @@
 "Clean code" is a bad investment.
 
-For years, we've been practising "clean code". Code is read ten times more often than it is written, so spending time to make it readable while you still know the context is a good investment. But times are changing. 
+For years, we've been practising "clean code". The rule was: code is read 10x more than it is written, so invest in readability now while you have the context.
 
-We live in a time of Technical Deflation. Code is getting cheaper to produce and maintain. When that is the case, it makes sense to postpone investments today that will not give direct benefits. To achieve the same, it will be cheaper in the future.
+But times are changing.
 
-If the technical debt is not blocking you right now, move on. Stop over-investing in making perfect code. You'll do it later for a fraction of the price.
+We live in a time of Technical Deflation. Code is getting cheaper to produce and maintain. In a deflationary environment, it makes sense to postpone investments today that don't give direct benefits.
 
-Here is the full article: [Technical Deflation](https://www.inspired-it.nl/blogs/technical-deflation-clean-code)
+If your technical debt is not blocking you right now, move on. Stop over-investing in making "perfect" code. As Dan Shapiro puts it in his latest blog: "You are borrowing expensive human hours today, and you will get to pay them back with cheap AI hours tomorrow."
+
+Your clean code repo might be a beautiful museum piece, but it will be months behind the competition.
+
+The full breakdown: https://www.inspired-it.nl/blogs/technical-deflation-clean-code
