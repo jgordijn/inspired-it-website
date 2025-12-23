@@ -233,11 +233,14 @@ function slugify(text: string): string {
     .replace(/^-+|-+$/g, '');
 }
 
-// Add IDs to headings for linking
+// Add IDs and anchor links to headings for linking
 function addHeadingIds(html: string): string {
+  const linkIcon = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="heading-anchor-icon"><path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" /></svg>';
+  
   return html.replace(/<h([2-6])([^>]*)>(.*?)<\/h\1>/g, (match, level, attrs, content) => {
     const slug = slugify(content.replace(/<[^>]*>/g, ''));
-    return `<h${level} id="${slug}"${attrs}>${content}</h${level}>`;
+    const anchorLink = `<a href="#${slug}" class="heading-anchor" aria-label="Link to this section">${linkIcon}</a>`;
+    return `<h${level} id="${slug}"${attrs}>${content}${anchorLink}</h${level}>`;
   });
 }
 

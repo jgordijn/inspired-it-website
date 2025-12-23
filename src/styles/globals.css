@@ -67,6 +67,33 @@ pre.hljs code {
   @apply text-2xl font-bold mt-6 mb-3 text-gray-900;
 }
 
+/* Heading anchor links */
+.blog-content h2,
+.blog-content h3,
+.blog-content h4,
+.blog-content h5,
+.blog-content h6 {
+  scroll-margin-top: 6rem;
+}
+
+.heading-anchor {
+  @apply ml-2 opacity-0 transition-opacity text-gray-400 hover:text-blue-600;
+  text-decoration: none !important;
+}
+
+.blog-content h2:hover .heading-anchor,
+.blog-content h3:hover .heading-anchor,
+.blog-content h4:hover .heading-anchor,
+.blog-content h5:hover .heading-anchor,
+.blog-content h6:hover .heading-anchor,
+.heading-anchor:focus {
+  @apply opacity-100;
+}
+
+.heading-anchor-icon {
+  @apply inline-block w-5 h-5 align-middle;
+}
+
 .blog-content p {
   @apply mb-4 leading-relaxed;
 }
