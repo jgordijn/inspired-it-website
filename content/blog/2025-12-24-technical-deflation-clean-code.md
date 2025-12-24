@@ -57,3 +57,9 @@ In a deflationary environment, the smartest move is to delay spending. For code,
 This feels wrong. It violates everything we were taught. But the developers who understand this will ship faster. And in a world where code is cheap, the only thing that remains expensive is **time.**
 
 Your clean code repo might be a museum piece. Beautiful, maintainable, and months behind the competition.
+
+---
+*Remarks:*
+
+1. *[Alef Arendsen](https://www.linkedin.com/feed/update/urn:li:activity:7409493456089272320?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7409493456089272320%2C7409501926263898112%29&dashCommentUrn=urn%3Ali%3Afsd_comment%3A%287409501926263898112%2Curn%3Ali%3Aactivity%3A7409493456089272320%29) rightfully pointed out that the terminology in the title is not entirely correct. It's the work that is getting cheaper, not the technology.*
+2. *Some people seem to take this blog as an advice to no longer think about the quality of the code. An advice to create a "mess". That's not the point. It's about code getting cheaper, how does that affect our choices?*
