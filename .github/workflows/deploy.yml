@@ -3,6 +3,16 @@ name: Deploy Website
 on:
   push:
   workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Deploy to'
+        required: true
+        default: 'test'
+        type: choice
+        options:
+          - test
+          - production
+          - both
 
 # Builds run on every push for PR status checks
 # Deploys only run on main push or manual trigger
@@ -67,7 +77,9 @@ jobs:
   deploy-test:
     name: Deploy to Test
     needs: build-test
-    if: github.ref == 'refs/heads/main' || github.event_name == 'workflow_dispatch'
+    if: |
+      github.ref == 'refs/heads/main' && github.event_name == 'push' ||
+      github.event_name == 'workflow_dispatch' && (inputs.environment == 'test' || inputs.environment == 'both')
     runs-on: ubuntu-latest
     environment: test
     concurrency:
@@ -98,7 +110,12 @@ jobs:
   deploy-prod:
     name: Deploy to Production
     needs: [build-prod, deploy-test]
-    if: github.ref == 'refs/heads/main' || github.event_name == 'workflow_dispatch'
+    if: |
+      always() && needs.build-prod.result == 'success' && (
+        github.ref == 'refs/heads/main' && github.event_name == 'push' && needs.deploy-test.result == 'success' ||
+        github.event_name == 'workflow_dispatch' && inputs.environment == 'production' ||
+        github.event_name == 'workflow_dispatch' && inputs.environment == 'both' && needs.deploy-test.result == 'success'
+      )
     runs-on: ubuntu-latest
     environment: production
     concurrency:
