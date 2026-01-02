@@ -1,10 +1,7 @@
 name: Deploy Website
 
 on:
-  # Trigger on all branch pushes
   push:
-
-  # Manual deployment with environment selection
   workflow_dispatch:
     inputs:
       environment:
@@ -16,10 +13,9 @@ on:
           - test
           - production
 
-# Prevent concurrent deployments
 concurrency:
   group: deploy-${{ github.ref }}
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   build-test:
@@ -53,7 +49,6 @@ jobs:
   build-prod:
     name: Build for Production
     runs-on: ubuntu-latest
-    # Always build prod so it can be used as a merge check
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -79,13 +74,11 @@ jobs:
           path: out/
           retention-days: 1
 
-  # Deploy to test - automatic on main, requires approval on branches
   deploy-test:
     name: Deploy to Test
     needs: build-test
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
-    environment: test-auto
+    environment: ${{ github.ref == 'refs/heads/main' && 'test-auto' || 'test' }}
     steps:
       - name: Download test build
         uses: actions/download-artifact@v4
@@ -108,69 +101,11 @@ jobs:
       - name: Deployment summary
         run: echo "✅ Deployed to https://www.softwaremaniac.nl"
 
-  deploy-test-branch:
-    name: Deploy to Test (Branch)
-    needs: build-test
-    runs-on: ubuntu-latest
-    if: github.ref != 'refs/heads/main'
-    environment: test
-    steps:
-      - name: Download test build
-        uses: actions/download-artifact@v4
-        with:
-          name: build-test
-          path: out/
-
-      - name: Install rclone
-        run: curl https://rclone.org/install.sh | sudo bash
-
-      - name: Deploy to test
-        run: "rclone sync out testsite: --checksum --verbose"
-        env:
-          RCLONE_CONFIG_TESTSITE_TYPE: webdav
-          RCLONE_CONFIG_TESTSITE_URL: ${{ secrets.RCLONE_TEST_URL }}
-          RCLONE_CONFIG_TESTSITE_VENDOR: other
-          RCLONE_CONFIG_TESTSITE_USER: ${{ secrets.RCLONE_TEST_USER }}
-          RCLONE_CONFIG_TESTSITE_PASS: ${{ secrets.RCLONE_TEST_PASS }}
-
-      - name: Deployment summary
-        run: echo "✅ Deployed to https://www.softwaremaniac.nl"
-
-  # Deploy to prod - automatic on main, requires approval on branches
   deploy-prod:
     name: Deploy to Production
     needs: [build-prod, deploy-test]
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
-    environment: production-auto
-    steps:
-      - name: Download production build
-        uses: actions/download-artifact@v4
-        with:
-          name: build-prod
-          path: out/
-
-      - name: Install rclone
-        run: curl https://rclone.org/install.sh | sudo bash
-
-      - name: Deploy to production
-        run: "rclone sync out prodsite: --checksum --verbose"
-        env:
-          RCLONE_CONFIG_PRODSITE_TYPE: webdav
-          RCLONE_CONFIG_PRODSITE_URL: ${{ secrets.RCLONE_PROD_URL }}
-          RCLONE_CONFIG_PRODSITE_VENDOR: other
-          RCLONE_CONFIG_PRODSITE_USER: ${{ secrets.RCLONE_PROD_USER }}
-          RCLONE_CONFIG_PRODSITE_PASS: ${{ secrets.RCLONE_PROD_PASS }}
-
-      - name: Deployment summary
-        run: echo "✅ Deployed to https://inspired-it.nl"
-
-  deploy-prod-branch:
-    name: Deploy to Production (Branch)
-    needs: [build-prod, deploy-test-branch]
-    runs-on: ubuntu-latest
-    if: github.ref != 'refs/heads/main'
-    environment: production
+    environment: ${{ github.ref == 'refs/heads/main' && 'production-auto' || 'production' }}
     steps:
       - name: Download production build
         uses: actions/download-artifact@v4
