@@ -20,6 +20,9 @@ on:
 jobs:
   build-test:
     name: Build for Test
+    if: |
+      github.event_name == 'push' ||
+      github.event_name == 'workflow_dispatch' && (inputs.environment == 'test' || inputs.environment == 'both')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -48,6 +51,9 @@ jobs:
 
   build-prod:
     name: Build for Production
+    if: |
+      github.event_name == 'push' ||
+      github.event_name == 'workflow_dispatch' && (inputs.environment == 'production' || inputs.environment == 'both')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -93,7 +99,7 @@ jobs:
           path: out/
 
       - name: Install rclone
-        run: curl https://rclone.org/install.sh | sudo bash
+        run: sudo apt-get install -y rclone
 
       - name: Deploy to test
         run: "rclone sync out/ testsite: --checksum --verbose"
@@ -129,7 +135,7 @@ jobs:
           path: out/
 
       - name: Install rclone
-        run: curl https://rclone.org/install.sh | sudo bash
+        run: sudo apt-get install -y rclone
 
       - name: Deploy to production
         run: "rclone sync out/ prodsite: --checksum --verbose"
