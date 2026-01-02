@@ -16,9 +16,11 @@ export default function BlogIndex({ allPosts = [], allTags = [] }: BlogIndexProp
 
   const filteredPosts = allPosts.filter((post) => {
     const matchesTag = !selectedTag || post.tags.includes(selectedTag);
+    const searchLower = searchTerm.toLowerCase();
     const matchesSearch =
-      post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      post.description.toLowerCase().includes(searchTerm.toLowerCase());
+      post.title.toLowerCase().includes(searchLower) ||
+      post.description.toLowerCase().includes(searchLower) ||
+      (post.content || '').toLowerCase().includes(searchLower);
     return matchesTag && matchesSearch;
   });
 
