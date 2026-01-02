@@ -84,7 +84,7 @@ jobs:
         run: curl https://rclone.org/install.sh | sudo bash
 
       - name: Deploy to test
-        run: rclone sync out/ testsite: --checksum --verbose
+        run: "rclone sync out/ testsite: --checksum --verbose"
         env:
           RCLONE_CONFIG_TESTSITE_TYPE: webdav
           RCLONE_CONFIG_TESTSITE_URL: ${{ secrets.RCLONE_TEST_URL }}
@@ -115,7 +115,7 @@ jobs:
         run: curl https://rclone.org/install.sh | sudo bash
 
       - name: Deploy to production
-        run: rclone sync out/ prodsite: --checksum --verbose
+        run: "rclone sync out/ prodsite: --checksum --verbose"
         env:
           RCLONE_CONFIG_PRODSITE_TYPE: webdav
           RCLONE_CONFIG_PRODSITE_URL: ${{ secrets.RCLONE_PROD_URL }}
