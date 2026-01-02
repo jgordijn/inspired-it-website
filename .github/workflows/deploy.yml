@@ -83,8 +83,6 @@ jobs:
     name: Deploy to Test
     needs: build-test
     runs-on: ubuntu-latest
-    # Requires approval via environment protection rules
-    environment: test
     steps:
       - name: Download test build
         uses: actions/download-artifact@v4
@@ -111,8 +109,6 @@ jobs:
     name: Deploy to Production
     needs: [build-prod, deploy-test]
     runs-on: ubuntu-latest
-    # Requires approval via environment protection rules
-    environment: production
     steps:
       - name: Download production build
         uses: actions/download-artifact@v4
