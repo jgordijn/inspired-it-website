@@ -3,19 +3,9 @@ name: Deploy Website
 on:
   push:
   workflow_dispatch:
-    inputs:
-      environment:
-        description: 'Deployment environment'
-        required: true
-        default: 'test'
-        type: choice
-        options:
-          - test
-          - production
 
-concurrency:
-  group: deploy-${{ github.ref }}
-  cancel-in-progress: true
+# Builds run on every push for PR status checks
+# Deploys only run on main push or manual trigger
 
 jobs:
   build-test:
@@ -77,8 +67,12 @@ jobs:
   deploy-test:
     name: Deploy to Test
     needs: build-test
+    if: github.ref == 'refs/heads/main' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
-    environment: ${{ github.ref == 'refs/heads/main' && 'test-auto' || 'test' }}
+    environment: test
+    concurrency:
+      group: deploy-test-site
+      cancel-in-progress: false
     steps:
       - name: Download test build
         uses: actions/download-artifact@v4
@@ -90,7 +84,7 @@ jobs:
         run: curl https://rclone.org/install.sh | sudo bash
 
       - name: Deploy to test
-        run: "rclone sync out testsite: --checksum --verbose"
+        run: "rclone sync out/ testsite: --checksum --verbose"
         env:
           RCLONE_CONFIG_TESTSITE_TYPE: webdav
           RCLONE_CONFIG_TESTSITE_URL: ${{ secrets.RCLONE_TEST_URL }}
@@ -104,8 +98,12 @@ jobs:
   deploy-prod:
     name: Deploy to Production
     needs: [build-prod, deploy-test]
+    if: github.ref == 'refs/heads/main' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
-    environment: ${{ github.ref == 'refs/heads/main' && 'production-auto' || 'production' }}
+    environment: production
+    concurrency:
+      group: deploy-prod-site
+      cancel-in-progress: false
     steps:
       - name: Download production build
         uses: actions/download-artifact@v4
@@ -117,7 +115,7 @@ jobs:
         run: curl https://rclone.org/install.sh | sudo bash
 
       - name: Deploy to production
-        run: "rclone sync out prodsite: --checksum --verbose"
+        run: "rclone sync out/ prodsite: --checksum --verbose"
         env:
           RCLONE_CONFIG_PRODSITE_TYPE: webdav
           RCLONE_CONFIG_PRODSITE_URL: ${{ secrets.RCLONE_PROD_URL }}
