@@ -136,7 +136,7 @@ export default function About() {
             </div>
           </div>
 
-          <div className="bg-blue-50 rounded-lg p-6">
+          <div className="bg-blue-50 rounded-lg p-6 order-first md:order-last">
             {/* Profile picture - try different styles */}
             <div className="mb-6 flex flex-col items-center gap-4">
               <img
