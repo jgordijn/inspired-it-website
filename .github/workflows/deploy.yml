@@ -83,8 +83,7 @@ jobs:
     name: Deploy to Test
     needs: build-test
     runs-on: ubuntu-latest
-    # Only deploy on main push or manual trigger (not on branch pushes)
-    if: github.ref == 'refs/heads/main' || github.event_name == 'workflow_dispatch'
+    # Requires approval via environment protection rules
     environment: test
     steps:
       - name: Download test build
@@ -112,9 +111,8 @@ jobs:
     name: Deploy to Production
     needs: [build-prod, deploy-test]
     runs-on: ubuntu-latest
+    # Requires approval via environment protection rules
     environment: production
-    # Only deploy to prod on main branch or when manually selecting production
-    if: github.ref == 'refs/heads/main' || github.event.inputs.environment == 'production'
     steps:
       - name: Download production build
         uses: actions/download-artifact@v4
