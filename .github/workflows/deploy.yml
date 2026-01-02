@@ -53,8 +53,7 @@ jobs:
   build-prod:
     name: Build for Production
     runs-on: ubuntu-latest
-    # Only build prod on main branch or when manually selecting production
-    if: github.ref == 'refs/heads/main' || github.event.inputs.environment == 'production'
+    # Always build prod so it can be used as a merge check
     steps:
       - name: Checkout
         uses: actions/checkout@v4
