@@ -1,10 +1,7 @@
 name: Deploy Website
 
 on:
-  # Trigger on all branch pushes
   push:
-
-  # Manual deployment with environment selection
   workflow_dispatch:
     inputs:
       environment:
@@ -16,10 +13,9 @@ on:
           - test
           - production
 
-# Prevent concurrent deployments
 concurrency:
   group: deploy-${{ github.ref }}
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   build-test:
@@ -53,7 +49,6 @@ jobs:
   build-prod:
     name: Build for Production
     runs-on: ubuntu-latest
-    # Always build prod so it can be used as a merge check
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -83,8 +78,7 @@ jobs:
     name: Deploy to Test
     needs: build-test
     runs-on: ubuntu-latest
-    # Requires approval via environment protection rules
-    environment: test
+    environment: ${{ github.ref == 'refs/heads/main' && 'test-auto' || 'test' }}
     steps:
       - name: Download test build
         uses: actions/download-artifact@v4
@@ -111,8 +105,7 @@ jobs:
     name: Deploy to Production
     needs: [build-prod, deploy-test]
     runs-on: ubuntu-latest
-    # Requires approval via environment protection rules
-    environment: production
+    environment: ${{ github.ref == 'refs/heads/main' && 'production-auto' || 'production' }}
     steps:
       - name: Download production build
         uses: actions/download-artifact@v4
