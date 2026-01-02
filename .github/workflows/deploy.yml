@@ -94,23 +94,16 @@ jobs:
           path: out/
 
       - name: Install rclone
-        run: |
-          curl https://rclone.org/install.sh | sudo bash
-
-      - name: Configure rclone
-        run: |
-          mkdir -p ~/.config/rclone
-          cat > ~/.config/rclone/rclone.conf << EOF
-          [SoftwaremaniacWebsite]
-          type = webdav
-          url = ${{ secrets.RCLONE_TEST_URL }}
-          vendor = other
-          user = ${{ secrets.RCLONE_TEST_USER }}
-          pass = ${{ secrets.RCLONE_TEST_PASS }}
-          EOF
+        run: curl https://rclone.org/install.sh | sudo bash
 
       - name: Deploy to test
-        run: rclone sync out SoftwaremaniacWebsite: --checksum --verbose
+        run: rclone sync out testsite: --checksum --verbose
+        env:
+          RCLONE_CONFIG_TESTSITE_TYPE: webdav
+          RCLONE_CONFIG_TESTSITE_URL: ${{ secrets.RCLONE_TEST_URL }}
+          RCLONE_CONFIG_TESTSITE_VENDOR: other
+          RCLONE_CONFIG_TESTSITE_USER: ${{ secrets.RCLONE_TEST_USER }}
+          RCLONE_CONFIG_TESTSITE_PASS: ${{ secrets.RCLONE_TEST_PASS }}
 
       - name: Deployment summary
         run: echo "✅ Deployed to https://www.softwaremaniac.nl"
@@ -130,23 +123,16 @@ jobs:
           path: out/
 
       - name: Install rclone
-        run: |
-          curl https://rclone.org/install.sh | sudo bash
-
-      - name: Configure rclone
-        run: |
-          mkdir -p ~/.config/rclone
-          cat > ~/.config/rclone/rclone.conf << EOF
-          [InspiredITWebsite]
-          type = webdav
-          url = ${{ secrets.RCLONE_PROD_URL }}
-          vendor = other
-          user = ${{ secrets.RCLONE_PROD_USER }}
-          pass = ${{ secrets.RCLONE_PROD_PASS }}
-          EOF
+        run: curl https://rclone.org/install.sh | sudo bash
 
       - name: Deploy to production
-        run: rclone sync out InspiredITWebsite: --checksum --verbose
+        run: rclone sync out prodsite: --checksum --verbose
+        env:
+          RCLONE_CONFIG_PRODSITE_TYPE: webdav
+          RCLONE_CONFIG_PRODSITE_URL: ${{ secrets.RCLONE_PROD_URL }}
+          RCLONE_CONFIG_PRODSITE_VENDOR: other
+          RCLONE_CONFIG_PRODSITE_USER: ${{ secrets.RCLONE_PROD_USER }}
+          RCLONE_CONFIG_PRODSITE_PASS: ${{ secrets.RCLONE_PROD_PASS }}
 
       - name: Deployment summary
         run: echo "✅ Deployed to https://inspired-it.nl"
