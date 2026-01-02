@@ -14,8 +14,8 @@ on:
           - production
 
 concurrency:
-  group: deploy
-  cancel-in-progress: false
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build-test:
@@ -79,6 +79,9 @@ jobs:
     needs: build-test
     runs-on: ubuntu-latest
     environment: test
+    concurrency:
+      group: deploy-test-site
+      cancel-in-progress: false
     steps:
       - name: Download test build
         uses: actions/download-artifact@v4
@@ -106,6 +109,9 @@ jobs:
     needs: [build-prod, deploy-test]
     runs-on: ubuntu-latest
     environment: production
+    concurrency:
+      group: deploy-prod-site
+      cancel-in-progress: false
     steps:
       - name: Download production build
         uses: actions/download-artifact@v4
