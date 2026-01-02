@@ -84,11 +84,11 @@ jobs:
         run: curl https://rclone.org/install.sh | sudo bash
 
       - name: Deploy to test
-        run: "rclone sync out/ testsite: --ignore-times --verbose"
+        run: "rclone sync out/ testsite: --checksum --verbose"
         env:
           RCLONE_CONFIG_TESTSITE_TYPE: webdav
           RCLONE_CONFIG_TESTSITE_URL: ${{ secrets.RCLONE_TEST_URL }}
-          RCLONE_CONFIG_TESTSITE_VENDOR: other
+          RCLONE_CONFIG_TESTSITE_VENDOR: fastmail
           RCLONE_CONFIG_TESTSITE_USER: ${{ secrets.RCLONE_TEST_USER }}
           RCLONE_CONFIG_TESTSITE_PASS: ${{ secrets.RCLONE_TEST_PASS }}
 
@@ -115,11 +115,11 @@ jobs:
         run: curl https://rclone.org/install.sh | sudo bash
 
       - name: Deploy to production
-        run: "rclone sync out/ prodsite: --ignore-times --verbose"
+        run: "rclone sync out/ prodsite: --checksum --verbose"
         env:
           RCLONE_CONFIG_PRODSITE_TYPE: webdav
           RCLONE_CONFIG_PRODSITE_URL: ${{ secrets.RCLONE_PROD_URL }}
-          RCLONE_CONFIG_PRODSITE_VENDOR: other
+          RCLONE_CONFIG_PRODSITE_VENDOR: fastmail
           RCLONE_CONFIG_PRODSITE_USER: ${{ secrets.RCLONE_PROD_USER }}
           RCLONE_CONFIG_PRODSITE_PASS: ${{ secrets.RCLONE_PROD_PASS }}
 
