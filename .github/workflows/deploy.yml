@@ -84,6 +84,8 @@ jobs:
     name: Deploy to Test
     needs: build-test
     runs-on: ubuntu-latest
+    # Only deploy on main push or manual trigger (not on branch pushes)
+    if: github.ref == 'refs/heads/main' || github.event_name == 'workflow_dispatch'
     environment: test
     steps:
       - name: Download test build
