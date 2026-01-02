@@ -1,11 +1,10 @@
 name: Deploy Website
 
 on:
-  # Automatic deployment when merging to main
+  # Trigger on all branch pushes
   push:
-    branches: [main]
 
-  # Manual deployment from any branch
+  # Manual deployment with environment selection
   workflow_dispatch:
     inputs:
       environment:
