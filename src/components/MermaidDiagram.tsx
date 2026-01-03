@@ -1,4 +1,5 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
+import DOMPurify from 'dompurify';
 
 declare global {
   interface Window {
@@ -9,101 +10,145 @@ declare global {
   }
 }
 
-// Store original mermaid code for theme re-rendering
-const diagramCodeMap = new Map<HTMLElement, string>();
+// Module-level singleton state to prevent duplicate loading
+let mermaidLoadPromise: Promise<void> | null = null;
+let themeListenerAttached = false;
+let idCounter = 0;
 
-// Pinned Mermaid version for stability
-const MERMAID_CDN_URL = 'https://cdn.jsdelivr.net/npm/mermaid@10.9.3/dist/mermaid.min.js';
+// Store original mermaid code for theme re-rendering (WeakMap to avoid memory leaks)
+const diagramCodeMap = new WeakMap<HTMLElement, string>();
+
+// Self-hosted Mermaid for security (no CDN trust required)
+const MERMAID_SCRIPT_URL = '/mermaid.min.js';
 
 /**
- * Component that loads Mermaid from CDN and renders all .mermaid-diagram elements.
- * Supports light/dark themes based on system preference.
+ * Loads Mermaid script once (singleton pattern).
+ * Returns a promise that resolves when Mermaid is ready.
  */
-export default function MermaidDiagram() {
-  const loadedRef = useRef(false);
-  const scriptRef = useRef<HTMLScriptElement | null>(null);
+function loadMermaid(): Promise<void> {
+  if (mermaidLoadPromise) {
+    return mermaidLoadPromise;
+  }
 
+  // Check if already loaded
+  if (window.mermaid) {
+    mermaidLoadPromise = Promise.resolve();
+    return mermaidLoadPromise;
+  }
+
+  mermaidLoadPromise = new Promise((resolve, reject) => {
+    const script = document.createElement('script');
+    script.src = MERMAID_SCRIPT_URL;
+    script.async = true;
+    script.onload = () => resolve();
+    script.onerror = () => reject(new Error(`Failed to load Mermaid from ${MERMAID_SCRIPT_URL}`));
+    document.head.appendChild(script);
+  });
+
+  return mermaidLoadPromise;
+}
+
+/**
+ * Sanitizes SVG output from Mermaid to prevent XSS attacks.
+ * Uses DOMPurify with SVG-specific configuration.
+ */
+function sanitizeSvg(svg: string): string {
+  return DOMPurify.sanitize(svg, {
+    USE_PROFILES: { svg: true, svgFilters: true },
+    ADD_TAGS: ['foreignObject'], // Mermaid uses foreignObject for text
+    ADD_ATTR: ['dominant-baseline', 'text-anchor'], // SVG text attributes
+  });
+}
+
+/**
+ * Renders all mermaid diagrams on the page with the specified theme.
+ */
+async function renderDiagrams(theme: 'default' | 'dark'): Promise<void> {
+  const mermaid = window.mermaid;
+  if (!mermaid) return;
+
+  mermaid.initialize({
+    startOnLoad: false,
+    theme: theme,
+    securityLevel: 'strict',
+  });
+
+  const containers = document.querySelectorAll('.mermaid-diagram');
+
+  for (let i = 0; i < containers.length; i++) {
+    const container = containers[i] as HTMLElement;
+
+    // Store original code before first render, or retrieve it for re-renders
+    let code = diagramCodeMap.get(container);
+    if (!code) {
+      code = container.textContent || '';
+      diagramCodeMap.set(container, code);
+    }
+
+    if (!code) continue;
+
+    // Use unique ID to avoid collisions
+    const id = `mermaid-${++idCounter}`;
+
+    try {
+      const { svg } = await mermaid.render(id, code);
+      // Sanitize SVG before inserting into DOM
+      container.innerHTML = sanitizeSvg(svg);
+      container.classList.add('mermaid-rendered');
+      container.classList.remove('mermaid-error');
+    } catch (error) {
+      console.error('Mermaid render error:', error);
+      container.classList.add('mermaid-error');
+      container.classList.remove('mermaid-rendered');
+      // Add accessible error message
+      container.setAttribute('role', 'alert');
+      container.setAttribute('aria-live', 'polite');
+      container.textContent = 'Failed to render diagram';
+    }
+  }
+}
+
+/**
+ * Sets up theme change listener (singleton - only attached once).
+ */
+function setupThemeListener(): void {
+  if (themeListenerAttached) return;
+  themeListenerAttached = true;
+
+  const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+  mediaQuery.addEventListener('change', (e: MediaQueryListEvent) => {
+    renderDiagrams(e.matches ? 'dark' : 'default');
+  });
+}
+
+/**
+ * Component that loads Mermaid and renders all .mermaid-diagram elements.
+ * Supports light/dark themes based on system preference.
+ * 
+ * Uses self-hosted Mermaid bundle for security.
+ * Sanitizes SVG output to prevent XSS.
+ */
+export default function MermaidDiagram(): null {
   useEffect(() => {
-    // Prevent double-loading in strict mode
-    if (loadedRef.current) return;
-    loadedRef.current = true;
-
     const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-    const renderDiagrams = async (theme: 'default' | 'dark') => {
-      const mermaid = window.mermaid;
-      if (!mermaid) return;
-
-      mermaid.initialize({
-        startOnLoad: false,
-        theme: theme,
-        securityLevel: 'strict',
-      });
-
-      const containers = document.querySelectorAll('.mermaid-diagram');
-      
-      for (let i = 0; i < containers.length; i++) {
-        const container = containers[i] as HTMLElement;
-        
-        // Store original code before first render, or retrieve it for re-renders
-        let code = diagramCodeMap.get(container);
-        if (!code) {
-          code = container.textContent || '';
-          diagramCodeMap.set(container, code);
-        }
-        
-        if (!code) continue;
-        
-        const id = `mermaid-${Date.now()}-${i}`;
-        
-        try {
-          const { svg } = await mermaid.render(id, code);
-          container.innerHTML = svg;
-          container.classList.add('mermaid-rendered');
-          container.classList.remove('mermaid-error');
-        } catch (error) {
-          console.error('Mermaid render error:', error);
+    loadMermaid()
+      .then(() => {
+        setupThemeListener();
+        return renderDiagrams(isDark ? 'dark' : 'default');
+      })
+      .catch((error) => {
+        console.error('Mermaid load error:', error);
+        // Mark all diagrams as errored
+        const containers = document.querySelectorAll('.mermaid-diagram');
+        containers.forEach((container) => {
           container.classList.add('mermaid-error');
-          container.classList.remove('mermaid-rendered');
-        }
-      }
-    };
-
-    // Load Mermaid from CDN
-    const script = document.createElement('script');
-    script.src = MERMAID_CDN_URL;
-    script.async = true;
-    
-    script.onload = () => {
-      renderDiagrams(isDark ? 'dark' : 'default');
-    };
-    
-    script.onerror = () => {
-      console.error('Failed to load Mermaid from CDN:', MERMAID_CDN_URL);
-      // Mark all diagrams as errored
-      const containers = document.querySelectorAll('.mermaid-diagram');
-      containers.forEach((container) => {
-        container.classList.add('mermaid-error');
+          container.setAttribute('role', 'alert');
+          (container as HTMLElement).textContent = 'Failed to load diagram library';
+        });
       });
-    };
-    
-    document.head.appendChild(script);
-    scriptRef.current = script;
 
-    // Listen for theme changes
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    const handleThemeChange = (e: MediaQueryListEvent) => {
-      // Re-render all diagrams with new theme
-      renderDiagrams(e.matches ? 'dark' : 'default');
-    };
-    mediaQuery.addEventListener('change', handleThemeChange);
-
-    return () => {
-      mediaQuery.removeEventListener('change', handleThemeChange);
-      if (scriptRef.current && scriptRef.current.parentNode) {
-        scriptRef.current.parentNode.removeChild(scriptRef.current);
-      }
-    };
+    // No cleanup needed - singleton pattern handles this
   }, []);
 
   // This component doesn't render anything visible - it just orchestrates
