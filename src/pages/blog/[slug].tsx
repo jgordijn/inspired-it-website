@@ -1,7 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
 import Layout from '@/components/Layout';
-import { getBlogPost, getAllBlogSlugs, getRelatedPosts } from '@/utils/blog';
+import MermaidDiagram from '@/components/MermaidDiagram';
+import { getBlogPost, getAllBlogSlugs, getRelatedPosts, hasMermaidDiagrams } from '@/utils/blog';
 
 interface BlogPostPageProps {
   slug: string;
@@ -27,20 +28,25 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
     };
   }
 
+  const hasMermaid = hasMermaidDiagrams(post.html);
+
   return {
     props: {
       post,
       relatedPosts,
+      hasMermaid,
     },
   };
 }
 
 export default function BlogPost({ 
   post, 
-  relatedPosts 
+  relatedPosts,
+  hasMermaid 
 }: { 
   post: any; 
-  relatedPosts: any[] 
+  relatedPosts: any[];
+  hasMermaid: boolean;
 }) {
   return (
     <Layout
@@ -90,6 +96,9 @@ export default function BlogPost({
           className="blog-content prose prose-lg max-w-none mb-12"
           dangerouslySetInnerHTML={{ __html: post.html }}
         />
+        
+        {/* Load Mermaid only if post contains diagrams */}
+        {hasMermaid && <MermaidDiagram />}
 
         {/* Related Posts */}
         {relatedPosts.length > 0 && (
