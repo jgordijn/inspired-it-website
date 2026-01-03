@@ -9,6 +9,16 @@ const markdown = new MarkdownIt({
   linkify: true,
   typographer: true,
   highlight: (str: string, lang: string) => {
+    // Helper to escape HTML special characters
+    const escapeHtml = (s: string) => s.replace(/[&<>"]/g, (c) => 
+      ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c] || c)
+    );
+
+    // Mermaid diagrams: output escaped code with special class for client-side rendering
+    // The Mermaid library reads textContent which auto-unescapes the HTML entities
+    if (lang === 'mermaid') {
+      return '<pre class="mermaid-diagram">' + escapeHtml(str) + '</pre>';
+    }
     if (lang && hljs.getLanguage(lang)) {
       try {
         return '<pre class="hljs"><code>' +
@@ -16,12 +26,8 @@ const markdown = new MarkdownIt({
           '</code></pre>';
       } catch (__) { }
     }
-    // Escape special HTML characters
-    return '<pre class="hljs"><code>' +
-      str.replace(/[&<>"]/g, (c) => {
-        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c] || c;
-      }) +
-      '</code></pre>';
+    // Escape special HTML characters for unknown languages
+    return '<pre class="hljs"><code>' + escapeHtml(str) + '</code></pre>';
   },
 });
 
@@ -246,4 +252,8 @@ function addHeadingIds(html: string): string {
 
 export function markdownToHtml(markdownText: string): string {
   return markdown.render(markdownText);
+}
+
+export function hasMermaidDiagrams(html: string): boolean {
+  return html.includes('class="mermaid-diagram"');
 }
