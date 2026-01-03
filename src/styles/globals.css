@@ -195,3 +195,46 @@ pre.hljs code {
    but user mentioned Obsidian which is often dark. Let's make them neutral dark-ish compatible or use CSS vars later.
    For now, sticking to light mode base as per globals.css context, or using transparency.
 */
+
+/* Mermaid Diagram Containers */
+.mermaid-diagram {
+  @apply my-6 flex justify-center items-center;
+  min-height: 100px;
+  overflow-x: auto;
+  background-color: transparent;
+}
+
+/* Loading state before Mermaid renders */
+.mermaid-diagram:not(.mermaid-rendered):not(.mermaid-error) {
+  @apply bg-gray-100 rounded-lg animate-pulse;
+}
+
+/* Rendered diagrams */
+.mermaid-diagram.mermaid-rendered {
+  @apply bg-transparent;
+}
+
+.mermaid-diagram.mermaid-rendered svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Error state */
+.mermaid-diagram.mermaid-error {
+  @apply bg-red-50 text-red-600 text-sm p-4 rounded-lg;
+}
+
+.mermaid-diagram.mermaid-error::before {
+  content: "Failed to render diagram";
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .mermaid-diagram:not(.mermaid-rendered):not(.mermaid-error) {
+    @apply bg-gray-700;
+  }
+  
+  .mermaid-diagram.mermaid-error {
+    @apply bg-red-900/20 text-red-400;
+  }
+}
