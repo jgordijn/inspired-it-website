@@ -79,4 +79,4 @@ This works really well, and the quality is way better. To even take it a step fu
 
 ## Go slower to go faster
 
-Is this slower than generating just the code? Yes, it's way slower. But the results are better on the first try. So, in the end, it will be faster. You'll notice that you're waiting longer for the end result, but when you get the result, it's more likely to be right immediately.
+Is this slower than generating just the code? Yes, it's way slower. But the results are better on the first try. I still do a final review before it goes in, but now I review less often, and what I do review is already high quality. The reviewer agent catches most issues before I even see the code.
