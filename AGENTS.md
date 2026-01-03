@@ -62,4 +62,4 @@ Next.js 14 static site export with TypeScript, React 18, Tailwind CSS. Markdown-
 - **Structure**: Short, punchy paragraphs. Use rhetorical questions to engage the reader.
 - **Perspective**: First-person ("I").
 - **Content**: Use specific examples, screenshots, and dialogues where possible.
-- **Ending**: End with a reflective question or thought.
+- **Ending**: End with a clear end. It can be a reflective question or thought or a conclusing sentence.
