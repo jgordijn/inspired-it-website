@@ -64,4 +64,4 @@ By moving away from the nicer language and back towards a language with a robust
 
 If you are a purist who enjoys the craft of manual coding, stay in IntelliJ with Kotlin. It remains the gold standard for human-centric development.
 
-However, if you are moving toward an Agentic Workflow, where you act more as an architect than a typist, you have to ask yourself: Am I writing this for me, or for the AI? We may be entering an era where we intentionally choose "worse" languages to get better results. It’s counter-intuitive, it’s frustrating, and it’s a total paradox, but in the age of AI, the best code might be in a language that you didn't even want to write yourself
+However, if you are moving toward an Agentic Workflow, where you act more as an architect than a typist, you have to ask yourself: Am I writing this for me, or for the AI? We may be entering an era where we intentionally choose "worse" languages to get better results. It’s counter-intuitive, it’s frustrating, and it’s a total paradox, but in the age of AI, the best code might be in a language that you didn't even want to write yourself.
