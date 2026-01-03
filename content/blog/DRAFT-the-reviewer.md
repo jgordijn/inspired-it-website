@@ -19,7 +19,7 @@ A reviewer agent can catch these issues before I have to.
 
 ## The reviewer agent
 
-With AI coding, you have to manage your context window. Once it's full, the system compacts it, and you lose information. So you want to keep it lean. Sub-agents are great for that, because they get their own context, so you set them to work. They do their thing and report back only the results, not polluting the context of the main agent. Another perk of sub-agents: I can pick the model per role. This allows me to code with Opus but review with GPT 5.2. And I noticed that GPT 5.2 is really good at reviewing and comes back with a really great review. 
+With AI coding, you have to manage your context window. Once it's full, the system compacts it, and you lose information. So you want to keep it lean. Sub-agents are great for that, because they get their own context, so you set them to work. They do their thing and report back only the results, not polluting the context of the main agent. Another perk of sub-agents: I can pick the model per role. This allows me to code with Claude Opus 4.5 but review with GPT 5.2. GPT 5.2 is very good at reviewing. The feedback is thorough and actionable. 
 
 This is a small piece of the content for the review agent.
 ```md
@@ -49,7 +49,7 @@ Use the output format from the **code-review** skill:
 - 💡 SUGGESTIONS - Consider improving
 ```
 
-You can change this to your heart's content. Add whatever checks matter to you. I also have a code review skill with more detailed rules for different types of changes, because I want configuration changes checked differently than database changes, or code changes.
+You can change this to your heart's content. Add whatever checks matter to you. I also have a code review skill with more detailed rules for different types of changes, because I want configuration changes checked differently than database changes or code changes.
 
 For example, just yesterday the reviewer came back with:
 
@@ -59,7 +59,7 @@ This is exactly what I used to catch during my own reviews. Now I don't have to.
 
 ## The loop
 
-At first, I did this manually: delegate to the coding agent, then ask the reviewer agent to check it, then pass the feedback back to the coding agent to fix. That got old fast. So I automated it into a loop. The coding agent does its work, the reviewer checks it, and if there are issues, they go back to the coding agent. This repeats until the reviewer gives a pass, then we commit. 
+At first, I did this manually: delegate to the coding agent, then ask the reviewer agent to check it, then pass the feedback back to the coding agent to fix. That got old fast. So I automated it into a loop. The coding agent does its work, and the reviewer checks it. If there are issues, they go back to the coding agent. This repeats until the reviewer gives a pass, then we commit. 
 
 ```mermaid
 flowchart TD
@@ -75,7 +75,7 @@ flowchart TD
 > [!NOTE]
 > I cap it at five iterations. If it hasn't figured it out by then, something's fundamentally wrong and I need to step in.
 
-This works really well, and the quality is way better. To even take it a step further, I usually ask to do this for all the tasks in OpenSpec in one go. So, it will keep on churning through the tasks until all tasks of the OpenSpec proposal are completed. 
+This works really well, and the quality is way better. To even take it a step further, I usually ask to do this for all the tasks in OpenSpec in one go. So it keeps churning through the list until the entire OpenSpec proposal is complete. 
 
 # Go slower to go faster
 
