@@ -4,7 +4,6 @@ description: "How I stopped reviewing bad code and started building better softw
 date: "2026-01-03"
 tags: ["AI", "Workflow", "Coding"]
 cover: /images/ai-reviewer.png
-publish_status: draft
 ---
 
 # The Reviewer
