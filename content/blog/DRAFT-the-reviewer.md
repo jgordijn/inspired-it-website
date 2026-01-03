@@ -3,19 +3,23 @@ title: The Reviewer
 description: "How I stopped reviewing bad code and started building better software with AI assistance."
 date: "2026-01-03"
 tags: ["AI", "Workflow", "Coding"]
-cover: /images/mission-control.png
+cover: /images/ai-reviewer.png
 publish_status: draft
 ---
 
-# Introducting The Reviewer
+# The Reviewer
 
-Lately, I've been experimenting by creating agent loops by introducing a reviewer to the mix. I was getting a little bit frustrated by having to review and point the agent in the right direction for obvious mistakes or omissions. This got me thinking whether AI could not do this for me. So, I introduced a reviewer. 
+Lately, I've been experimenting with agent loops, and I added a reviewer to the mix. I was getting frustrated having to review and point the agent in the right direction for obvious mistakes or omissions. That got me wondering: could AI do the reviewing for me? So, I introduced a reviewer. 
 
-I already put a lot of effort into making sure that my agent follows a process to create the correct code and conforms to my coding standards. See my ["My AI Writes Code. Yours Can Too."](/blog/my-ai-workflow) for more information about this. This greatly improves the end result, but I still find myself reviewing the code and directing the AI to make some changes or fix some coding styles. For instance, sometimes the agent makes multiple tests which could have been tested in just one test, or it just in its puppy mind goes and forgets to apply some standards we have discussed earlier, so I have to direct and put it back on track again. This is something the reviewer can also do for me. 
+I've already put effort into getting my coding agent to follow a process and stick to my standards. (I wrote more about that in ["My AI Writes Code. Yours Can Too."](/blog/my-ai-workflow)).
 
-## Review agent
+This greatly improves the end result. But I still find myself reviewing the code and nudging the AI to fix style issues. Sometimes the agent writes three tests where one would do. Or it gets excited about a solution and charges ahead, forgetting standards we discussed earlier. A bit of a puppy brain.
 
-With AI coding, you have to make sure to control your context because once your context is full, compaction might happen, and you will lose a lot of information. So the best way is to make sure that the context will be filled correctly and can be re-instantiated but also will not fill up easily. Sub-agents are great for that, because they get their own context, so you get them to set to work. They will create their own context, do their work, and report back only with the results, not polluting the context of the main agent. Another benefit of SubAgent is that you can specify which models should be used. This allows me to code with Opus but review with GPT-5.2. And I noticed that GPT 5.2 is really good at reviewing and comes back with a really great review. 
+A reviewer agent can catch these issues before I have to. 
+
+## The reviewer agent
+
+With AI coding, you have to manage your context window. Once it's full, the system compacts it, and you lose information. So you want to keep it lean. Sub-agents are great for that, because they get their own context, so you set them to work. They do their thing and report back only the results, not polluting the context of the main agent. Another perk of sub-agents: I can pick the model per role. This allows me to code with Opus but review with GPT 5.2. And I noticed that GPT 5.2 is really good at reviewing and comes back with a really great review. 
 
 This is a small piece of the content for the review agent.
 ```md
@@ -45,11 +49,17 @@ Use the output format from the **code-review** skill:
 - 💡 SUGGESTIONS - Consider improving
 ```
 
-You can change this to your heart's content. And you can put here anything you would like it to do and like to check. As you see, I also have a code review skill, where I have more details for different sets of changes. Because configuration changes I want to be checked differently than changes to my database. 
+You can change this to your heart's content. Add whatever checks matter to you. I also have a code review skill with more detailed rules for different types of changes, because I want configuration changes checked differently than database changes, or code changes.
+
+For example, just yesterday the reviewer came back with:
+
+![Reviewer example output](/images/reviewer-example.png)
+
+This is exactly what I used to catch during my own reviews. Now I don't have to.
 
 ## The loop
 
-In the beginning, I started by giving the task to the coding agent and after that asked the reviewing agent to review the changes and then give the results back to the coding agent to start fixing it, but this got old really fast. So I specified a workflow where when the coding agent is done, the reviewing agent is asked to review the work and then we will check the result of the reviewing agent. If the reviewing agent says it's a pass, then we can continue. But otherwise, we will pass the review commands back to the coding agent to fix it. And we will run this in a loop until we get to the level where the reviewing agent says that the code is good enough and then we commit it. 
+At first, I did this manually: delegate to the coding agent, then ask the reviewer agent to check it, then pass the feedback back to the coding agent to fix. That got old fast. So I automated it into a loop. The coding agent does its work, the reviewer checks it, and if there are issues, they go back to the coding agent. This repeats until the reviewer gives a pass, then we commit. 
 
 ```mermaid
 flowchart TD
@@ -62,8 +72,11 @@ flowchart TD
     I --> J((End))
 ```
 
+> [!NOTE]
+> I cap it at five iterations. If it hasn't figured it out by then, something's fundamentally wrong and I need to step in.
+
 This works really well, and the quality is way better. To even take it a step further, I usually ask to do this for all the tasks in OpenSpec in one go. So, it will keep on churning through the tasks until all tasks of the OpenSpec proposal are completed. 
 
-# Go slower to go faster.
+# Go slower to go faster
 
-Is this slower than generating just the code? Yes — it's way slower. But the results are better on the first try. So, in the end, it will be faster. You'll notice that you're waiting longer for the end result, but when you get the result, it's more likely to be right immediately.
+Is this slower than generating just the code? Yes, it's way slower. But the results are better on the first try. So, in the end, it will be faster. You'll notice that you're waiting longer for the end result, but when you get the result, it's more likely to be right immediately.
