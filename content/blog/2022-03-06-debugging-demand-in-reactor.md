@@ -6,9 +6,8 @@ description: >-
 date: '2022-03-06'
 author: Jeroen Gordijn
 tags:
-  - kotlin
-  - reactive
-  - reactor
+  - Kotlin
+  - Reactive
 ---
 # Debugging demand in Reactor
 

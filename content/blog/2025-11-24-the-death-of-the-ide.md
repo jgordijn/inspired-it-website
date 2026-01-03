@@ -3,7 +3,9 @@ title: "2026: The Year the IDE Died"
 description: "Steve Yegge says if you use an IDE in 2026, you're a bad engineer. From CNC machines to Vibe Coding, here is why we are facing a 'Swiss Watch Moment' in software engineering."
 date: "2025-11-24"
 author: "Jeroen Gordijn"
-tags: ["AI", "IDE", "Steve Yegge", "Gene Kim", "Vibe Coding", "Future of Coding"]
+tags:
+  - AI
+  - Tools
 ---
 
 "[If you're using an IDE starting on... I'll give you till January 1st. You're a bad engineer.](https://youtube.com/clip/UgkxnsMASHSRc1lAYM_wLkBCpy-0vCiaUva7?si=KqdKEwjPJlsxn8n-)"

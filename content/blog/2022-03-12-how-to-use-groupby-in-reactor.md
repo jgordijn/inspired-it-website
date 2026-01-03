@@ -6,9 +6,8 @@ description: >-
 date: '2022-03-12'
 author: Jeroen Gordijn
 tags:
-  - kotlin
-  - reactive
-  - reactor
+  - Kotlin
+  - Reactive
 ---
 # How to use groupBy in Reactor
 

@@ -2,7 +2,8 @@
 title: "The AI Coding Ladder"
 description: "From Copy-Paster to Architect: A look at the 7 levels of AI coding assistance."
 date: "2025-12-07"
-tags: ["AI", "Coding"]
+tags:
+  - AI
 cover: /images/ai-coding-ladder.png
 ---
 

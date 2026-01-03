@@ -1,7 +1,11 @@
 ---
 title: "Battle of the Infographics: GPT 5.2 vs Gemini"
 date: "2025-12-17"
-tags: ["AI", "Gemini", "GPT", "Workflow"]
+tags:
+  - AI
+  - Gemini
+  - GPT
+  - Workflow
 ---
 
 ChatGPT has released a [new image generator](https://openai.com/index/new-chatgpt-images-is-here/), and seeing [Simon Willison's experiments](https://simonwillison.net/2025/Dec/16/new-chatgpt-images/) with the new GPT image generator and infographics, I decided to try it on my own blog. In my previous post, [My AI Writes Code. Yours Can Too](/blog/my-ai-workflow), I described my workflow. I thought it would be a fun experiment to ask both GPT and Gemini to create an infographic of that workflow.

@@ -3,7 +3,10 @@ title: "When AI Assistants Reach for CLI Tools"
 description: "Why does Copilot sometimes choose perl one-liners over proper edit tools? A look at AI assistant habits and how to guide them back on track."
 date: "2025-10-30"
 author: "Jeroen Gordijn"
-tags: ["AI", "development", "tools", "copilot"]
+tags:
+  - AI
+  - Tools
+  - GitHub Copilot
 ---
 
 ## When AI Assistants Reach for CLI Tools

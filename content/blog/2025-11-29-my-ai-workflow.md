@@ -6,10 +6,10 @@ author: Jeroen Gordijn
 cover: /images/ai-puppeteer.png
 tags:
   - AI
-  - opencode
-  - claude
-  - github copilot
-  - openspec
+  - OpenCode
+  - Claude
+  - GitHub Copilot
+  - OpenSpec
 ---
 
 "AI tools don't work," "AI generates junk," "It never does what I want." These are common complaints I hear from developers skeptical about AI workflows. And honestly? They're not wrong. These frustrations are real. But I've found that with the right structure, these tools become genuinely useful. Over the past few months, I've dedicated myself to mastering these tools in my daily work. Here is my personal AI workflow and how it has transformed the way I develop software.

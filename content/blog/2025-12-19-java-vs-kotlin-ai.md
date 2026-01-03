@@ -2,7 +2,11 @@
 title: "The Kotlin Paradox"
 description: "Kotlin may be a nicer language, but Java might be the best choice when paired with AI. Here is why."
 date: "2025-12-19"
-tags: ["AI", "Kotlin", "Java", "LSP"]
+tags:
+  - AI
+  - Kotlin
+  - Java
+  - Tools
 cover: /images/ai-kotlin-paradox.png
 ---
 

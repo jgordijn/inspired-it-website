@@ -4,7 +4,7 @@ description: The inaugural announcement of the founding of Inspired IT
 date: '2018-12-18'
 author: Jeroen Gordijn
 tags:
-  - announcement
+  - Announcement
 ---
 Vanaf januari 2019 ben ik de trotse oprichter van **Inspired IT**. Met mijn kennis en ervaring van Software Development in het algemeen en Scala & Akka in het bijzonder, ga ik als bevlogen freelancer bedrijven helpen om complexe problemen op te lossen.
 

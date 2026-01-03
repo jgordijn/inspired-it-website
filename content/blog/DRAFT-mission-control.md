@@ -2,7 +2,9 @@
 title: "Mission Control: Orchestrating AI Across Services"
 description: "How I stopped juggling proactive changes and built a Mission Control for my AI agents."
 date: "2026-01-17"
-tags: ["AI", "Microservices", "Workflow", "OpenSource"]
+tags:
+  - AI
+  - Workflow
 cover: /images/mission-control.png
 publish_status: draft
 ---

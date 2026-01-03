@@ -2,7 +2,9 @@
 title: The Reviewer
 description: "How I stopped reviewing bad code and started building better software with AI assistance."
 date: "2026-01-03"
-tags: ["AI", "Workflow", "Coding"]
+tags:
+  - AI
+  - Workflow
 cover: /images/ai-reviewer.png
 ---
 

@@ -6,9 +6,8 @@ description: >-
 date: '2024-10-20'
 author: Jeroen Gordijn
 tags:
-  - java
-  - kotlin
-  - streams
+  - Java
+  - Kotlin
 ---
 # Unraveling the Code: Kotlin's Edge Over Java Streams
 

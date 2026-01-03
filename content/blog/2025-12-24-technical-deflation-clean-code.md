@@ -2,7 +2,9 @@
 title: "Technical Deflation"
 description: "Changing code tomorrow is cheaper than doing it today."
 date: "2025-12-24"
-tags: ["AI", "Programming"]
+tags:
+  - AI
+  - Coding
 cover: /images/technical-deflation.png
 ---
 

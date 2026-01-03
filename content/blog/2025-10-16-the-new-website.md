@@ -4,7 +4,9 @@ title: "The new website of Inspired IT"
 description: "How I used Claude Code and OpenAI Codex to design, migrate, and refine my new Inspired IT website with AI assistance."
 date: "2025-10-16"
 author: "Jeroen Gordijn"
-tags: ["announcement", "AI", "development", "website"]
+tags:
+  - Announcement
+  - AI
 ------------------------------------------------------
 
 ## The new website of Inspired IT

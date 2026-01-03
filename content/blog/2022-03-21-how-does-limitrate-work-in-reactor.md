@@ -6,9 +6,8 @@ description: >-
 date: '2022-03-21'
 author: Jeroen Gordijn
 tags:
-  - kotlin
-  - reactive
-  - reactor
+  - Kotlin
+  - Reactive
 ---
 [Project Reactor](https://projectreactor.io/) is a great reactive streams project that you will probably run into when you want to write reactive code in Spring. It is very powerful and can also be complex to wrap your head around. In this article I will look at the [`limitRate`](https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html#limitRate-int-) function of a [Flux](https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html).
 

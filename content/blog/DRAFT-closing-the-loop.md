@@ -2,7 +2,9 @@
 title: Closing the Loop
 description: "Changing code tomorrow is cheaper than doing it today."
 date: "2026-01-03"
-tags: ["AI", "Programming"]
+tags:
+  - AI
+  - Coding
 cover: 
 publish_status: draft
 ---
