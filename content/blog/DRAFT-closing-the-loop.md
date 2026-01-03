@@ -9,15 +9,15 @@ publish_status: draft
 
 # Closing the Loop
 
-AI agents can generate a lot of code quickly, but how do you make sure it's actually good? To do this, we need to give them feedback. We can do this manually, but a better way is to automate this feedback loop. Automating the feedback loop allows the agent to run much longer without human intervention and greatly improves the quality of the generated code. This is closing the loop.
+I am continuously trying to improve the output of the AI tools I work with. AI agents can generate a lot of code quickly, but how do you make sure it's actually good? To do this, I need to give it feedback. I can do this manually, but a better way is to automate this feedback loop. Automating the feedback loop allows the agent to run much longer without human intervention and greatly improves the quality of the generated code. This is closing the loop.
 
-# The basics
+## The basics
 
-The most basic way to improve the quality of the generated code is to have the agent follow normal development best practices. This means compiling the code, running static code analyzers, and writing tests. Compiling the code becomes more standard nowadays as the tools embrace LSP (Language Server Protocol), which gives real-time feedback as the code is being written. Without LSP, the agent can still compile the code and use that feedback to at least deliver technically correct code. Static code analyzers are also easy to integrate and give more in-depth feedback on code quality. These are practices we should already have in place as developers. Tests are also an essential part of software development. Human developers should always have tests, so why should it be different for AI agents? This will lead us to [level 5](/blog/the-ai-coding-ladder/#level-5-the-agentic-coder) on the AI coding ladder.
+The most basic way to improve the quality of the generated code is to have the agent follow normal development best practices. This means compiling the code, running static code analyzers, and writing tests. Intorspection of the code by the AI agent is becoming more standard as they start to embrace LSP (Language Server Protocol), which gives real-time feedback as the code is being written. Without LSP, the agent can still compile the code and use that feedback to at least deliver technically correct code. Static code analyzers are also easy to integrate and give more in-depth feedback on code quality. These are practices we should already have in place as developers. Tests are also an essential part of software development. Human developers should always have tests, so why should it be different for AI agents? This will lead us to [level 5](/blog/the-ai-coding-ladder/#level-5-the-agentic-coder) on the AI coding ladder.
 
 AI can write unit tests, but it can also do "manual" testing by controlling a browser. It can navigate to the web page, take screenshots, and compare them to expected results.
 
-# Reviewing
+## Reviewing
 
 Lately I've been experimenting with the AI reviewing the generated code. After a generation loop where the agent has generated code, compiled it, run analyzers, and written tests, it's not done yet. I let another model review the code. I've had very good results using Opus 4.5 as the programming model and GPT-5.2 as the reviewer. The reviewer often comes back with very useful feedback about missed corner cases or missing functionality. It can also point out that the code is not following the coding standards in the codebase. This way we can close the loop completely and have the agent generate high-quality code with minimal human intervention.
 
