@@ -33,6 +33,7 @@ function getBlogPosts() {
         date: data.date || new Date().toISOString().split('T')[0],
         author: data.author || 'Jeroen Gordijn',
         tags: Array.isArray(data.tags) ? data.tags : [],
+        cover: data.cover || null,
         content,
         html: markdown.render(content),
         publish_status: data.publish_status || null,
@@ -89,6 +90,82 @@ function escapeXml(value) {
     .replace(/'/g, '&apos;');
 }
 
+function getMimeType(filePath) {
+  const ext = path.extname(filePath).toLowerCase();
+  const mimeTypes = {
+    '.png': 'image/png',
+    '.jpg': 'image/jpeg',
+    '.jpeg': 'image/jpeg',
+    '.gif': 'image/gif',
+    '.webp': 'image/webp',
+  };
+  return mimeTypes[ext] || null;
+}
+
+function isLocalPath(coverPath) {
+  const trimmed = coverPath.trim();
+  // Reject scheme-relative URLs (//example.com)
+  if (trimmed.startsWith('//')) {
+    return false;
+  }
+  // Reject URLs with schemes (http:, https:, ftp:, file:, data:, etc.)
+  if (/^[a-zA-Z][a-zA-Z0-9+.-]*:/.test(trimmed)) {
+    return false;
+  }
+  // Reject backslashes (Windows paths / escape attempts)
+  if (trimmed.includes('\\')) {
+    return false;
+  }
+  return true;
+}
+
+function getEnclosure(coverPath) {
+  if (!coverPath) {
+    return '';
+  }
+
+  // Only accept local paths (reject URLs, schemes, etc.)
+  if (!isLocalPath(coverPath)) {
+    return '';
+  }
+
+  // Normalize path: ensure leading slash for URL, strip it for local path
+  const normalizedPath = coverPath.startsWith('/') ? coverPath : `/${coverPath}`;
+  const localPath = path.resolve(PUBLIC_DIR, normalizedPath.slice(1));
+
+  // Ensure resolved path is within PUBLIC_DIR (prevent path traversal)
+  const resolvedPublicDir = path.resolve(PUBLIC_DIR);
+  const relativePath = path.relative(resolvedPublicDir, localPath);
+  if (relativePath.startsWith('..') || path.isAbsolute(relativePath)) {
+    return '';
+  }
+
+  let stats;
+  try {
+    stats = fs.statSync(localPath);
+  } catch {
+    return '';
+  }
+
+  // Ensure it's a file, not a directory
+  if (!stats.isFile()) {
+    return '';
+  }
+
+  const type = getMimeType(normalizedPath);
+  if (!type) {
+    return '';
+  }
+
+  const url = escapeXml(`${BASE_URL}${normalizedPath}`);
+  const length = String(stats.size);
+
+  return {
+    enclosure: `<enclosure url="${url}" type="${escapeXml(type)}" length="${escapeXml(length)}" />`,
+    thumbnail: `<media:thumbnail url="${url}" />`,
+  };
+}
+
 function generateRss(posts) {
   const items = posts
     .map((post) => {
@@ -96,6 +173,7 @@ function generateRss(posts) {
       const categories = post.tags
         .map((tag) => `<category>${escapeXml(tag)}</category>`)
         .join('');
+      const media = getEnclosure(post.cover);
 
       return `
   <item>
@@ -103,7 +181,7 @@ function generateRss(posts) {
     <link>${url}</link>
     <guid isPermaLink="true">${url}</guid>
     <description>${escapeXml(post.description)}</description>
-    <content:encoded><![CDATA[${post.html}]]></content:encoded>
+    ${media ? `${media.enclosure}\n    ${media.thumbnail}\n    ` : ''}<content:encoded><![CDATA[${post.html}]]></content:encoded>
     <pubDate>${new Date(post.date).toUTCString()}</pubDate>
     <author>contact@inspired-it.nl (${escapeXml(post.author)})</author>
     ${categories}
@@ -112,7 +190,7 @@ function generateRss(posts) {
     .join('\n');
 
   return `<?xml version="1.0" encoding="UTF-8" ?>
-<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/">
   <channel>
     <title>Inspired IT - Technical Blog</title>
     <link>${BASE_URL}</link>
