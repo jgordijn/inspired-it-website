@@ -174,6 +174,11 @@ function generateRss(posts) {
         .join('');
       const media = getMedia(post.cover);
 
+      // Convert relative URLs to absolute URLs in content
+      const absoluteHtml = post.html
+        .replace(/src="\//g, `src="${BASE_URL}/`)
+        .replace(/href="\//g, `href="${BASE_URL}/`);
+
       return `
   <item>
     <title>${escapeXml(post.title)}</title>
@@ -181,7 +186,7 @@ function generateRss(posts) {
     <guid isPermaLink="true">${url}</guid>
     <description>${escapeXml(post.description)}</description>
     ${media || ''}
-    <content:encoded><![CDATA[${post.html}]]></content:encoded>
+    <content:encoded><![CDATA[${absoluteHtml}]]></content:encoded>
     <pubDate>${new Date(post.date).toUTCString()}</pubDate>
     <author>contact@inspired-it.nl (${escapeXml(post.author)})</author>
     ${categories}
