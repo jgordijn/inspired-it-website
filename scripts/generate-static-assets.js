@@ -181,6 +181,9 @@ function generateRss(posts) {
         .replace(/src="\//g, `src="${BASE_URL}/`)
         .replace(/href="\//g, `href="${BASE_URL}/`);
 
+      // Remove the first H1 from content as it duplicates the RSS item title
+      absoluteHtml = absoluteHtml.replace(/^\s*<h1[^>]*>.*?<\/h1>\s*/i, '');
+
       if (mediaData) {
         // Prepend cover image to content so it's picked up as the main image by readers
         const coverImageHtml = `<img src="${mediaData.url}" alt="${escapeXml(post.title)}" style="width:100%; display:block; margin-bottom: 20px;" />`;
