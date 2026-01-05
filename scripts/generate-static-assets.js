@@ -119,7 +119,7 @@ function isLocalPath(coverPath) {
   return true;
 }
 
-function getEnclosure(coverPath) {
+function getMedia(coverPath) {
   if (!coverPath) {
     return '';
   }
@@ -158,12 +158,12 @@ function getEnclosure(coverPath) {
   }
 
   const url = escapeXml(`${BASE_URL}${normalizedPath}`);
-  const length = String(stats.size);
+  const fileSize = String(stats.size);
 
-  return {
-    enclosure: `<enclosure url="${url}" type="${escapeXml(type)}" length="${escapeXml(length)}" />`,
-    thumbnail: `<media:thumbnail url="${url}" />`,
-  };
+  return `
+    <media:content url="${url}" fileSize="${escapeXml(fileSize)}" type="${escapeXml(type)}" medium="image">
+      <media:thumbnail url="${url}" />
+    </media:content>`;
 }
 
 function generateRss(posts) {
@@ -173,7 +173,7 @@ function generateRss(posts) {
       const categories = post.tags
         .map((tag) => `<category>${escapeXml(tag)}</category>`)
         .join('');
-      const media = getEnclosure(post.cover);
+      const media = getMedia(post.cover);
 
       return `
   <item>
@@ -181,7 +181,8 @@ function generateRss(posts) {
     <link>${url}</link>
     <guid isPermaLink="true">${url}</guid>
     <description>${escapeXml(post.description)}</description>
-    ${media ? `${media.enclosure}\n    ${media.thumbnail}\n    ` : ''}<content:encoded><![CDATA[${post.html}]]></content:encoded>
+    ${media || ''}
+    <content:encoded><![CDATA[${post.html}]]></content:encoded>
     <pubDate>${new Date(post.date).toUTCString()}</pubDate>
     <author>contact@inspired-it.nl (${escapeXml(post.author)})</author>
     ${categories}
