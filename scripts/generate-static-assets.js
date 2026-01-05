@@ -119,14 +119,14 @@ function isLocalPath(coverPath) {
   return true;
 }
 
-function getMedia(coverPath) {
+function getMediaData(coverPath) {
   if (!coverPath) {
-    return '';
+    return null;
   }
 
   // Only accept local paths (reject URLs, schemes, etc.)
   if (!isLocalPath(coverPath)) {
-    return '';
+    return null;
   }
 
   // Normalize path: ensure leading slash for URL, strip it for local path
@@ -137,32 +137,34 @@ function getMedia(coverPath) {
   const resolvedPublicDir = path.resolve(PUBLIC_DIR);
   const relativePath = path.relative(resolvedPublicDir, localPath);
   if (relativePath.startsWith('..') || path.isAbsolute(relativePath)) {
-    return '';
+    return null;
   }
 
   let stats;
   try {
     stats = fs.statSync(localPath);
   } catch {
-    return '';
+    return null;
   }
 
   // Ensure it's a file, not a directory
   if (!stats.isFile()) {
-    return '';
+    return null;
   }
 
   const type = getMimeType(normalizedPath);
   if (!type) {
-    return '';
+    return null;
   }
 
   const url = escapeXml(`${BASE_URL}${normalizedPath}`);
   const fileSize = String(stats.size);
 
-  return `
-    <media:content url="${url}" fileSize="${escapeXml(fileSize)}" type="${escapeXml(type)}" medium="image" />
-    <media:thumbnail url="${url}" />`;
+  return {
+    url,
+    fileSize,
+    type,
+  };
 }
 
 function generateRss(posts) {
@@ -172,12 +174,18 @@ function generateRss(posts) {
       const categories = post.tags
         .map((tag) => `<category>${escapeXml(tag)}</category>`)
         .join('');
-      const media = getMedia(post.cover);
+      const mediaData = getMediaData(post.cover);
 
       // Convert relative URLs to absolute URLs in content
-      const absoluteHtml = post.html
+      let absoluteHtml = post.html
         .replace(/src="\//g, `src="${BASE_URL}/`)
         .replace(/href="\//g, `href="${BASE_URL}/`);
+
+      if (mediaData) {
+        // Prepend cover image to content so it's picked up as the main image by readers
+        const coverImageHtml = `<img src="${mediaData.url}" alt="${escapeXml(post.title)}" style="width:100%; display:block; margin-bottom: 20px;" />`;
+        absoluteHtml = coverImageHtml + absoluteHtml;
+      }
 
       return `
   <item>
@@ -185,7 +193,6 @@ function generateRss(posts) {
     <link>${url}</link>
     <guid isPermaLink="true">${url}</guid>
     <description>${escapeXml(post.description)}</description>
-    ${media || ''}
     <content:encoded><![CDATA[${absoluteHtml}]]></content:encoded>
     <pubDate>${new Date(post.date).toUTCString()}</pubDate>
     <author>contact@inspired-it.nl (${escapeXml(post.author)})</author>
