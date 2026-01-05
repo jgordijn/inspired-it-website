@@ -161,9 +161,8 @@ function getMedia(coverPath) {
   const fileSize = String(stats.size);
 
   return `
-    <media:content url="${url}" fileSize="${escapeXml(fileSize)}" type="${escapeXml(type)}" medium="image">
-      <media:thumbnail url="${url}" />
-    </media:content>`;
+    <media:content url="${url}" fileSize="${escapeXml(fileSize)}" type="${escapeXml(type)}" medium="image" />
+    <media:thumbnail url="${url}" />`;
 }
 
 function generateRss(posts) {
