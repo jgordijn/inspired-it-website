@@ -176,6 +176,10 @@ function generateRss(posts) {
         .join('');
       const mediaData = getMediaData(post.cover);
 
+      const enclosure = mediaData
+        ? `    <enclosure url="${mediaData.url}" length="${mediaData.fileSize}" type="${mediaData.type}" />`
+        : '';
+
       // Convert relative URLs to absolute URLs in content
       let absoluteHtml = post.html
         .replace(/src="\//g, `src="${BASE_URL}/`)
@@ -184,10 +188,9 @@ function generateRss(posts) {
       // Remove the first H1 from content as it duplicates the RSS item title
       absoluteHtml = absoluteHtml.replace(/^\s*<h1[^>]*>.*?<\/h1>\s*/i, '');
 
+      // Prepend cover image to content for RSS readers
       if (mediaData) {
-        // Prepend cover image to content so it's picked up as the main image by readers
-        const coverImageHtml = `<img src="${mediaData.url}" alt="${escapeXml(post.title)}" style="width:100%; display:block; margin-bottom: 20px;" />`;
-        absoluteHtml = coverImageHtml + absoluteHtml;
+        absoluteHtml = `<p><img src="${mediaData.url}" alt="${escapeXml(post.title)}" /></p>\n${absoluteHtml}`;
       }
 
       return `
@@ -199,6 +202,7 @@ function generateRss(posts) {
     <content:encoded><![CDATA[${absoluteHtml}]]></content:encoded>
     <pubDate>${new Date(post.date).toUTCString()}</pubDate>
     <author>contact@inspired-it.nl (${escapeXml(post.author)})</author>
+${enclosure}
     ${categories}
   </item>`;
     })
