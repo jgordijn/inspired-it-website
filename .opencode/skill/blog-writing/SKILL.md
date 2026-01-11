@@ -57,9 +57,13 @@ cover: /images/cover-image-name.png
 **Published files:** `YYYY-MM-DD-slug-name.md`
 - Example: `2026-01-08-my-new-blog.md`
 
+When creating a new blog, always start with a draft file:
+  - set publish status in frontmatter to draft with: `publish_status: draft`
+
 When converting a draft to published:
 1. Update the `date` field in frontmatter to the publication date
-2. Rename the file with the date prefix
+2. Remove the `publish_status` field
+3. Rename the file with the date prefix
 
 ## Writing Style Guide
 
