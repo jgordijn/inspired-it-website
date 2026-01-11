@@ -17,7 +17,7 @@ I ran an AI agent in a loop and came back to 35 commits. That felt… irresponsi
 
 I've been hearing more and more about "Ralph Wiggum" lately. It's a loop pattern for AI coding assistants, [coined by Geoffrey Huntley](https://ghuntley.com/ralph/). The main idea is to keep pressing forward and create a fresh context for each iteration. Each loop does exactly one thing, then stops. No context bloat. No accumulated confusion.
 
-I was a bit hesitant to try, because I felt safer constantly validating what the AI was doing. I felt comfortable with the "human-in-the-loop" approach. But Geoffrey made a point to put people on-the-loop, not in-the-loop. So when I had a repetitive task to do recently, I had a reason to try it out.
+I was a bit hesitant to try, because I felt safer constantly validating what the AI was doing. I felt comfortable with the "human-in-the-loop" approach. But Geoffrey made a point to put people on the loop, not in the loop. So when I had a repetitive task to do recently, I had a reason to try it out.
 
 ## The Problem
 
@@ -29,14 +29,13 @@ I used the skill on a few of my skills and noticed improvements. But doing this 
 
 The trick with Ralph Wiggum is designing a prompt that does exactly one thing and then stops. No questions. No waiting for input. Just do the work, commit, and stop. And keep rerunning that same prompt until all work is done.
 
-I deviated a little from the classic pattern. Instead of keeping state in a separate file, I kept the state in the prompt and change that on every iteration. Here's what I came up with:
+I deviated a little from the classic pattern. Instead of keeping state in a separate file, I kept the state in the prompt and changed that on every iteration. Here's what I came up with:
 
 ```markdown
 Take the topmost skill from the list below and do the following:
 
-- Thoroughly review the skill (use the managing-skills skill to learn what "good" looks like).
-- Apply all recommendations, even small ones. Do not ask the user questions. Decide what needs to happen.
-- If something is ambiguous, decide and proceed. No questions.
+- Thoroughly review the skill (use the writing-skills skill to learn what "good" looks like).
+- Apply all recommendations, even small ones. No questions to the user. Decide what needs to happen. When in doubt think double hard and come up with an answer yourself.
 - Remove the skill from the list below and save this file.
 - Commit.
 - Stop.
@@ -44,7 +43,8 @@ Take the topmost skill from the list below and do the following:
 When the list below is empty (after the commit), reply with "DONE - STOP RALPH".
 
 Skills:
-  - writing-skill
+  - agent-builder
+  - convert-plan-to-beads
   - reviewing-skill
   - ...
 ```
@@ -59,7 +59,7 @@ A few important details:
 
 ## The Script
 
-With the prompt ready, I needed a way to run it repeatedly. A simple bash script does the job:
+With the prompt ready, I needed a way to run it repeatedly. A simple Bash script does the job:
 
 ```bash
 #!/bin/bash
