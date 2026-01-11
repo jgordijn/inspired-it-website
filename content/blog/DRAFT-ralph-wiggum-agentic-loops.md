@@ -21,7 +21,7 @@ I was a bit hesitant to try, because I felt safer constantly validating what the
 
 ## The Problem
 
-I have over 35 skills in my OpenCode setup. But I noticed most of them weren't used much. While looking around the internet, my fellow AI enthusiast [Jeroen Dee](https://www.jeroendee.nl) pointed me towards the [writing-skills](https://github.com/obra/superpowers/tree/main/skills/writing-skills) skill in Jesse Vincent's [Superpowers](https://github.com/obra/superpowers) project. This looked like a very thorough skill with lots of details about making good skills.
+I have over 35 skills in my OpenCode setup. But I noticed most of them weren't used much. While looking around the internet, my fellow AI enthusiast [Jeroen Dee](https://qualityshepherd.nl) pointed me towards the [writing-skills](https://github.com/obra/superpowers/tree/main/skills/writing-skills) skill in Jesse Vincent's [Superpowers](https://github.com/obra/superpowers) project. This looked like a very thorough skill with lots of details about making good skills.
 
 I used the skill on a few of my skills and noticed improvements. But doing this manually on 35+ skills? Maybe a good opportunity to try Ralph Wiggum.
 
