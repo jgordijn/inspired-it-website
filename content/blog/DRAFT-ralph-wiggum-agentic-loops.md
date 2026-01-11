@@ -1,0 +1,120 @@
+---
+title: "Ralph Wiggum: Loop it!"
+description: "How a simple Bash script and a clever prompt pattern turned 35 skill reviews into a 30-minute automated session."
+date: '2026-01-08'
+author: Jeroen Gordijn
+cover: /images/ralph-wiggum.png
+tags:
+  - AI
+  - Automation
+  - OpenCode
+  - Agentic Loops
+---
+
+# Ralph Wiggum: Loop it!
+
+I've been hearing more and more about "Ralph Wiggum" lately. It's a loop pattern for AI coding assistants, [coined by Geoffrey Huntley](https://ghuntley.com/ralph/). Main idea is keep pressing forward and create a fresh context for each iteration. Each loop does exactly one thing, then stops. No context bloat. No accumulated confusion.
+
+I was a bit hesitant to try, because I felt more save constantly validating what the AI was doing. I felt comfortable with the "human-in-the-loop" approach. But Geoffrey made a point to put people on-the-loop, not in-the-loop. So when I had a repetitive task to do recently, I had a reason to try it out.
+
+## The Problem
+
+I have over 35 skills in my OpenCode setup. But I noticed most of them weren't used much. Looking around the Internet [Jeroen Dee](https://www.jeroendee.nl) pointed me towards the [writing-skill](https://github.com/obra/superpowers/tree/main/skills/writing-skills) in Jesse Vincent's [Superpowers](https://github.com/obra/superpowers) project. This looked like a very thourough `skill` with lots of details about making good `skills`.
+
+I used the skill on a few of my skills and noticed improvements. But doing this manually on 35+ skills? Maybe a good opportunity to try Ralph Wiggum.
+
+## The Prompt
+
+The trick with Ralph Wiggum is designing a prompt that does exactly one thing and then stops. No questions. No waiting for input. Just do the work, commit, and stop. And keep rerunning that same prompt until all work is done.
+
+I deviated a little bit from the same prompt here. Instead of keeping state in a separate file, I kept the state in the prompt and change that on every iteration. Here's what I came up with:
+
+```markdown
+Take the topmost skill from the list below and do the following:
+
+- Thoroughly review the skill (use the managing-skills skill to learn what "good" looks like).
+- Apply all recommendations, even small ones. Do not ask the user questions. Decide what needs to happen.
+- Remove the skill from the list below and save this file.
+- Commit.
+- Stop.
+
+When the list below is empty (after the commit), reply with "DONE - STOP RALPH".
+
+Skills:
+  - writing-skill
+  - reviewing-skill
+  - ...
+```
+
+A few important details::
+
+**No questions allowed.** This is crucial. If the AI asks a question, the loop breaks. There's no human watching to answer. The prompt explicitly says "No questions to the user" and "When in doubt think double hard and come up with an answer yourself."
+
+**The "stop" instruction.** This ends the current loop iteration. Without it, the AI might keep going withing the same context. Increasing the context, increases the risk the Agent going off the rails.
+
+**"DONE - STOP RALPH"** is the signal that all work is done. The bash script watches for this to know when to exit.
+
+## The Script
+
+With the prompt ready, I needed a way to run it repeatedly. A simple bash script does the job:
+
+```bash
+#!/bin/bash
+
+MAX_ITERATIONS=35
+STOP_SIGNAL="DONE - STOP RALPH"
+
+for ((i = 1; i <= MAX_ITERATIONS; i++)); do
+    echo "=== Iteration $i of $MAX_ITERATIONS ==="
+
+    output=$(opencode run -m "github-copilot/claude-haiku-4.5" "read and perform @prompt.md" 2>&1 | tee /dev/stderr)
+
+    # Check last 20 lines for stop signal
+    if echo "$output" | tail -20 | grep -q "$STOP_SIGNAL"; then
+        echo ""
+        echo "=== Stop signal detected. Exiting. ==="
+        exit 0
+    fi
+
+    echo ""
+done
+
+echo "=== Reached maximum iterations ($MAX_ITERATIONS). Exiting. ==="
+```
+
+The script runs OpenCode with the prompt, captures the output, and checks for the stop signal. When it sees "DONE - STOP RALPH", it exits. Otherwise, it loops again with fresh context.
+
+One important detail: I configured OpenCode to allow all tool use (in Claude Code, the equivalent is the `--dangerously-skip-permissions` flag). The loop needed to run autonomously—no permission prompts breaking the flow.
+
+## The Result
+
+I kicked it off and went to make coffee.
+
+About 30 minutes later, I came back to find all 35+ skills reviewed, improved, and committed. Each iteration handled exactly one skill. Review it, apply the improvements, remove it from the list, commit, stop. Next iteration: fresh context, next skill, repeat.
+
+The git log was 35 clean commits, each one a focused improvement to a single skill.
+
+This sounds risky, and you really have to put some trust in the process. But the thing is, you'll review it after it's done for all the skills. And if there are errors, you can fix it afterwards. And if it was a really wrong assumption, you can go back to the beginning and start all over. That's the beauty of Git, right? 
+
+We just have to put these machines to work. Do more work for us, so we can do more work. 
+
+## Context Management
+
+The important part is in the fresh context. Asking 1 session to do it all will pollute the context with too much data. At some point the Agent starts to forget or ignore instructions. Keeping your context clean and focused is key for getting better results.
+
+Ralph Wiggum throws all that away. Each iteration starts clean. The AI reads the prompt, does the work, commits, and stops. The next iteration has no memory of the previous one. 
+
+It's like hiring a contractor for one specific job instead of keeping them around for everything. They show up, do their thing well, and leave. No baggage.
+
+## Key Takeaways
+
+If you want to try Ralph Wiggum:
+
+1. **Fresh context per loop.** Each iteration starts clean. This is the core insight.
+2. **One task per loop.** Keep things focused and reliable. Don't try to do too much.
+3. **No questions.** Design prompts that don't require human interaction. The AI must be able to make all decisions itself.
+4. **Clear stop conditions.** Both per-iteration ("stop") and for completion ("DONE - STOP RALPH").
+
+## What are we heading for
+
+With the increased powers of the models, I think we're heading towards a direction where we are less and less involved when the agent is implementing our specs. As Jeffrey Huntly put it, we should be on the loop, not in the loop. So we want to let it go, let it work and check what it's doing instead of being involved while it's doing its work. This was just my first try with the Rolf Wiggen way of working. But it tastes for more. Let me think about what needs to be done, and let AI do it. Let me do my other things.
