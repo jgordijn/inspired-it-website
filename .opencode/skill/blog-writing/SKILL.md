@@ -1,6 +1,6 @@
 ---
 name: blog-writing
-description: Use when writing new blog posts for the Inspired IT website, reviewing blog content, or generating cover images for blogs
+description: Use when writing new blog posts for the Inspired IT website, reviewing blog content, or generating cover images for blogs, or converting draft blogs to published posts.
 ---
 
 # Blog Writing for Inspired IT
@@ -60,7 +60,7 @@ cover: /images/cover-image-name.png
 When creating a new blog, always start with a draft file:
   - set publish status in frontmatter to draft with: `publish_status: draft`
 
-When converting a draft to published:
+When converting a draft to published
 1. Update the `date` field in frontmatter to the publication date
 2. Remove the `publish_status` field
 3. Rename the file with the date prefix
