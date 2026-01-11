@@ -15,11 +15,11 @@ tags:
 
 I've been hearing more and more about "Ralph Wiggum" lately. It's a loop pattern for AI coding assistants, [coined by Geoffrey Huntley](https://ghuntley.com/ralph/). Main idea is keep pressing forward and create a fresh context for each iteration. Each loop does exactly one thing, then stops. No context bloat. No accumulated confusion.
 
-I was a bit hesitant to try, because I felt more save constantly validating what the AI was doing. I felt comfortable with the "human-in-the-loop" approach. But Geoffrey made a point to put people on-the-loop, not in-the-loop. So when I had a repetitive task to do recently, I had a reason to try it out.
+I was a bit hesitant to try, because I felt safer constantly validating what the AI was doing. I felt comfortable with the "human-in-the-loop" approach. But Geoffrey made a point to put people on-the-loop, not in-the-loop. So when I had a repetitive task to do recently, I had a reason to try it out.
 
 ## The Problem
 
-I have over 35 skills in my OpenCode setup. But I noticed most of them weren't used much. Looking around the Internet [Jeroen Dee](https://www.jeroendee.nl) pointed me towards the [writing-skill](https://github.com/obra/superpowers/tree/main/skills/writing-skills) in Jesse Vincent's [Superpowers](https://github.com/obra/superpowers) project. This looked like a very thourough `skill` with lots of details about making good `skills`.
+I have over 35 skills in my OpenCode setup. But I noticed most of them weren't used much. Looking around the Internet [Jeroen Dee](https://www.jeroendee.nl) pointed me towards the [writing-skill](https://github.com/obra/superpowers/tree/main/skills/writing-skills) in Jesse Vincent's [Superpowers](https://github.com/obra/superpowers) project. This looked like a very thorough `skill` with lots of details about making good `skills`.
 
 I used the skill on a few of my skills and noticed improvements. But doing this manually on 35+ skills? Maybe a good opportunity to try Ralph Wiggum.
 
@@ -50,7 +50,7 @@ A few important details::
 
 **No questions allowed.** This is crucial. If the AI asks a question, the loop breaks. There's no human watching to answer. The prompt explicitly says "No questions to the user" and "When in doubt think double hard and come up with an answer yourself."
 
-**The "stop" instruction.** This ends the current loop iteration. Without it, the AI might keep going withing the same context. Increasing the context, increases the risk the Agent going off the rails.
+**The "stop" instruction.** This ends the current loop iteration. Without it, the AI might keep going within the same context. Increasing the context increases the risk of the Agent going off the rails.
 
 **"DONE - STOP RALPH"** is the signal that all work is done. The bash script watches for this to know when to exit.
 
@@ -115,6 +115,10 @@ If you want to try Ralph Wiggum:
 3. **No questions.** Design prompts that don't require human interaction. The AI must be able to make all decisions itself.
 4. **Clear stop conditions.** Both per-iteration ("stop") and for completion ("DONE - STOP RALPH").
 
-## What are we heading for
+## The Future is On the Loop
 
-With the increased powers of the models, I think we're heading towards a direction where we are less and less involved when the agent is implementing our specs. As Jeffrey Huntly put it, we should be on the loop, not in the loop. So we want to let it go, let it work and check what it's doing instead of being involved while it's doing its work. This was just my first try with the Rolf Wiggen way of working. But it tastes for more. Let me think about what needs to be done, and let AI do it. Let me do my other things.
+With the increasing power of these models, we are heading toward a reality where we are less involved in the actual implementation of our specs. As Geoffrey Huntley put it, we should be **on the loop**, not **in the loop**. We need to learn to let go—let the agent work and verify the outcome later, instead of hovering over it while it types.
+
+This was my first attempt at the Ralph Wiggum way of working, but it definitely left me wanting more. I want to spend my time thinking about *what* needs to be done, and let the AI handle the execution.
+
+Let the robot do the heavy lifting. I have other things to do.
