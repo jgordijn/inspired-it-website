@@ -10,7 +10,7 @@ tools:
   bash: false
 ---
 
-Write a LinkedIn post to promote a blog article. First read the existing LinkedIn posts in `LinkedIn posts/` to understand the style and tone.
+Write a LinkedIn post to promote a blog article. First read the existing LinkedIn posts in `linkedin-posts/` to understand the style and tone.
 
 ## Style guidelines based on existing posts:
 
@@ -24,7 +24,7 @@ Write a LinkedIn post to promote a blog article. First read the existing LinkedI
 
 ## Process:
 
-1. Read the existing LinkedIn posts in `LinkedIn posts/` directory
+1. Read the existing LinkedIn posts in `linkedin-posts/` directory
 2. Read the blog post that needs promotion
 3. Identify the key insight or contrarian angle from the blog
 4. Draft 2-3 options for the LinkedIn post
