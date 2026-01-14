@@ -112,7 +112,7 @@ jobs:
         run: sudo apt-get install -y rclone
 
       - name: Deploy to test
-        run: "rclone sync out/ testsite: --checksum --verbose"
+        run: "rclone sync out/ testsite: --ignore-size --verbose"
         env:
           RCLONE_CONFIG_TESTSITE_TYPE: webdav
           RCLONE_CONFIG_TESTSITE_URL: ${{ secrets.RCLONE_TEST_URL }}
@@ -148,7 +148,7 @@ jobs:
         run: sudo apt-get install -y rclone
 
       - name: Deploy to production
-        run: "rclone sync out/ prodsite: --checksum --verbose"
+        run: "rclone sync out/ prodsite: --ignore-size --verbose"
         env:
           RCLONE_CONFIG_PRODSITE_TYPE: webdav
           RCLONE_CONFIG_PRODSITE_URL: ${{ secrets.RCLONE_PROD_URL }}
