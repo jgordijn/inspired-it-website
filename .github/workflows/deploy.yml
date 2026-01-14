@@ -38,7 +38,9 @@ jobs:
         run: npm ci
 
       - name: Build for test environment
-        run: npm run build
+        run: |
+          echo "DEBUG: GA ID length is ${#NEXT_PUBLIC_GA_ID}"
+          npm run build
         env:
           BASE_URL: https://www.softwaremaniac.nl
           NEXT_PUBLIC_GA_ID: ${{ secrets.NEXT_PUBLIC_GA_ID_TEST }}
@@ -70,7 +72,9 @@ jobs:
         run: npm ci
 
       - name: Build for production environment
-        run: npm run build
+        run: |
+          echo "DEBUG: GA ID length is ${#NEXT_PUBLIC_GA_ID}"
+          npm run build
         env:
           BASE_URL: https://inspired-it.nl
           NEXT_PUBLIC_GA_ID: ${{ secrets.NEXT_PUBLIC_GA_ID_PROD }}
