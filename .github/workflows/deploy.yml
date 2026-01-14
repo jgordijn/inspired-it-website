@@ -39,11 +39,10 @@ jobs:
 
       - name: Build for test environment
         run: |
-          echo "DEBUG: GA ID length is ${#NEXT_PUBLIC_GA_ID}"
+          echo "NEXT_PUBLIC_GA_ID=${{ secrets.NEXT_PUBLIC_GA_ID_TEST }}" > .env.production.local
           npm run build
         env:
           BASE_URL: https://www.softwaremaniac.nl
-          NEXT_PUBLIC_GA_ID: ${{ secrets.NEXT_PUBLIC_GA_ID_TEST }}
 
       - name: Upload test build artifact
         uses: actions/upload-artifact@v4
@@ -73,11 +72,11 @@ jobs:
 
       - name: Build for production environment
         run: |
-          echo "DEBUG: GA ID length is ${#NEXT_PUBLIC_GA_ID}"
+          echo "NEXT_PUBLIC_GA_ID=${{ secrets.NEXT_PUBLIC_GA_ID_PROD }}" > .env.production.local
+          echo "DEBUG: GA ID is: ${{ secrets.NEXT_PUBLIC_GA_ID_PROD }}"
           npm run build
         env:
           BASE_URL: https://inspired-it.nl
-          NEXT_PUBLIC_GA_ID: ${{ secrets.NEXT_PUBLIC_GA_ID_PROD }}
 
       - name: Upload production build artifact
         uses: actions/upload-artifact@v4
