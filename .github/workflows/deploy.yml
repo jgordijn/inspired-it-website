@@ -109,10 +109,13 @@ jobs:
           path: out/
 
       - name: Install rclone
-        run: sudo apt-get install -y rclone
+        run: |
+          curl -O https://downloads.rclone.org/rclone-current-linux-amd64.deb
+          sudo dpkg -i rclone-current-linux-amd64.deb
+          rclone version
 
       - name: Deploy to test
-        run: "rclone sync out/ testsite: --verbose --progress"
+        run: "rclone sync out/ testsite: --checksum --verbose"
         env:
           RCLONE_CONFIG_TESTSITE_TYPE: webdav
           RCLONE_CONFIG_TESTSITE_URL: ${{ secrets.RCLONE_TEST_URL }}
@@ -145,13 +148,13 @@ jobs:
           path: out/
 
       - name: Install rclone
-        run: sudo apt-get install -y rclone
+        run: |
+          curl -O https://downloads.rclone.org/rclone-current-linux-amd64.deb
+          sudo dpkg -i rclone-current-linux-amd64.deb
+          rclone version
 
       - name: Deploy to production
-        run: |
-          echo "Listing files to sync..."
-          ls -la out/
-          rclone sync out/ prodsite: --verbose --progress
+        run: "rclone sync out/ prodsite: --checksum --verbose"
         env:
           RCLONE_CONFIG_PRODSITE_TYPE: webdav
           RCLONE_CONFIG_PRODSITE_URL: ${{ secrets.RCLONE_PROD_URL }}
