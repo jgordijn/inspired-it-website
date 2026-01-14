@@ -73,10 +73,15 @@ jobs:
       - name: Build for production environment
         run: |
           echo "NEXT_PUBLIC_GA_ID=${{ secrets.NEXT_PUBLIC_GA_ID_PROD }}" > .env.production.local
-          echo "DEBUG: GA ID is: ${{ secrets.NEXT_PUBLIC_GA_ID_PROD }}"
+          echo "DEBUG: .env.production.local contents:"
+          cat .env.production.local
+          echo "DEBUG: GA ID length: ${#NEXT_PUBLIC_GA_ID_PROD}"
           npm run build
+          echo "DEBUG: Checking if GA ID made it into the build:"
+          grep -o 'gaId:"[^"]*"' out/_next/static/chunks/*.js || echo "No gaId found in chunks"
         env:
           BASE_URL: https://inspired-it.nl
+          NEXT_PUBLIC_GA_ID_PROD: ${{ secrets.NEXT_PUBLIC_GA_ID_PROD }}
 
       - name: Upload production build artifact
         uses: actions/upload-artifact@v4
