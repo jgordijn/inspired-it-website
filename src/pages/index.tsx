@@ -73,11 +73,12 @@ export default function Home({ posts = [] }: HomeProps) {
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {posts.map((post) => (
-            <article
+            <Link
               key={post.slug}
-              className="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow"
+              href={`/blog/${post.slug}`}
+              className="block bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow cursor-pointer"
             >
-              <div className="p-6">
+              <article className="p-6">
                 <div className="flex gap-2 mb-3">
                   {post.tags.slice(0, 2).map((tag) => (
                     <span
@@ -102,14 +103,11 @@ export default function Home({ posts = [] }: HomeProps) {
                   <span>{post.readingTime} min read</span>
                 </div>
                 
-                <Link
-                  href={`/blog/${post.slug}`}
-                  className="inline-block mt-4 text-blue-600 font-medium hover:text-blue-700"
-                >
+                <span className="inline-block mt-4 text-blue-600 font-medium">
                   Read More →
-                </Link>
-              </div>
-            </article>
+                </span>
+              </article>
+            </Link>
           ))}
         </div>
         

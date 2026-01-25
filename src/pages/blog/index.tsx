@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import Layout from '@/components/Layout';
 import { getBlogPosts, BlogPost } from '@/utils/blog';
 
@@ -9,7 +10,7 @@ interface BlogIndexProps {
 }
 
 export default function BlogIndex({ allPosts = [], allTags = [] }: BlogIndexProps) {
-
+  const router = useRouter();
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [filterOpen, setFilterOpen] = useState(false);
@@ -104,7 +105,8 @@ export default function BlogIndex({ allPosts = [], allTags = [] }: BlogIndexProp
               {filteredPosts.map((post) => (
                 <article
                   key={post.slug}
-                  className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow"
+                  onClick={() => router.push(`/blog/${post.slug}`)}
+                  className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow cursor-pointer"
                 >
                   <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
                     <div className="flex-grow">
@@ -117,7 +119,7 @@ export default function BlogIndex({ allPosts = [], allTags = [] }: BlogIndexProp
                         {post.tags.map((tag) => (
                           <button
                             key={tag}
-                            onClick={() => setSelectedTag(tag)}
+                            onClick={(e) => { e.stopPropagation(); setSelectedTag(tag); }}
                             className="inline-block bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-medium hover:bg-blue-200 transition-colors"
                           >
                             {tag}
@@ -134,17 +136,14 @@ export default function BlogIndex({ allPosts = [], allTags = [] }: BlogIndexProp
                       </p>
 
                       <div className="flex gap-6 text-sm text-gray-500">
-                        <span>📅 {post.date}</span>
-                        <span>⏱️ {post.readingTime} min read</span>
+                        <span>{post.date}</span>
+                        <span>{post.readingTime} min read</span>
                       </div>
                     </div>
 
-                    <Link
-                      href={`/blog/${post.slug}`}
-                      className="text-blue-600 font-medium hover:text-blue-700 whitespace-nowrap mt-4 sm:mt-0"
-                    >
+                    <span className="text-blue-600 font-medium whitespace-nowrap mt-4 sm:mt-0">
                       Read More →
-                    </Link>
+                    </span>
                   </div>
                 </article>
               ))}
