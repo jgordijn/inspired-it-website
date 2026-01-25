@@ -7,7 +7,6 @@ cover: "/images/ai-coding-kid.png"
 tags:
   - AI
   - Claude
-publish_status: draft
 ---
 
 A few years ago, I tried to get my then 10-year-old son interested in programming. We got an Arduino kit, sat down together, and spent what felt like forever just to get a single LED to blink. The code was too hard for him and it took too much of his concentration to go through this boring (for a 10-year-old) process. This didn't ignite his enthusiasm for my profession.
