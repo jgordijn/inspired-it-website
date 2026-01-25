@@ -24,6 +24,28 @@ Each environment requires its own build because RSS/sitemap URLs are baked in at
 
 - **Full instructions**: See [DEPLOYMENT.md](./DEPLOYMENT.md)
 
+## Infrastructure & DNS
+
+**CRITICAL: Do NOT enable Cloudflare proxy (orange cloud) for inspired-it.nl**
+
+The website is hosted by **Fastmail** (via `web.fastmail.com`). Cloudflare is used for DNS only.
+
+### Why DNS-only mode is required:
+- Fastmail provisions and manages SSL certificates for custom domains
+- If Cloudflare proxies traffic, it terminates TLS and presents its own certificate
+- This breaks Fastmail's certificate provisioning and domain verification
+- The site will fail to load properly with proxying enabled
+
+### DNS Records that MUST stay "DNS only" (gray cloud):
+- `inspired-it.nl` CNAME → `web.fastmail.com`
+- `www` CNAME → `web.fastmail.com`
+- `*` (wildcard) CNAME → `web.fastmail.com`
+- All MX records (email)
+- All DKIM records (`fm1._domainkey`, etc.)
+
+### Consequence:
+Cloudflare analytics will show zero traffic - this is expected. Use Google Analytics or Fastmail's stats for traffic data.
+
 ## Project Type
 Next.js 14 static site export with TypeScript, React 18, Tailwind CSS. Markdown-based blog with gray-matter frontmatter.
 
