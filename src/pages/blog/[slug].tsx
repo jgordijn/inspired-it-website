@@ -2,7 +2,8 @@ import React from 'react';
 import Link from 'next/link';
 import Layout from '@/components/Layout';
 import MermaidDiagram from '@/components/MermaidDiagram';
-import { getBlogPost, getAllBlogSlugs, getRelatedPosts, hasMermaidDiagrams } from '@/utils/blog';
+import LanguageTabs from '@/components/LanguageTabs';
+import { getBlogPost, getAllBlogSlugs, getRelatedPosts, hasMermaidDiagrams, hasLanguageTabs } from '@/utils/blog';
 
 interface BlogPostPageProps {
   slug: string;
@@ -29,12 +30,14 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
   }
 
   const hasMermaid = hasMermaidDiagrams(post.html);
+  const hasLangTabs = hasLanguageTabs(post.html);
 
   return {
     props: {
       post,
       relatedPosts,
       hasMermaid,
+      hasLangTabs,
     },
   };
 }
@@ -42,11 +45,13 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
 export default function BlogPost({ 
   post, 
   relatedPosts,
-  hasMermaid 
+  hasMermaid,
+  hasLangTabs,
 }: { 
   post: any; 
   relatedPosts: any[];
   hasMermaid: boolean;
+  hasLangTabs: boolean;
 }) {
   return (
     <Layout
@@ -99,6 +104,9 @@ export default function BlogPost({
         
         {/* Load Mermaid only if post contains diagrams */}
         {hasMermaid && <MermaidDiagram />}
+        
+        {/* Load LanguageTabs only if post contains language tabs */}
+        {hasLangTabs && <LanguageTabs />}
 
         {/* Related Posts */}
         {relatedPosts.length > 0 && (

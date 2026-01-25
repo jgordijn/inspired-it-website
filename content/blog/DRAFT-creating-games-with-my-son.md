@@ -3,10 +3,9 @@ title: "Creating Games With My 10-Year-Old Son"
 description: "How Claude made my son enthusiastic about working with a computer, making programming accessible and fun."
 date: "2026-01-25"
 author: "Jeroen Gordijn"
+cover: "/images/ai-coding-kid.png"
 tags:
   - AI
-  - Kids
-  - Education
   - Claude
 publish_status: draft
 ---
@@ -23,15 +22,34 @@ I opened Claude and gave it one simple instruction: "Make an artifact simple HTM
 
 We discussed a bit together before pressing the button to activate Wispr Flow. Think clearly about what you want, and describe it step by step. He came up with this:
 
-> We are making a webpage for fireworks. All different kinds of fireworks but decorative fireworks.
->
-> 1. We want a rocket that flies into the air when we press somewhere. After three seconds it flies into the air and when it's all the way at the top, it explodes with all the beautiful colors.
-> 2. We want a little fountain that after 3 seconds sprays into the air with all beautiful colors. But the firework stays standing in the place where it stood, so all color sprays into the air.
-> 3. We also want a box that you put down with five rockets in it. They all spray into the air after three seconds and then they all splash apart with all colors, but smaller than the single rocket.
+<lang-tabs>
+<tab lang="nl" label="Nederlands">
+
+We maken een webpagina voor vuurwerk. 
+Allemaal verschillende soorten vuurwerk maar wel sier vuurwerk.
+
+1. We willen een vuurpijl, dat in de lucht vliegt als we ergens drukken. Dat hij na drie seconden in de lucht vliegt en dat hij dan, als hij helemaal bovenaan de lucht is, dat hij dan ontploft met alle mooie kleuren.
+2.  Wij weer een fonteintje na wat 3 seconden dan de lucht in spuit met allemaal mooie kleuren. Maar het vuurwerk blijft staan op de plek waar het stond dus er spuit allemaal kleur in de lucht in. 
+3. We willen ook een doos die je dan neerzet met vijf vuurpijlen erin. En die spuiten dan na drie seconden allemaal de lucht in en dan gaan ze allemaal uit elkaar splashen met allemaal kleuren, maar het moet kleiner dan de vuurpijl.
+
+</tab>
+<tab lang="en" label="English">
+
+We are making a webpage for fireworks. All different kinds of fireworks but decorative fireworks.
+
+1. We want a rocket, that flies into the air when we press somewhere. That after three seconds it flies into the air and that then, when it is all the way at the top of the sky, that it then explodes with all the beautiful colors.
+2. We want a little fountain that after like 3 seconds then sprays into the air with all beautiful colors. But the firework stays standing in the place where it stood so all color sprays into the air.
+3. We also want a box that you then put down with five rockets in it. And those then all spray into the air after three seconds and then they all splash apart with all colors, but it has to be smaller than the rocket.
+
+</tab>
+</lang-tabs>
 
 Within minutes, we had a working firework simulation. Rockets flying up. Explosions. Fountains. My son was enthusiastic to go forward and improve the game.
 
-Fun fact: for me and most software engineers, this is amazing. But for my son it was not at all. For him it was just some new cool tool he learned.
+Initial version:
+<img src="/images/firework-1st-version.png" alt="Initial version of firework game" style="max-width: 400px;" />
+
+Fun fact: for me and most software engineers, this is already amazing. But for my son it was not at all. He was not amazed, but mainly full of energy to keep going. For him it was just some new cool tool he learned.
 
 ## From 2D to 3D
 

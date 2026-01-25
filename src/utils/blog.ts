@@ -257,3 +257,7 @@ export function markdownToHtml(markdownText: string): string {
 export function hasMermaidDiagrams(html: string): boolean {
   return html.includes('class="mermaid-diagram"');
 }
+
+export function hasLanguageTabs(html: string): boolean {
+  return html.includes('<lang-tabs>');
+}
