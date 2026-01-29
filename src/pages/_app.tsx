@@ -1,6 +1,7 @@
 import '@/styles/globals.css';
 import type { AppProps } from 'next/app';
 import { GoogleAnalytics } from '@next/third-parties/google';
+import { GoatCounter } from '@/components/GoatCounter';
 
 export default function App({ Component, pageProps }: AppProps) {
   if (process.env.NODE_ENV === 'development') {
@@ -11,6 +12,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <Component {...pageProps} />
       <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID || ''} />
+      <GoatCounter />
     </>
   );
 }
