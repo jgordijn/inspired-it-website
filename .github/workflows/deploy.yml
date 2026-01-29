@@ -43,6 +43,7 @@ jobs:
           npm run build
         env:
           BASE_URL: https://www.softwaremaniac.nl
+          NEXT_PUBLIC_GOATCOUNTER_URL: https://softwaremaniac.goatcounter.com/count
 
       - name: Upload test build artifact
         uses: actions/upload-artifact@v4
@@ -82,6 +83,7 @@ jobs:
         env:
           BASE_URL: https://inspired-it.nl
           NEXT_PUBLIC_GA_ID_PROD: ${{ secrets.NEXT_PUBLIC_GA_ID_PROD }}
+          NEXT_PUBLIC_GOATCOUNTER_URL: https://inspiredit.goatcounter.com/count
 
       - name: Upload production build artifact
         uses: actions/upload-artifact@v4
