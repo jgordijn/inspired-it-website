@@ -2,7 +2,9 @@
 set -e
 
 echo "Building for TEST environment (www.softwaremaniac.nl)..."
-BASE_URL=https://www.softwaremaniac.nl npm run build
+BASE_URL=https://www.softwaremaniac.nl \
+NEXT_PUBLIC_GOATCOUNTER_URL=https://softwaremaniac.goatcounter.com/count \
+npm run build
 
 echo "Deploying to SoftwaremaniacWebsite..."
 rclone sync out SoftwaremaniacWebsite: --progress --checksum

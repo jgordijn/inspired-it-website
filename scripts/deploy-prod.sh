@@ -2,7 +2,9 @@
 set -e
 
 echo "Building for PRODUCTION environment (inspired-it.nl)..."
-BASE_URL=https://inspired-it.nl npm run build
+BASE_URL=https://inspired-it.nl \
+NEXT_PUBLIC_GOATCOUNTER_URL=https://inspiredit.goatcounter.com/count \
+npm run build
 
 echo "Deploying to InspiredITWebsite..."
 rclone sync out InspiredITWebsite: --progress --checksum

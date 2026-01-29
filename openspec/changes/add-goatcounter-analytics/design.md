@@ -33,14 +33,14 @@ GoatCounter provides a simple script tag:
 - `beforeInteractive`: Too early, could impact page load
 - `lazyOnload`: Too late, might miss page views
 
-### Decision: Hardcode GoatCounter endpoint
-**Choice**: Hardcode `https://inspiredit.goatcounter.com/count` directly in the component
+### Decision: Configure GoatCounter endpoint via environment variable
+**Choice**: Use `NEXT_PUBLIC_GOATCOUNTER_URL` environment variable set in deploy scripts
 
-**Rationale**: Unlike GA which might vary between environments, GoatCounter has a single endpoint. Keeping it simple avoids unnecessary configuration complexity.
+**Rationale**: Test and production environments use different GoatCounter accounts (softwaremaniac.goatcounter.com vs inspiredit.goatcounter.com). Environment variable allows each deploy script to set the appropriate endpoint.
 
 **Alternatives considered**:
-- Environment variable: Adds complexity without benefit since the endpoint is fixed
-- Config file: Overkill for a single value
+- Hardcoded endpoint: Doesn't support multiple environments
+- Config file: Overkill when deploy scripts already handle environment differences
 
 ### Decision: Add GoatCounter component alongside GoogleAnalytics
 **Choice**: Create a `GoatCounter` component and render it next to `GoogleAnalytics` in `_app.tsx`

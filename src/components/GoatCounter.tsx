@@ -26,13 +26,15 @@ export function GoatCounter() {
     };
   }, [router.events]);
 
-  if (process.env.NODE_ENV === 'development') {
+  const endpoint = process.env.NEXT_PUBLIC_GOATCOUNTER_URL;
+
+  if (process.env.NODE_ENV === 'development' || !endpoint) {
     return null;
   }
 
   return (
     <Script
-      data-goatcounter="https://inspiredit.goatcounter.com/count"
+      data-goatcounter={endpoint}
       src="//gc.zgo.at/count.js"
       strategy="afterInteractive"
     />
