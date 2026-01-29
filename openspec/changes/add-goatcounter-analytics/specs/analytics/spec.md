@@ -15,6 +15,17 @@ The system SHALL include GoatCounter analytics tracking on all pages.
 - **WHEN** the GoatCounter script is included
 - **THEN** it loads asynchronously to avoid blocking page render
 
+### Requirement: Client-side navigation tracking
+The system SHALL track page views during client-side navigation in single-page application mode.
+
+#### Scenario: Track route changes
+- **WHEN** the user navigates to a new page via client-side routing
+- **THEN** a page view is recorded for the new URL
+
+#### Scenario: Initial page load
+- **WHEN** the user loads a page via full page refresh or direct URL
+- **THEN** a page view is recorded automatically by the script
+
 ### Requirement: Multiple analytics providers
 The system SHALL support running multiple analytics providers simultaneously.
 
