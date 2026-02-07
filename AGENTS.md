@@ -48,7 +48,7 @@ The website is hosted by **Fastmail** (via `web.fastmail.com`). Cloudflare is us
 Cloudflare analytics will show zero traffic - this is expected. Use Google Analytics or Fastmail's stats for traffic data.
 
 ## Project Type
-Next.js 14 static site export with TypeScript, React 18, Tailwind CSS. Markdown-based blog with gray-matter frontmatter.
+Next.js 16 static site export (`output: 'export'`) with TypeScript (strict mode), React 19, Tailwind CSS 3.3. Markdown-based blog with gray-matter frontmatter, markdown-it with highlight.js for syntax highlighting, Mermaid diagrams, and GFM admonitions.
 
 ## Code Style
 
@@ -86,3 +86,66 @@ Next.js 14 static site export with TypeScript, React 18, Tailwind CSS. Markdown-
 - **Perspective**: First-person ("I").
 - **Content**: Use specific examples, screenshots, and dialogues where possible.
 - **Ending**: End with a clear end. It can be a reflective question or thought or a conclusing sentence.
+
+## Project Structure
+
+```
+├── content/blog/          # Markdown blog posts (YYYY-MM-DD-slug.md)
+├── public/                # Static assets (images, logo, favicon)
+├── src/
+│   ├── components/        # Reusable React components
+│   ├── pages/             # Next.js pages (file-based routing)
+│   └── utils/             # Utility functions (blog.ts, seo.ts)
+├── scripts/               # Build and deployment scripts
+└── out/                   # Generated static site (git-ignored)
+```
+
+## Architecture Patterns
+
+- **Static Site Generation (SSG)**: All pages pre-rendered at build time
+- **File-based Content**: Blog posts as markdown files with frontmatter
+- **Component Composition**: Reusable Layout component wraps all pages
+- **Utility Functions**: Shared logic in `src/utils/` (blog parsing, SEO helpers)
+
+## Blog Post Format
+
+```markdown
+---
+title: Post Title
+description: Brief description for SEO
+date: '2025-01-25'
+author: Jeroen Gordijn
+tags:
+  - Tag1
+  - Tag2
+cover: /images/cover-image.png
+publish_status: draft  # Optional, omit or set 'published' for live posts
+---
+
+Content here...
+```
+
+## Content Constraints
+
+- Draft posts (`publish_status: draft`) are hidden in production
+- Blog posts sorted by date (newest first)
+- Reading time calculated automatically (200 words/minute)
+
+## Domain Context
+
+**Author**: Jeroen Gordijn - Software consultant since 2005, specializing in:
+- AI-assisted development advocacy
+- Software architecture (Domain-Driven Design, Ports & Adapters)
+- Reactive programming (Project Reactor, Akka)
+- Kotlin/Java ecosystem
+
+**Content Focus**:
+- AI coding tools and workflows (Claude, GitHub Copilot, OpenSpec)
+- Technical deep-dives on reactive streams, Kotlin vs Java
+- Software engineering practices and patterns
+- Industry observations and commentary
+
+## Analytics
+
+- Google Analytics configured in production
+- Cloudflare analytics NOT available (DNS-only mode) - use Google Analytics or Fastmail stats
