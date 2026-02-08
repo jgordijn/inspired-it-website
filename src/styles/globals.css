@@ -123,6 +123,53 @@ pre.hljs code {
   display: block;
 }
 
+/* Moments content styling */
+.moments-content {
+  @apply text-gray-700 leading-relaxed;
+}
+
+.moments-content p {
+  @apply mb-4;
+}
+
+.moments-content a {
+  @apply text-blue-600 underline hover:text-blue-800 transition-colors;
+}
+
+.moments-content code {
+  @apply text-red-600 bg-gray-100 px-1.5 py-0.5 rounded text-sm font-medium;
+}
+
+.moments-content pre {
+  @apply my-4 p-4 rounded-lg overflow-x-auto;
+  background-color: #282c34;
+  color: #abb2bf;
+}
+
+.moments-content pre code {
+  @apply bg-transparent p-0 text-inherit;
+}
+
+.moments-content blockquote {
+  @apply border-l-4 border-blue-600 pl-4 italic text-gray-500 my-4;
+}
+
+.moments-content ul {
+  @apply mb-4 pl-8 list-disc;
+}
+
+.moments-content ol {
+  @apply mb-4 pl-8 list-decimal;
+}
+
+.moments-content li {
+  @apply mb-1;
+}
+
+.moments-content img {
+  @apply my-4 rounded-lg max-w-full;
+}
+
 /* Admonitions / Callouts */
 .admonition {
   @apply my-6 p-4 rounded-md border-l-4 bg-gray-50;

@@ -90,7 +90,7 @@ export default function MomentsPage({ moments }: MomentsPageProps) {
                   )}
                 </h2>
                 <div
-                  className="prose prose-slate max-w-none"
+                  className="moments-content"
                   dangerouslySetInnerHTML={{ __html: moment.html }}
                 />
               </article>
