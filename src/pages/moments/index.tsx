@@ -19,8 +19,6 @@ function formatDate(dateStr: string): string {
 export default function MomentsPage({ moments }: MomentsPageProps) {
   const [navOpen, setNavOpen] = useState(false);
 
-  const dates = moments.map((m) => m.date);
-
   return (
     <Layout
       title="Moments"
@@ -56,14 +54,19 @@ export default function MomentsPage({ moments }: MomentsPageProps) {
             </button>
             {navOpen && (
               <ul className="mt-3 space-y-1 pl-6">
-                {dates.map((date) => (
-                  <li key={date}>
+                {moments.map((m) => (
+                  <li key={m.date}>
                     <a
-                      href={`#${date}`}
+                      href={`#${m.date}`}
                       onClick={() => setNavOpen(false)}
                       className="text-sm text-blue-600 hover:text-blue-800 transition-colors"
                     >
-                      {formatDate(date)}
+                      {formatDate(m.date)}
+                      {m.publish_status === 'draft' && (
+                        <span className="ml-1 inline-block align-middle text-[10px] font-semibold uppercase tracking-wide bg-yellow-100 text-yellow-800 px-1.5 py-0.5 rounded-full">
+                          Draft
+                        </span>
+                      )}
                     </a>
                   </li>
                 ))}
@@ -80,6 +83,11 @@ export default function MomentsPage({ moments }: MomentsPageProps) {
                   className="text-xl font-bold text-slate-900 mb-4 scroll-mt-24"
                 >
                   {formatDate(moment.date)}
+                  {moment.publish_status === 'draft' && (
+                    <span className="ml-2 inline-block align-middle text-xs font-semibold uppercase tracking-wide bg-yellow-100 text-yellow-800 px-2 py-0.5 rounded-full">
+                      Draft
+                    </span>
+                  )}
                 </h2>
                 <div
                   className="prose prose-slate max-w-none"
@@ -96,13 +104,18 @@ export default function MomentsPage({ moments }: MomentsPageProps) {
                 Dates
               </h3>
               <ul className="space-y-1">
-                {dates.map((date) => (
-                  <li key={date}>
+                {moments.map((m) => (
+                  <li key={m.date}>
                     <a
-                      href={`#${date}`}
+                      href={`#${m.date}`}
                       className="text-sm text-gray-600 hover:text-slate-900 transition-colors"
                     >
-                      {formatDate(date)}
+                      {formatDate(m.date)}
+                      {m.publish_status === 'draft' && (
+                        <span className="ml-1 inline-block align-middle text-[10px] font-semibold uppercase tracking-wide bg-yellow-100 text-yellow-800 px-1.5 py-0.5 rounded-full">
+                          Draft
+                        </span>
+                      )}
                     </a>
                   </li>
                 ))}

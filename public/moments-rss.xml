@@ -5,7 +5,7 @@
     <link>https://inspired-it.nl/moments</link>
     <description>Quick thoughts, observations, and links from Jeroen Gordijn</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 08 Feb 2026 16:51:06 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 08 Feb 2026 16:56:26 GMT</lastBuildDate>
     <atom:link href="https://inspired-it.nl/moments-rss.xml" rel="self" type="application/rss+xml" />
 
   <item>
@@ -16,15 +16,6 @@
 <p>Found an interesting article on <a href="https://example.com">static site generation patterns</a> — the approach of pre-rendering everything at build time keeps things beautifully simple.</p>
 ]]></content:encoded>
     <pubDate>Sat, 08 Feb 2025 00:00:00 GMT</pubDate>
-  </item>
-
-  <item>
-    <title>February 6, 2025</title>
-    <link>https://inspired-it.nl/moments#2025-02-06</link>
-    <guid isPermaLink="true">https://inspired-it.nl/moments#2025-02-06</guid>
-    <content:encoded><![CDATA[<p>Kotlin’s scope functions (<code>let</code>, <code>run</code>, <code>apply</code>, <code>also</code>, <code>with</code>) are one of those features that seem trivial at first but completely change how you structure code. Once you get fluent with them, going back to Java feels like writing with oven mitts on.</p>
-]]></content:encoded>
-    <pubDate>Thu, 06 Feb 2025 00:00:00 GMT</pubDate>
   </item>
   </channel>
 </rss>
