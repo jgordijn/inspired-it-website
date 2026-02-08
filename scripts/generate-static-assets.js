@@ -5,6 +5,7 @@ const MarkdownIt = require('markdown-it');
 
 const BASE_URL = process.env.BASE_URL || 'https://inspired-it.nl';
 const BLOG_DIR = path.join(process.cwd(), 'content', 'blog');
+const MOMENTS_DIR = path.join(process.cwd(), 'content', 'moments');
 const PUBLIC_DIR = path.join(process.cwd(), 'public');
 
 const markdown = new MarkdownIt({
@@ -43,6 +44,33 @@ function getBlogPosts() {
     .sort((a, b) => new Date(b.date) - new Date(a.date));
 }
 
+function getMoments() {
+  if (!fs.existsSync(MOMENTS_DIR)) {
+    return [];
+  }
+
+  const files = fs.readdirSync(MOMENTS_DIR).filter((file) => file.endsWith('.md'));
+
+  return files
+    .map((file) => {
+      const filePath = path.join(MOMENTS_DIR, file);
+      const raw = fs.readFileSync(filePath, 'utf-8');
+      const { data, content } = matter(raw);
+
+      const filenameDate = file.match(/^(\d{4}-\d{2}-\d{2})/)?.[1];
+      const date = data.date || filenameDate || new Date().toISOString().split('T')[0];
+
+      return {
+        date: typeof date === 'string' ? date : new Date(date).toISOString().split('T')[0],
+        content,
+        html: markdown.render(content),
+        publish_status: data.publish_status || null,
+      };
+    })
+    .filter((moment) => moment.publish_status !== 'draft')
+    .sort((a, b) => new Date(b.date) - new Date(a.date));
+}
+
 function ensurePublicDir() {
   if (!fs.existsSync(PUBLIC_DIR)) {
     fs.mkdirSync(PUBLIC_DIR, { recursive: true });
@@ -50,7 +78,7 @@ function ensurePublicDir() {
 }
 
 function generateSitemap(posts) {
-  const staticRoutes = ['', '/blog', '/about', '/contact'];
+  const staticRoutes = ['', '/blog', '/moments', '/about', '/contact'];
   const today = new Date().toISOString().split('T')[0];
 
   const urls = [
@@ -223,15 +251,65 @@ ${items}
 `;
 }
 
+function formatMomentDate(dateStr) {
+  const date = new Date(dateStr + 'T00:00:00');
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+}
+
+function generateMomentsRss(moments) {
+  const items = moments
+    .map((moment) => {
+      const url = `${BASE_URL}/moments#${moment.date}`;
+      const title = formatMomentDate(moment.date);
+
+      // Convert relative URLs to absolute URLs in content
+      const absoluteHtml = moment.html
+        .replace(/src="\//g, `src="${BASE_URL}/`)
+        .replace(/href="\//g, `href="${BASE_URL}/`);
+
+      return `
+  <item>
+    <title>${escapeXml(title)}</title>
+    <link>${url}</link>
+    <guid isPermaLink="true">${url}</guid>
+    <content:encoded><![CDATA[${absoluteHtml}]]></content:encoded>
+    <pubDate>${new Date(moment.date).toUTCString()}</pubDate>
+  </item>`;
+    })
+    .join('\n');
+
+  return `<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Inspired IT - Moments</title>
+    <link>${BASE_URL}/moments</link>
+    <description>Quick thoughts, observations, and links from Jeroen Gordijn</description>
+    <language>en-us</language>
+    <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
+    <atom:link href="${BASE_URL}/moments-rss.xml" rel="self" type="application/rss+xml" />
+${items}
+  </channel>
+</rss>
+`;
+}
+
 function main() {
   ensurePublicDir();
   const posts = getBlogPosts();
+  const moments = getMoments();
 
   const sitemap = generateSitemap(posts);
   fs.writeFileSync(path.join(PUBLIC_DIR, 'sitemap.xml'), sitemap.trim());
 
   const rss = generateRss(posts);
   fs.writeFileSync(path.join(PUBLIC_DIR, 'rss.xml'), rss.trim());
+
+  const momentsRss = generateMomentsRss(moments);
+  fs.writeFileSync(path.join(PUBLIC_DIR, 'moments-rss.xml'), momentsRss.trim());
 }
 
 main();

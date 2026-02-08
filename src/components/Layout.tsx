@@ -109,6 +109,14 @@ function Header() {
           </li>
           <li>
             <Link
+              href="/moments"
+              className="text-gray-600 hover:text-slate-900 transition-colors"
+            >
+              Moments
+            </Link>
+          </li>
+          <li>
+            <Link
               href="/about"
               className="text-gray-600 hover:text-slate-900 transition-colors"
             >
@@ -156,6 +164,15 @@ function Header() {
                 className="block text-gray-600 hover:text-slate-900 transition-colors"
               >
                 Blog
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/moments"
+                onClick={() => setMenuOpen(false)}
+                className="block text-gray-600 hover:text-slate-900 transition-colors"
+              >
+                Moments
               </Link>
             </li>
             <li>
@@ -217,6 +234,11 @@ function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/moments" className="hover:text-white transition-colors">
+                  Moments
+                </Link>
+              </li>
+              <li>
                 <Link href="/about" className="hover:text-white transition-colors">
                   About
                 </Link>
@@ -266,6 +288,9 @@ function Footer() {
             </a>
             <a href="/rss.xml" className="hover:text-white transition-colors">
               RSS Feed
+            </a>
+            <a href="/moments-rss.xml" className="hover:text-white transition-colors">
+              Moments RSS
             </a>
           </div>
         </div>
