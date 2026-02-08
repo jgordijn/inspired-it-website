@@ -13,7 +13,7 @@ tags:
 
 "My coding Agent is the best!" I keep hearing this in developer communities. People debate which agent is the best AI coding tool. Claude Code, OpenCode, Cursor, etc. And people are passionate about their choice and trying to get their company to support their agent of choice. But here's the thing: the agent isn't doing what you think it's doing.
 
-I discovered [Pi](https://pi.dev) this week. It's a minimal AI agent with just four tools: read, write, edit, and bash. That's it. No MCP, no Todos, no sub-agents, and no fancy UI tweaks. Just four tools and a model. And it works.
+[Jeroen Dee](https://aishepherd.nl) pointed me towards [Pi](https://pi.dev) and together we expiremented with it this week. Pi is a minimal AI agent with just four tools: read, write, edit, and bash. That's it. No MCP, no Todos, no sub-agents, and no fancy UI tweaks. Just four tools and a model. And it works.
 
 That got me thinking. If four tools are enough, what exactly are all these agents *actually* doing?
 
