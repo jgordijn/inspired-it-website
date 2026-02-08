@@ -4,6 +4,7 @@ set -e
 echo "Building for TEST environment (www.softwaremaniac.nl)..."
 BASE_URL=https://www.softwaremaniac.nl \
 NEXT_PUBLIC_GOATCOUNTER_URL=https://softwaremaniac.goatcounter.com/count \
+SHOW_DRAFTS=true \
 npm run build
 
 echo "Deploying to SoftwaremaniacWebsite..."

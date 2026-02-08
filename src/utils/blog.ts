@@ -150,6 +150,10 @@ export interface BlogPost {
 
 const BLOG_DIR = path.join(process.cwd(), 'content', 'blog');
 
+export function shouldShowDrafts(): boolean {
+  return process.env.SHOW_DRAFTS === 'true';
+}
+
 export function getBlogPosts(): BlogPost[] {
   if (!fs.existsSync(BLOG_DIR)) {
     return [];
@@ -182,10 +186,10 @@ export function getBlogPosts(): BlogPost[] {
       } as BlogPost;
     })
     .filter((post) => {
-      if (process.env.NODE_ENV === 'production') {
-        return post.publish_status !== 'draft';
+      if (shouldShowDrafts()) {
+        return true;
       }
-      return true;
+      return post.publish_status !== 'draft';
     })
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
