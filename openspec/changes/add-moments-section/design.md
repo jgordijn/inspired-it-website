@@ -36,14 +36,12 @@ date: '2025-02-08'
 publish_status: draft  # optional
 ---
 
-First moment of the day. Can contain **markdown**, [links](https://example.com), and code.
+Some thoughts for the day. Can contain **markdown**, [links](https://example.com), and code.
 
----
-
-Second moment, separated by a horizontal rule (`---` / `<hr>`).
+Another paragraph — just natural markdown flow.
 ```
 
-Moments within a day are separated by `<hr>` (`---` in markdown). This is simple, familiar, and requires no custom parsing beyond splitting on `<hr>`.
+Each file is simply rendered as one block of markdown. No special separators or splitting logic needed. Multiple thoughts in a day are just paragraphs.
 
 ### 2. Parsing utility: Follow the blog.ts pattern
 
@@ -79,8 +77,6 @@ Each RSS item represents one day (not one individual moment), keeping the feed m
 
 **Single-page scalability** → After years of daily moments, the page could become large. Mitigation: This is a static site with short text content — even 1000 days would be manageable. If it becomes an issue, pagination can be added later without changing the content format.
 
-**`<hr>` separator conflicts** → If a moment's content contains `---`, it would be interpreted as a separator. Mitigation: The split happens on the rendered HTML `<hr>` tag, not on raw markdown `---`. Since gray-matter already consumes the frontmatter `---`, and markdown-it renders `---` inside content as `<hr>`, we split the HTML output. Authors should use `***` or `___` for thematic breaks within a moment if needed, though this is an edge case for micro-content.
-
-**No individual moment permalinks** → Moments can only be linked to by date anchor, not individually. Mitigation: Acceptable for the microblog use case. Individual moments within a day can be referenced by the date anchor. If needed later, moment-level anchors could be added with indices (e.g., `#2025-02-08-2`).
+**No individual moment permalinks** → Moments can only be linked to by date anchor, not individually. Mitigation: Acceptable for the microblog use case. Each day's content is linked via its date anchor (e.g., `#2025-02-08`).
 
 **Duplicate markdown-it setup** → The moments utility will have its own markdown-it instance, partially duplicating blog.ts. Mitigation: Moments need simpler rendering (no admonitions, no heading IDs), so the duplication is minimal and intentional. Extracting shared config can be done later.
