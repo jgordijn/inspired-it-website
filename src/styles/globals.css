@@ -170,6 +170,18 @@ pre.hljs code {
   @apply my-4 rounded-lg max-w-full;
 }
 
+/* Moments divider styles - Option A: Centered star */
+.moments-content hr {
+  @apply border-none my-1 text-center;
+  height: auto;
+}
+
+.moments-content hr::after {
+  content: '✦';
+  @apply text-gray-300 text-sm tracking-widest;
+}
+
+
 /* Admonitions / Callouts */
 .admonition {
   @apply my-6 p-4 rounded-md border-l-4 bg-gray-50;
