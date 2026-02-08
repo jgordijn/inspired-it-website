@@ -13,7 +13,7 @@
 
 ## 3. GitHub Environment Settings
 
-- [ ] 3.1 Remove required reviewers from the `production` environment in GitHub repo settings (Settings → Environments → production → remove protection rules). This is a manual step, not a code change.
+- [x] 3.1 Remove required reviewers from the `production` environment in GitHub repo settings (Settings → Environments → production → remove protection rules). This is a manual step, not a code change.
 
 ## 4. Verification
 
