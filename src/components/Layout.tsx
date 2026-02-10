@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import Head from 'next/head';
+import ThemeToggle from '@/components/ThemeToggle';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -30,26 +31,26 @@ export default function Layout({ children, title, description, ogImage, slug }: 
         <meta name="twitter:description" content={pageDescription} />
         <meta name="twitter:image" content={imageUrl} />
       </Head>
-      <div className="flex flex-col min-h-screen bg-white">
+      <div className="flex flex-col min-h-screen bg-white dark:bg-gray-900 dark:text-gray-100 transition-colors">
         <Header />
-      
+
       <main className="flex-grow">
         {title && (
-          <div className="bg-gradient-to-r from-slate-900 to-slate-700 text-white py-12">
+          <div className="bg-gradient-to-r from-slate-900 to-slate-700 dark:from-gray-800 dark:to-gray-700 text-white py-12">
             <div className="container-max">
               <h1 className="text-4xl font-bold mb-4">{title}</h1>
               {description && (
-                <p className="text-lg text-slate-200">{description}</p>
+                <p className="text-lg text-slate-200 dark:text-gray-300">{description}</p>
               )}
             </div>
           </div>
         )}
-        
+
         <div className="container-max py-12">
           {children}
         </div>
       </main>
-      
+
         <Footer />
       </div>
     </>
@@ -60,99 +61,103 @@ function Header() {
   const [menuOpen, setMenuOpen] = React.useState(false);
 
   return (
-    <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
+    <header className="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50">
       <nav className="container-max flex items-center justify-between py-4">
-        <Link href="/" className="flex items-center gap-2 sm:gap-4 text-slate-900 font-bold text-2xl">
+        <Link href="/" className="flex items-center gap-2 sm:gap-4 text-slate-900 dark:text-gray-100 font-bold text-2xl">
           <Image
             src="/logo.svg"
             alt="Inspired IT logo"
             width={56}
             height={56}
             priority
-            className="h-10 sm:h-14 w-auto"
+            className="h-10 sm:h-14 w-auto dark:brightness-0 dark:invert"
           />
           <span className="tracking-tight text-xl sm:text-[28px] leading-none">Inspired IT</span>
         </Link>
 
-        {/* Hamburger button - mobile only */}
-        <button
-          onClick={() => setMenuOpen(!menuOpen)}
-          className="lg:hidden p-2 text-gray-600 hover:text-slate-900"
-          aria-label="Toggle menu"
-        >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            {menuOpen ? (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            ) : (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            )}
-          </svg>
-        </button>
+        <div className="flex items-center gap-2">
+          <ThemeToggle />
 
-        {/* Desktop menu */}
-        <ul className="hidden lg:flex gap-8">
-          <li>
-            <Link
-              href="/"
-              className="text-gray-600 hover:text-slate-900 transition-colors"
-            >
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/blog"
-              className="text-gray-600 hover:text-slate-900 transition-colors"
-            >
-              Blog
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/moments"
-              className="text-gray-600 hover:text-slate-900 transition-colors"
-            >
-              Moments
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/about"
-              className="text-gray-600 hover:text-slate-900 transition-colors"
-            >
-              About
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/contact"
-              className="text-gray-600 hover:text-slate-900 transition-colors"
-            >
-              Contact
-            </Link>
-          </li>
-          {process.env.NODE_ENV !== 'production' && (
+          {/* Hamburger button - mobile only */}
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="lg:hidden p-2 text-gray-600 hover:text-slate-900 dark:text-gray-400 dark:hover:text-gray-100"
+            aria-label="Toggle menu"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              {menuOpen ? (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              )}
+            </svg>
+          </button>
+
+          {/* Desktop menu */}
+          <ul className="hidden lg:flex gap-8 ml-4">
             <li>
               <Link
-                href="/admin/markdown-converter"
-                className="text-blue-600 hover:text-blue-700 transition-colors font-medium"
+                href="/"
+                className="text-gray-600 hover:text-slate-900 dark:text-gray-400 dark:hover:text-gray-100 transition-colors"
               >
-                Tools
+                Home
               </Link>
             </li>
-          )}
-        </ul>
+            <li>
+              <Link
+                href="/blog"
+                className="text-gray-600 hover:text-slate-900 dark:text-gray-400 dark:hover:text-gray-100 transition-colors"
+              >
+                Blog
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/moments"
+                className="text-gray-600 hover:text-slate-900 dark:text-gray-400 dark:hover:text-gray-100 transition-colors"
+              >
+                Moments
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/about"
+                className="text-gray-600 hover:text-slate-900 dark:text-gray-400 dark:hover:text-gray-100 transition-colors"
+              >
+                About
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/contact"
+                className="text-gray-600 hover:text-slate-900 dark:text-gray-400 dark:hover:text-gray-100 transition-colors"
+              >
+                Contact
+              </Link>
+            </li>
+            {process.env.NODE_ENV !== 'production' && (
+              <li>
+                <Link
+                  href="/admin/markdown-converter"
+                  className="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 transition-colors font-medium"
+                >
+                  Tools
+                </Link>
+              </li>
+            )}
+          </ul>
+        </div>
       </nav>
 
       {/* Mobile menu dropdown */}
       {menuOpen && (
-        <div className="lg:hidden border-t border-gray-200 bg-white">
+        <div className="lg:hidden border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
           <ul className="container-max py-4 space-y-4">
             <li>
               <Link
                 href="/"
                 onClick={() => setMenuOpen(false)}
-                className="block text-gray-600 hover:text-slate-900 transition-colors"
+                className="block text-gray-600 hover:text-slate-900 dark:text-gray-400 dark:hover:text-gray-100 transition-colors"
               >
                 Home
               </Link>
@@ -161,7 +166,7 @@ function Header() {
               <Link
                 href="/blog"
                 onClick={() => setMenuOpen(false)}
-                className="block text-gray-600 hover:text-slate-900 transition-colors"
+                className="block text-gray-600 hover:text-slate-900 dark:text-gray-400 dark:hover:text-gray-100 transition-colors"
               >
                 Blog
               </Link>
@@ -170,7 +175,7 @@ function Header() {
               <Link
                 href="/moments"
                 onClick={() => setMenuOpen(false)}
-                className="block text-gray-600 hover:text-slate-900 transition-colors"
+                className="block text-gray-600 hover:text-slate-900 dark:text-gray-400 dark:hover:text-gray-100 transition-colors"
               >
                 Moments
               </Link>
@@ -179,7 +184,7 @@ function Header() {
               <Link
                 href="/about"
                 onClick={() => setMenuOpen(false)}
-                className="block text-gray-600 hover:text-slate-900 transition-colors"
+                className="block text-gray-600 hover:text-slate-900 dark:text-gray-400 dark:hover:text-gray-100 transition-colors"
               >
                 About
               </Link>
@@ -188,7 +193,7 @@ function Header() {
               <Link
                 href="/contact"
                 onClick={() => setMenuOpen(false)}
-                className="block text-gray-600 hover:text-slate-900 transition-colors"
+                className="block text-gray-600 hover:text-slate-900 dark:text-gray-400 dark:hover:text-gray-100 transition-colors"
               >
                 Contact
               </Link>
@@ -198,7 +203,7 @@ function Header() {
                 <Link
                   href="/admin/markdown-converter"
                   onClick={() => setMenuOpen(false)}
-                  className="block text-blue-600 hover:text-blue-700 transition-colors font-medium"
+                  className="block text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 transition-colors font-medium"
                 >
                   Tools
                 </Link>
@@ -213,9 +218,9 @@ function Header() {
 
 function Footer() {
   const currentYear = new Date().getFullYear();
-  
+
   return (
-    <footer className="bg-slate-900 text-white mt-20">
+    <footer className="bg-slate-900 dark:bg-gray-950 text-white mt-20">
       <div className="container-max py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           <div>
@@ -224,7 +229,7 @@ function Footer() {
               Software development with AI, architecture, and technical expertise.
             </p>
           </div>
-          
+
           <div>
             <h4 className="font-bold mb-4">Quick Links</h4>
             <ul className="space-y-2 text-slate-400">
@@ -250,7 +255,7 @@ function Footer() {
               </li>
             </ul>
           </div>
-          
+
           <div>
             <h4 className="font-bold mb-4">Connect</h4>
             <ul className="space-y-2 text-slate-400">
@@ -277,7 +282,7 @@ function Footer() {
             </ul>
           </div>
         </div>
-        
+
         <div className="border-t border-slate-700 pt-8 flex justify-between items-center">
           <p className="text-slate-400">
             &copy; {currentYear} Inspired IT. All rights reserved.

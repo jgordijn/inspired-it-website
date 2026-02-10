@@ -131,15 +131,15 @@ tags: ["tag1", "tag2", "tag3"]
   };
 
   return (
-    <Layout 
-      title="Markdown to HTML Converter" 
+    <Layout
+      title="Markdown to HTML Converter"
       description="Convert Markdown to HTML and create blog posts"
     >
       <div className="max-w-6xl mx-auto">
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-8">
+        <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-6 mb-8">
           <h2 className="font-bold text-lg mb-2">How to Use</h2>
-          <p className="text-gray-700">
-            1. Write or paste your markdown on the left • 2. See HTML preview on the right • 
+          <p className="text-gray-700 dark:text-gray-300">
+            1. Write or paste your markdown on the left • 2. See HTML preview on the right •
             3. Copy the HTML or download the complete blog post file
           </p>
         </div>
@@ -151,9 +151,9 @@ tags: ["tag1", "tag2", "tag3"]
             <textarea
               value={frontmatter}
               onChange={(e) => setFrontmatter(e.target.value)}
-              className="w-full h-32 px-4 py-3 border border-gray-300 rounded-lg font-mono text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-50"
+              className="w-full h-32 px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg font-mono text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-50 dark:bg-gray-800 dark:text-gray-100"
             />
-            <p className="text-sm text-gray-600 mt-2">
+            <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">
               This YAML metadata will be included in your blog post file for proper formatting and organization.
             </p>
           </div>
@@ -164,7 +164,7 @@ tags: ["tag1", "tag2", "tag3"]
             <textarea
               value={markdown}
               onChange={(e) => setMarkdown(e.target.value)}
-              className="w-full h-96 px-4 py-3 border border-gray-300 rounded-lg font-mono text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full h-96 px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg font-mono text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-800 dark:text-gray-100 dark:placeholder-gray-400"
               placeholder="Enter your markdown here..."
             />
           </div>
@@ -173,7 +173,7 @@ tags: ["tag1", "tag2", "tag3"]
           <div>
             <h3 className="font-bold text-lg mb-3">HTML Preview</h3>
             <div
-              className="w-full h-96 px-4 py-3 border border-gray-300 rounded-lg overflow-auto bg-white prose prose-sm"
+              className="w-full h-96 px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg overflow-auto bg-white dark:bg-gray-800 prose prose-sm dark:prose-invert"
               dangerouslySetInnerHTML={{ __html: html }}
             />
           </div>
@@ -220,7 +220,7 @@ tags: []
         </div>
 
         {/* Instructions */}
-        <div className="bg-gray-50 rounded-lg p-8 border border-gray-200">
+        <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-8 border border-gray-200 dark:border-gray-700">
           <h2 className="text-2xl font-bold mb-6">Complete Workflow</h2>
 
           <div className="space-y-6">
@@ -232,7 +232,7 @@ tags: []
               </div>
               <div>
                 <h3 className="font-bold mb-2">Edit Frontmatter</h3>
-                <p className="text-gray-700">
+                <p className="text-gray-700 dark:text-gray-300">
                   Update the YAML frontmatter with your post title, description, tags, and other metadata.
                 </p>
               </div>
@@ -246,7 +246,7 @@ tags: []
               </div>
               <div>
                 <h3 className="font-bold mb-2">Write Your Content</h3>
-                <p className="text-gray-700">
+                <p className="text-gray-700 dark:text-gray-300">
                   Write your blog post in Markdown format. Use headers, bold, italic, code blocks, and more.
                 </p>
               </div>
@@ -260,7 +260,7 @@ tags: []
               </div>
               <div>
                 <h3 className="font-bold mb-2">Preview in Real-Time</h3>
-                <p className="text-gray-700">
+                <p className="text-gray-700 dark:text-gray-300">
                   See your HTML preview instantly as you type. Check formatting and structure.
                 </p>
               </div>
@@ -274,8 +274,8 @@ tags: []
               </div>
               <div>
                 <h3 className="font-bold mb-2">Download or Save</h3>
-                <p className="text-gray-700">
-                  Click "Download Blog Post File" to get a .md file. Save it to <code>content/blog/</code> folder. 
+                <p className="text-gray-700 dark:text-gray-300">
+                  Click "Download Blog Post File" to get a .md file. Save it to <code className="dark:text-red-400 dark:bg-gray-700">content/blog/</code> folder.
                   The site will automatically generate the blog post on next build!
                 </p>
               </div>
@@ -289,8 +289,8 @@ tags: []
               </div>
               <div>
                 <h3 className="font-bold mb-2">Publish Automatically</h3>
-                <p className="text-gray-700">
-                  Build your site (<code>npm run build</code>). The blog post will appear on your blog page 
+                <p className="text-gray-700 dark:text-gray-300">
+                  Build your site (<code className="dark:text-red-400 dark:bg-gray-700">npm run build</code>). The blog post will appear on your blog page
                   and homepage automatically with all SEO metadata!
                 </p>
               </div>

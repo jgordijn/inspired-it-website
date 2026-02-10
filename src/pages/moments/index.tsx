@@ -26,7 +26,7 @@ export default function MomentsPage({ moments }: MomentsPageProps) {
       slug="moments"
     >
       {moments.length === 0 ? (
-        <p className="text-gray-500 text-center py-12">
+        <p className="text-gray-500 dark:text-gray-400 text-center py-12">
           No moments yet. Check back soon!
         </p>
       ) : (
@@ -35,7 +35,7 @@ export default function MomentsPage({ moments }: MomentsPageProps) {
           <div className="lg:hidden mb-8">
             <button
               onClick={() => setNavOpen(!navOpen)}
-              className="flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-slate-900 transition-colors"
+              className="flex items-center gap-2 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-slate-900 dark:hover:text-gray-100 transition-colors"
             >
               <svg
                 className={`w-4 h-4 transition-transform ${navOpen ? 'rotate-90' : ''}`}
@@ -59,11 +59,11 @@ export default function MomentsPage({ moments }: MomentsPageProps) {
                     <a
                       href={`#${m.date}`}
                       onClick={() => setNavOpen(false)}
-                      className="text-sm text-blue-600 hover:text-blue-800 transition-colors"
+                      className="text-sm text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors"
                     >
                       {formatDate(m.date)}
                       {m.publish_status === 'draft' && (
-                        <span className="ml-1 inline-block align-middle text-[10px] font-semibold uppercase tracking-wide bg-yellow-100 text-yellow-800 px-1.5 py-0.5 rounded-full">
+                        <span className="ml-1 inline-block align-middle text-[10px] font-semibold uppercase tracking-wide bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 px-1.5 py-0.5 rounded-full">
                           Draft
                         </span>
                       )}
@@ -80,11 +80,11 @@ export default function MomentsPage({ moments }: MomentsPageProps) {
               <article key={moment.date} className="mb-12">
                 <h2
                   id={moment.date}
-                  className="text-xl font-bold text-slate-900 mb-4 scroll-mt-24"
+                  className="text-xl font-bold text-slate-900 dark:text-gray-100 mb-4 scroll-mt-24"
                 >
                   {formatDate(moment.date)}
                   {moment.publish_status === 'draft' && (
-                    <span className="ml-2 inline-block align-middle text-xs font-semibold uppercase tracking-wide bg-yellow-100 text-yellow-800 px-2 py-0.5 rounded-full">
+                    <span className="ml-2 inline-block align-middle text-xs font-semibold uppercase tracking-wide bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 px-2 py-0.5 rounded-full">
                       Draft
                     </span>
                   )}
@@ -100,7 +100,7 @@ export default function MomentsPage({ moments }: MomentsPageProps) {
           {/* Desktop sidebar */}
           <aside className="hidden lg:block w-48 shrink-0">
             <nav className="sticky top-24">
-              <h3 className="text-sm font-bold text-slate-900 mb-3 uppercase tracking-wider">
+              <h3 className="text-sm font-bold text-slate-900 dark:text-gray-100 mb-3 uppercase tracking-wider">
                 Dates
               </h3>
               <ul className="space-y-1">
@@ -108,11 +108,11 @@ export default function MomentsPage({ moments }: MomentsPageProps) {
                   <li key={m.date}>
                     <a
                       href={`#${m.date}`}
-                      className="text-sm text-gray-600 hover:text-slate-900 transition-colors"
+                      className="text-sm text-gray-600 dark:text-gray-400 hover:text-slate-900 dark:hover:text-gray-100 transition-colors"
                     >
                       {formatDate(m.date)}
                       {m.publish_status === 'draft' && (
-                        <span className="ml-1 inline-block align-middle text-[10px] font-semibold uppercase tracking-wide bg-yellow-100 text-yellow-800 px-1.5 py-0.5 rounded-full">
+                        <span className="ml-1 inline-block align-middle text-[10px] font-semibold uppercase tracking-wide bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 px-1.5 py-0.5 rounded-full">
                           Draft
                         </span>
                       )}
