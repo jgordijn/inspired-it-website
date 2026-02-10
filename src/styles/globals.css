@@ -13,6 +13,10 @@
     @apply bg-white text-gray-900 m-0 p-0;
   }
 
+  .dark body {
+    @apply bg-gray-900 text-gray-100;
+  }
+
   main {
     @apply w-full;
   }
@@ -21,6 +25,10 @@
 @layer components {
   .prose-headings {
     @apply text-gray-900 font-bold;
+  }
+
+  .dark .prose-headings {
+    @apply text-gray-100;
   }
 
   .container-max {
@@ -33,6 +41,10 @@
 
   .btn-secondary {
     @apply px-6 py-2 bg-gray-200 text-gray-900 rounded-lg hover:bg-gray-300 transition-colors;
+  }
+
+  .dark .btn-secondary {
+    @apply bg-gray-700 text-gray-100 hover:bg-gray-600;
   }
 }
 
@@ -67,6 +79,12 @@ pre.hljs code {
   @apply text-2xl font-bold mt-6 mb-3 text-gray-900;
 }
 
+.dark .blog-content h1,
+.dark .blog-content h2,
+.dark .blog-content h3 {
+  @apply text-gray-100;
+}
+
 /* Heading anchor links */
 .blog-content h2,
 .blog-content h3,
@@ -79,6 +97,10 @@ pre.hljs code {
 .heading-anchor {
   @apply ml-2 opacity-0 transition-opacity text-gray-400 hover:text-blue-600;
   text-decoration: none !important;
+}
+
+.dark .heading-anchor {
+  @apply text-gray-500 hover:text-blue-400;
 }
 
 .blog-content h2:hover .heading-anchor,
@@ -114,8 +136,16 @@ pre.hljs code {
   @apply border-l-4 border-blue-600 pl-4 italic text-gray-600 my-4;
 }
 
+.dark .blog-content blockquote {
+  @apply text-gray-400 border-blue-500;
+}
+
 .blog-content a {
   @apply text-blue-600 hover:underline;
+}
+
+.dark .blog-content a {
+  @apply text-blue-400;
 }
 
 .blog-content disclaimer {
@@ -123,9 +153,29 @@ pre.hljs code {
   display: block;
 }
 
+.dark .blog-content disclaimer {
+  @apply text-gray-400 border-gray-600;
+}
+
+.blog-content code {
+  @apply text-red-600 bg-gray-100 px-1.5 py-0.5 rounded text-sm font-medium;
+}
+
+.dark .blog-content code {
+  @apply text-red-400 bg-gray-800;
+}
+
+.blog-content pre code {
+  @apply bg-transparent text-inherit;
+}
+
 /* Moments content styling */
 .moments-content {
   @apply text-gray-700 leading-relaxed;
+}
+
+.dark .moments-content {
+  @apply text-gray-300;
 }
 
 .moments-content p {
@@ -136,8 +186,16 @@ pre.hljs code {
   @apply text-blue-600 underline hover:text-blue-800 transition-colors;
 }
 
+.dark .moments-content a {
+  @apply text-blue-400 hover:text-blue-300;
+}
+
 .moments-content code {
   @apply text-red-600 bg-gray-100 px-1.5 py-0.5 rounded text-sm font-medium;
+}
+
+.dark .moments-content code {
+  @apply text-red-400 bg-gray-800;
 }
 
 .moments-content pre {
@@ -152,6 +210,10 @@ pre.hljs code {
 
 .moments-content blockquote {
   @apply border-l-4 border-blue-600 pl-4 italic text-gray-500 my-4;
+}
+
+.dark .moments-content blockquote {
+  @apply text-gray-400 border-blue-500;
 }
 
 .moments-content ul {
@@ -181,11 +243,19 @@ pre.hljs code {
   @apply text-gray-300 text-sm tracking-widest;
 }
 
+.dark .moments-content hr::after {
+  @apply text-gray-600;
+}
+
 
 /* Admonitions / Callouts */
 .admonition {
   @apply my-6 p-4 rounded-md border-l-4 bg-gray-50;
   border-left-width: 4px;
+}
+
+.dark .admonition {
+  @apply bg-gray-800;
 }
 
 .admonition-title {
@@ -212,6 +282,14 @@ pre.hljs code {
   color: rgb(66, 133, 244);
 }
 
+.dark .admonition-info {
+  background-color: rgba(66, 133, 244, 0.1);
+}
+
+.dark .admonition-info .admonition-title {
+  color: rgb(120, 170, 255);
+}
+
 .admonition-note {
   background-color: rgb(240, 240, 240);
   border-left-color: rgb(128, 128, 128);
@@ -219,6 +297,14 @@ pre.hljs code {
 
 .admonition-note .admonition-title {
   color: rgb(80, 80, 80);
+}
+
+.dark .admonition-note {
+  background-color: rgba(128, 128, 128, 0.1);
+}
+
+.dark .admonition-note .admonition-title {
+  color: rgb(180, 180, 180);
 }
 
 .admonition-tip {
@@ -230,6 +316,14 @@ pre.hljs code {
   color: rgb(15, 157, 88);
 }
 
+.dark .admonition-tip {
+  background-color: rgba(15, 157, 88, 0.1);
+}
+
+.dark .admonition-tip .admonition-title {
+  color: rgb(80, 200, 140);
+}
+
 .admonition-warning {
   background-color: rgb(255, 250, 235);
   border-left-color: rgb(244, 180, 0);
@@ -237,6 +331,14 @@ pre.hljs code {
 
 .admonition-warning .admonition-title {
   color: rgb(200, 140, 0);
+}
+
+.dark .admonition-warning {
+  background-color: rgba(244, 180, 0, 0.1);
+}
+
+.dark .admonition-warning .admonition-title {
+  color: rgb(255, 210, 80);
 }
 
 .admonition-important,
@@ -250,10 +352,15 @@ pre.hljs code {
   color: rgb(219, 68, 55);
 }
 
-/* Dark mode overrides if needed - assuming simple dark mode class or media query isn't set up yet, 
-   but user mentioned Obsidian which is often dark. Let's make them neutral dark-ish compatible or use CSS vars later.
-   For now, sticking to light mode base as per globals.css context, or using transparency.
-*/
+.dark .admonition-important,
+.dark .admonition-caution {
+  background-color: rgba(219, 68, 55, 0.1);
+}
+
+.dark .admonition-important .admonition-title,
+.dark .admonition-caution .admonition-title {
+  color: rgb(255, 120, 110);
+}
 
 /* Mermaid Diagram Containers */
 .mermaid-diagram {
@@ -266,6 +373,10 @@ pre.hljs code {
 /* Loading state before Mermaid renders */
 .mermaid-diagram:not(.mermaid-rendered):not(.mermaid-error) {
   @apply bg-gray-100 rounded-lg animate-pulse;
+}
+
+.dark .mermaid-diagram:not(.mermaid-rendered):not(.mermaid-error) {
+  @apply bg-gray-700;
 }
 
 /* Rendered diagrams */
@@ -283,19 +394,12 @@ pre.hljs code {
   @apply bg-red-50 text-red-600 text-sm p-4 rounded-lg;
 }
 
-.mermaid-diagram.mermaid-error::before {
-  content: "Failed to render diagram";
+.dark .mermaid-diagram.mermaid-error {
+  @apply bg-red-900/20 text-red-400;
 }
 
-/* Dark mode support */
-@media (prefers-color-scheme: dark) {
-  .mermaid-diagram:not(.mermaid-rendered):not(.mermaid-error) {
-    @apply bg-gray-700;
-  }
-  
-  .mermaid-diagram.mermaid-error {
-    @apply bg-red-900/20 text-red-400;
-  }
+.mermaid-diagram.mermaid-error::before {
+  content: "Failed to render diagram";
 }
 
 /* Language Tabs */
@@ -317,9 +421,18 @@ lang-tabs {
   font-size: inherit;
 }
 
+.dark .lang-tabs-toggle button {
+  @apply text-gray-400 hover:text-gray-200;
+}
+
 .lang-tabs-toggle button.active {
   @apply text-blue-600;
   border-bottom-color: rgb(37, 99, 235); /* blue-600 */
+}
+
+.dark .lang-tabs-toggle button.active {
+  @apply text-blue-400;
+  border-bottom-color: rgb(96, 165, 250); /* blue-400 */
 }
 
 /* Hide inactive tab content */
@@ -330,4 +443,8 @@ lang-tabs > tab {
 lang-tabs > tab.active {
   display: block;
   @apply border-l-4 border-blue-600 pl-4 text-gray-600 italic;
+}
+
+.dark lang-tabs > tab.active {
+  @apply border-blue-400 text-gray-400;
 }

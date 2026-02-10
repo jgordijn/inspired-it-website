@@ -9,7 +9,7 @@ export default function Contact() {
     >
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-12">
-          <p className="text-xl text-gray-700 mb-8">
+          <p className="text-xl text-gray-700 dark:text-gray-300 mb-8">
             I prefer to connect and communicate through LinkedIn. This helps me maintain
             professional connections and makes it easy to share insights and collaborate.
           </p>
@@ -25,28 +25,28 @@ export default function Contact() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
-          <div className="bg-blue-50 rounded-lg p-6">
+          <div className="bg-blue-50 dark:bg-gray-800 rounded-lg p-6">
             <div className="text-3xl mb-4">💼</div>
             <h3 className="font-bold text-lg mb-3">Consultation Requests</h3>
-            <p className="text-gray-700 text-sm">
+            <p className="text-gray-700 dark:text-gray-300 text-sm">
               Need help adopting AI tools in your development workflow, or guidance on software architecture?
               Let's discuss your project.
             </p>
           </div>
 
-          <div className="bg-blue-50 rounded-lg p-6">
+          <div className="bg-blue-50 dark:bg-gray-800 rounded-lg p-6">
             <div className="text-3xl mb-4">🤝</div>
             <h3 className="font-bold text-lg mb-3">Collaboration</h3>
-            <p className="text-gray-700 text-sm">
+            <p className="text-gray-700 dark:text-gray-300 text-sm">
               Interested in collaborating on a project or discussing technical topics?
               Let's connect.
             </p>
           </div>
 
-          <div className="bg-blue-50 rounded-lg p-6">
+          <div className="bg-blue-50 dark:bg-gray-800 rounded-lg p-6">
             <div className="text-3xl mb-4">💡</div>
             <h3 className="font-bold text-lg mb-3">Technical Discussion</h3>
-            <p className="text-gray-700 text-sm">
+            <p className="text-gray-700 dark:text-gray-300 text-sm">
               Want to discuss AI development, Kotlin, software architecture, or other technical topics?
               I'm always happy to connect.
             </p>

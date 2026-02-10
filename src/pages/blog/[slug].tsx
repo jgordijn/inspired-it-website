@@ -42,13 +42,13 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
   };
 }
 
-export default function BlogPost({ 
-  post, 
+export default function BlogPost({
+  post,
   relatedPosts,
   hasMermaid,
   hasLangTabs,
-}: { 
-  post: any; 
+}: {
+  post: any;
   relatedPosts: any[];
   hasMermaid: boolean;
   hasLangTabs: boolean;
@@ -78,14 +78,14 @@ export default function BlogPost({
             {post.tags.map((tag: string) => (
               <span
                 key={tag}
-                className="inline-block bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-medium"
+                className="inline-block bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 px-3 py-1 rounded-full text-sm font-medium"
               >
                 {tag}
               </span>
             ))}
           </div>
 
-          <div className="flex flex-col sm:flex-row sm:items-center gap-4 text-sm text-gray-600 border-b border-gray-200 pb-4">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-4 text-sm text-gray-600 dark:text-gray-400 border-b border-gray-200 dark:border-gray-700 pb-4">
             <span>📅 {new Date(post.date).toLocaleDateString('en-US', {
               year: 'numeric',
               month: 'long',
@@ -101,10 +101,10 @@ export default function BlogPost({
           className="blog-content prose prose-lg max-w-none mb-12"
           dangerouslySetInnerHTML={{ __html: post.html }}
         />
-        
+
         {/* Load Mermaid only if post contains diagrams */}
         {hasMermaid && <MermaidDiagram />}
-        
+
         {/* Load LanguageTabs only if post contains language tabs */}
         {hasLangTabs && <LanguageTabs />}
 
@@ -117,15 +117,15 @@ export default function BlogPost({
                 <Link
                   key={relatedPost.slug}
                   href={`/blog/${relatedPost.slug}`}
-                  className="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-lg transition-shadow"
+                  className="block bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 hover:shadow-lg dark:hover:shadow-gray-900/50 transition-shadow"
                 >
-                  <h3 className="font-bold text-slate-900 mb-2 line-clamp-2">
+                  <h3 className="font-bold text-slate-900 dark:text-gray-100 mb-2 line-clamp-2">
                     {relatedPost.title}
                   </h3>
-                  <p className="text-sm text-gray-600 line-clamp-2 mb-3">
+                  <p className="text-sm text-gray-600 dark:text-gray-400 line-clamp-2 mb-3">
                     {relatedPost.description}
                   </p>
-                  <div className="flex justify-between items-center text-xs text-gray-500">
+                  <div className="flex justify-between items-center text-xs text-gray-500 dark:text-gray-400">
                     <span>{relatedPost.date}</span>
                     <span>{relatedPost.readingTime} min</span>
                   </div>
@@ -136,8 +136,8 @@ export default function BlogPost({
         )}
 
         {/* Navigation */}
-        <div className="mt-12 pt-8 border-t border-gray-200">
-          <Link href="/blog" className="text-blue-600 hover:text-blue-700 font-medium">
+        <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
+          <Link href="/blog" className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium">
             ← Back to all articles
           </Link>
         </div>
