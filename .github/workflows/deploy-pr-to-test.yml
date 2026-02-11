@@ -66,11 +66,21 @@ jobs:
           NEXT_PUBLIC_GOATCOUNTER_URL: https://softwaremaniac.goatcounter.com/count
           SHOW_DRAFTS: 'true'
 
+      - name: Cache rclone
+        id: cache-rclone
+        uses: actions/cache@v4
+        with:
+          path: /usr/bin/rclone
+          key: rclone-1.73.0-linux-amd64
+
       - name: Install rclone
+        if: steps.cache-rclone.outputs.cache-hit != 'true'
         run: |
-          curl -O https://downloads.rclone.org/rclone-current-linux-amd64.deb
-          sudo dpkg -i rclone-current-linux-amd64.deb
-          rclone version
+          curl -O https://downloads.rclone.org/v1.73.0/rclone-v1.73.0-linux-amd64.deb
+          sudo dpkg -i rclone-v1.73.0-linux-amd64.deb
+
+      - name: Verify rclone
+        run: rclone version
 
       - name: Deploy to test
         run: "rclone sync out/ testsite: --checksum --verbose"
