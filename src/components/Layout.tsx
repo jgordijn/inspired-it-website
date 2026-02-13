@@ -113,6 +113,14 @@ function Header() {
             </li>
             <li>
               <Link
+                href="/events"
+                className="text-gray-600 hover:text-slate-900 dark:text-gray-400 dark:hover:text-gray-100 transition-colors"
+              >
+                Events
+              </Link>
+            </li>
+            <li>
+              <Link
                 href="/moments"
                 className="text-gray-600 hover:text-slate-900 dark:text-gray-400 dark:hover:text-gray-100 transition-colors"
               >
@@ -169,6 +177,15 @@ function Header() {
                 className="block text-gray-600 hover:text-slate-900 dark:text-gray-400 dark:hover:text-gray-100 transition-colors"
               >
                 Blog
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/events"
+                onClick={() => setMenuOpen(false)}
+                className="block text-gray-600 hover:text-slate-900 dark:text-gray-400 dark:hover:text-gray-100 transition-colors"
+              >
+                Events
               </Link>
             </li>
             <li>
@@ -236,6 +253,11 @@ function Footer() {
               <li>
                 <Link href="/blog" className="hover:text-white transition-colors">
                   Blog
+                </Link>
+              </li>
+              <li>
+                <Link href="/events" className="hover:text-white transition-colors">
+                  Events
                 </Link>
               </li>
               <li>

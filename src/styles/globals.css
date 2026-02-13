@@ -402,6 +402,27 @@ pre.hljs code {
   content: "Failed to render diagram";
 }
 
+/* Events content styling */
+.events-content p {
+  @apply mb-3;
+}
+
+.events-content a {
+  @apply text-blue-600 underline hover:text-blue-800 transition-colors;
+}
+
+.dark .events-content a {
+  @apply text-blue-400 hover:text-blue-300;
+}
+
+.events-content code {
+  @apply text-red-600 bg-gray-100 px-1.5 py-0.5 rounded text-sm font-medium;
+}
+
+.dark .events-content code {
+  @apply text-red-400 bg-gray-800;
+}
+
 /* Language Tabs */
 lang-tabs {
   display: block;
