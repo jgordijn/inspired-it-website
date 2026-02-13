@@ -7,6 +7,11 @@ on:
 # Deploy a PR branch to the test site by commenting /deploy-test on the PR
 # Production deployment is never possible from a PR
 
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+
 jobs:
   deploy-test:
     name: Deploy PR to Test
