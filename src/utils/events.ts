@@ -15,9 +15,9 @@ export interface EventItem {
   dates: string[];
   description: string;
   descriptionHtml: string;
-  image?: string;
-  imageAlt?: string;
-  imageCredit?: string;
+  image: string | null;
+  imageAlt: string;
+  imageCredit: string | null;
   publish_status: 'draft' | 'published' | null;
 }
 
@@ -59,9 +59,9 @@ export function getEvents(): EventItem[] {
         dates,
         description: descriptionSource,
         descriptionHtml,
-        image: data.image || undefined,
+        image: data.image || null,
         imageAlt: data.image_alt || data.title || 'Event image',
-        imageCredit: data.image_credit || undefined,
+        imageCredit: data.image_credit || null,
         publish_status: data.publish_status || null,
       } as EventItem;
     })
