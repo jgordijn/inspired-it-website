@@ -136,13 +136,10 @@ jobs:
 
   deploy-prod:
     name: Deploy to Production
-    needs: [build-prod, deploy-test]
+    needs: build-prod
     if: |
-      always() && needs.build-prod.result == 'success' && (
-        github.ref == 'refs/heads/main' && github.event_name == 'push' && needs.deploy-test.result == 'success' ||
-        github.event_name == 'workflow_dispatch' && inputs.environment == 'production' ||
-        github.event_name == 'workflow_dispatch' && inputs.environment == 'both' && needs.deploy-test.result == 'success'
-      )
+      github.ref == 'refs/heads/main' && github.event_name == 'push' ||
+      github.event_name == 'workflow_dispatch' && (inputs.environment == 'production' || inputs.environment == 'both')
     runs-on: ubuntu-latest
     environment: production
     concurrency:
