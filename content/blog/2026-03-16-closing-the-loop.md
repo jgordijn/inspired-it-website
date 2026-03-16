@@ -75,9 +75,9 @@ When the agent keeps getting something wrong, the temptation is to just fix it y
 
 Every time you manually correct the agent, you're doing a one-time fix. Every time you automate the feedback, you're fixing it forever.
 
-## Go Slower to Go Faster
+## 
 
-Yes, all of this makes each individual task slower. Setting up tests, writing reviewer instructions, configuring browser checks — that's real upfront work. But it pays for itself on the very next task. And the one after that. The compound effect is enormous.
+Yes, all of this makes each individual task slower. Setting up tests, writing reviewer instructions, configuring browser checks - that's real upfront work. But it pays for itself on the very next task. And the one after that. The compound effect is enormous.
 
 I spent my time crafting the OpenSpec proposal and reviewing the end result. The robot handles the rest. I have become [The Architect](/blog/the-ai-coding-ladder/#level-6-the-architect).
 
