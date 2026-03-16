@@ -5,8 +5,429 @@
     <link>https://inspired-it.nl/moments</link>
     <description>Quick thoughts, observations, and links from Jeroen Gordijn</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 10 Feb 2026 20:04:48 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 16 Mar 2026 20:46:01 GMT</lastBuildDate>
     <atom:link href="https://inspired-it.nl/moments-rss.xml" rel="self" type="application/rss+xml" />
+
+  <item>
+    <title>March 15, 2026</title>
+    <link>https://inspired-it.nl/moments#2026-03-15</link>
+    <guid isPermaLink="true">https://inspired-it.nl/moments#2026-03-15</guid>
+    <content:encoded><![CDATA[<p>Seems like an interesting project: <a href="https://github.com/backnotprop/plannotator">plannotator</a> — make notes and submit to your agent</p>
+]]></content:encoded>
+    <pubDate>Sun, 15 Mar 2026 00:00:00 GMT</pubDate>
+  </item>
+
+  <item>
+    <title>March 13, 2026</title>
+    <link>https://inspired-it.nl/moments#2026-03-13</link>
+    <guid isPermaLink="true">https://inspired-it.nl/moments#2026-03-13</guid>
+    <content:encoded><![CDATA[<p>Nice blog <a href="https://blog.lmorchard.com/2026/03/11/grief-and-the-ai-split/">Grief and the AI Split</a>. I see many people who are resisting AI, because they feel love and pride in writing code. I understand. It feels painful losing the thing you really love. I hope many will find new joy in using AI, because that is the way we are heading.</p>
+<hr>
+<p>Anthhropic just dropped 1M context window by default. No more extra pricing.</p>
+<p><img src="https://inspired-it.nl/images/moments/2026-03-13-200606-1.png" alt=""></p>
+<p>Retrieval is also really good.</p>
+]]></content:encoded>
+    <pubDate>Fri, 13 Mar 2026 00:00:00 GMT</pubDate>
+  </item>
+
+  <item>
+    <title>March 12, 2026</title>
+    <link>https://inspired-it.nl/moments#2026-03-12</link>
+    <guid isPermaLink="true">https://inspired-it.nl/moments#2026-03-12</guid>
+    <content:encoded><![CDATA[<p>Blind taste test to research if people prefer AI written content, or human written content: <a href="https://www.nytimes.com/interactive/2026/03/09/business/ai-writing-quiz.html">https://www.nytimes.com/interactive/2026/03/09/business/ai-writing-quiz.html</a></p>
+<p>After 86.000 responses about 54% preferred the AI content: <a href="https://x.com/kevinroose/status/2031397522590282212?s=46">https://x.com/kevinroose/status/2031397522590282212?s=46</a></p>
+<hr>
+<p>Very interesting quote by Yegge: <a href="https://youtube.com/clip/UgkxkMh-EMniu2u39mOff3pCHa_IUmueSgqn?si=aMiKb4x59vFJzzdm">Still using your IDE? You’re gonna get fired</a></p>
+]]></content:encoded>
+    <pubDate>Thu, 12 Mar 2026 00:00:00 GMT</pubDate>
+  </item>
+
+  <item>
+    <title>March 11, 2026</title>
+    <link>https://inspired-it.nl/moments#2026-03-11</link>
+    <guid isPermaLink="true">https://inspired-it.nl/moments#2026-03-11</guid>
+    <content:encoded><![CDATA[<blockquote>
+<p>Context engineering starts with the system prompt.
+<a href="https://www.dbreunig.com/2026/02/10/system-prompts-define-the-agent-as-much-as-the-model.html">How System Prompts Define Agent Behavior</a></p>
+</blockquote>
+<p>Very interesting article and it shows again how important it is to work with the model, not the tool. We really should focus on tweaking how we address the model. Deliberate continuous practice.</p>
+<p>Working with AI is more like learning to play the guitar than learning how a tool works.</p>
+<hr>
+<p>Nice article to go with the previous one: <a href="http://blog.nilenso.com/blog/2026/02/12/weird-system-prompt-artefacts/"><em>Weird system prompt artefacts</em></a>. The system prompts seem to be fighting against the default model’s behavior.</p>
+<hr>
+<p>If you let the agent perform manual tests, can you still call it manual tests?</p>
+<p><a href="https://simonwillison.net/guides/agentic-engineering-patterns/agentic-manual-testing/">Agentic manual testing</a></p>
+<hr>
+<p><a href="https://x.com/corbtt/status/2031438751822721251?s=46"><em>Codex, File My Taxes. Make No Mistakes.</em></a> How AI outperformed the human accountant*.</p>
+]]></content:encoded>
+    <pubDate>Wed, 11 Mar 2026 00:00:00 GMT</pubDate>
+  </item>
+
+  <item>
+    <title>March 8, 2026</title>
+    <link>https://inspired-it.nl/moments#2026-03-08</link>
+    <guid isPermaLink="true">https://inspired-it.nl/moments#2026-03-08</guid>
+    <content:encoded><![CDATA[<p>Finally took the time to read <a href="https://steve-yegge.medium.com/welcome-to-the-wasteland-a-thousand-gas-towns-a5eb9bc8dc1f">Welcome to the Wasteland: A Thousand Gas Towns</a>. Very interesting stuff. Earning credits based on actual performed work. I still don’t fully understand what the Wasteland is or how to apply it, so I’m adding it to my backlog to dig deeper.</p>
+<p>Also, Gas Town is now ready for use. In these changing times, I think we need new ways of working, and the Wasteland and Gas Town seem to facilitate that.</p>
+]]></content:encoded>
+    <pubDate>Sun, 08 Mar 2026 00:00:00 GMT</pubDate>
+  </item>
+
+  <item>
+    <title>March 5, 2026</title>
+    <link>https://inspired-it.nl/moments#2026-03-05</link>
+    <guid isPermaLink="true">https://inspired-it.nl/moments#2026-03-05</guid>
+    <content:encoded><![CDATA[<p>OpenAI api now has <a href="https://developers.openai.com/api/docs/guides/websocket-mode/">websockets</a>. Nice explanation by <a href="https://www.youtube.com/watch?v=sFEDAkJy9Dc&amp;t=204s">Theo - t3․gg on YouTube</a></p>
+<p>This is a great improvement, and I’m looking forward to the other providers supporting this and seeing what it will do for my workflow. Apparently, a 20%-40% speed improvement.</p>
+<hr>
+<p>GPT 5.4 dropped. This will be an insane year if this goes on.</p>
+]]></content:encoded>
+    <pubDate>Thu, 05 Mar 2026 00:00:00 GMT</pubDate>
+  </item>
+
+  <item>
+    <title>March 4, 2026</title>
+    <link>https://inspired-it.nl/moments#2026-03-04</link>
+    <guid isPermaLink="true">https://inspired-it.nl/moments#2026-03-04</guid>
+    <content:encoded><![CDATA[<p>Seems like <a href="https://nl.wikipedia.org/wiki/Donald_Knuth">Donald Knuth</a> had his “oh-shit” moment:</p>
+<blockquote>
+<p>Shock! Shock! I learned yesterday that an open problem I’d been working on for several weeks had just been solved by Claude Opus 4.6</p>
+</blockquote>
+<p><a href="https://www-cs-faculty.stanford.edu/~knuth/papers/claude-cycles.pdf">https://www-cs-faculty.stanford.edu/~knuth/papers/claude-cycles.pdf</a></p>
+<hr>
+<p>People calling AI “a tool” are completely missing what’s happening. The whole industry is shifting.</p>
+]]></content:encoded>
+    <pubDate>Wed, 04 Mar 2026 00:00:00 GMT</pubDate>
+  </item>
+
+  <item>
+    <title>March 3, 2026</title>
+    <link>https://inspired-it.nl/moments#2026-03-03</link>
+    <guid isPermaLink="true">https://inspired-it.nl/moments#2026-03-03</guid>
+    <content:encoded><![CDATA[<p>OpenCode is working on <a href="https://x.com/jlongster/status/2028616190004740366?s=20">workspaces</a>. Turn your agent into a control pane. Interesting.</p>
+]]></content:encoded>
+    <pubDate>Tue, 03 Mar 2026 00:00:00 GMT</pubDate>
+  </item>
+
+  <item>
+    <title>March 2, 2026</title>
+    <link>https://inspired-it.nl/moments#2026-03-02</link>
+    <guid isPermaLink="true">https://inspired-it.nl/moments#2026-03-02</guid>
+    <content:encoded><![CDATA[<p><a href="https://nos.nl/artikel/2604556-ai-die-code-schrijft-maakt-indruk-op-programmeurs-maar-het-vak-is-meer-dan-dat">NOS news item</a> on AI in Software Development: “Nothing is happening, just another tool.”</p>
+<hr>
+<p>Very interesting to hear Amodei explain their standpoint: <a href="https://www.youtube.com/watch?v=MPTNHrq_4LU">Full interview: Anthropic CEO responds to Trump order, Pentagon clash</a></p>
+]]></content:encoded>
+    <pubDate>Mon, 02 Mar 2026 00:00:00 GMT</pubDate>
+  </item>
+
+  <item>
+    <title>March 1, 2026</title>
+    <link>https://inspired-it.nl/moments#2026-03-01</link>
+    <guid isPermaLink="true">https://inspired-it.nl/moments#2026-03-01</guid>
+    <content:encoded><![CDATA[<p>Love the new <a href="https://help.obsidian.md/headless">Obsidian Headless sync</a>. Made my automation of auto-tagging notes much easier. I no longer need a VM with X on it.</p>
+<hr>
+<p>Received a new KPN TV+ Box, but the video was stuttering. After a back-and-forth and debugging session with Gemini, I discovered that IPv6 needs to be enabled on my FritzBox. Googling this would have taken a long time. No support desk needed.</p>
+]]></content:encoded>
+    <pubDate>Sun, 01 Mar 2026 00:00:00 GMT</pubDate>
+  </item>
+
+  <item>
+    <title>February 28, 2026</title>
+    <link>https://inspired-it.nl/moments#2026-02-28</link>
+    <guid isPermaLink="true">https://inspired-it.nl/moments#2026-02-28</guid>
+    <content:encoded><![CDATA[<p>Brutal blog post by <a href="https://ghuntley.com/real/">Geoffrey Huntley</a>:</p>
+<blockquote>
+<p>If your company has banned AI outright, you need to depart right now and find another employer.</p>
+</blockquote>
+<p>The world is changing and people should no longer identify as programmer:</p>
+<blockquote>
+<p>This is going to be a really hard time for a lot of people because identity functions have been erased, and the hard thing is, it’s not just software developers. It’s people managers as well. If your identity function is managing people, you need to make adjustments. You need to get back onto the tools ASAP.</p>
+</blockquote>
+<p>This is a must read and wake-up call for anyone thinking nothing is happening.</p>
+<p><img src="https://inspired-it.nl/images/moments/2026-02-28-111829-1.png" alt="image"></p>
+]]></content:encoded>
+    <pubDate>Sat, 28 Feb 2026 00:00:00 GMT</pubDate>
+  </item>
+
+  <item>
+    <title>February 27, 2026</title>
+    <link>https://inspired-it.nl/moments#2026-02-27</link>
+    <guid isPermaLink="true">https://inspired-it.nl/moments#2026-02-27</guid>
+    <content:encoded><![CDATA[<p>People talk about liking one model or another, then say they’ve been using it for months. You should really try new models every time they come out and see if your verdict still holds.</p>
+<hr>
+<ul>
+<li>No mass surveillance</li>
+<li>No fully autonomous weapons</li>
+</ul>
+<p>Department of Defense threatened to remove Anthropic from their systems and mark them as a “supply chain risk.” if Anthropic does not let above points go.</p>
+<blockquote>
+<p>Regardless, these threats do not change our position: we cannot in good conscience accede to their request.</p>
+</blockquote>
+<p><a href="https://www.anthropic.com/news/statement-department-of-war">Statement from Dario Amodei</a></p>
+<hr>
+<p><a href="https://simonwillison.net/guides/agentic-engineering-patterns/linear-walkthroughs/">Linear walkthroughs</a> are an interesting idea. Need to test that tomorrow on a service I’ve implemented.</p>
+<hr>
+<p>Tried the <a href="https://simonwillison.net/guides/agentic-engineering-patterns/linear-walkthroughs/">Linear walkthroughs</a> today. That is really cool! The only problem I had was missing syntax highlighting. Luckily, my clanker came up with a 2-step solution for that. Really nice to have a guide to read the code.</p>
+<hr>
+<p>I’ve been using GPT-5.3-Codex throughout the day. The context window of 400k vs the 120k of Opus (in GH Copilot) makes a real difference. Getting great results, and I’m starting to like GPT-5.3-Codex more and more. Would be nice if Opus on GH Copilot got a bigger context window too. I guess the request model is holding GH back.</p>
+]]></content:encoded>
+    <pubDate>Fri, 27 Feb 2026 00:00:00 GMT</pubDate>
+  </item>
+
+  <item>
+    <title>February 26, 2026</title>
+    <link>https://inspired-it.nl/moments#2026-02-26</link>
+    <guid isPermaLink="true">https://inspired-it.nl/moments#2026-02-26</guid>
+    <content:encoded><![CDATA[<p>Extended my pi today. Widget that shows what Skills got loaded &amp; updated the statusline to show git status.</p>
+<hr>
+<p>I don’t need to install pi (or any other agent) on my servers when it can just ssh into the machine and do its work 💡</p>
+<hr>
+<p>After noticing how people can just replicate software, tldraw is now <a href="https://simonwillison.net/2026/Feb/25/closed-tests">removing the tests from the open source</a></p>
+<hr>
+<p>Anthropic is making big moves in computer use. Last week Sonnet 4.6 was released with better computer use capabilities. Now <a href="https://www.anthropic.com/news/acquires-vercept">Vercept got acquired</a>.</p>
+<hr>
+<p>Moving tests of tldraw to closed source was apparently a <a href="https://github.com/tldraw/tldraw/issues/8082">joke</a></p>
+]]></content:encoded>
+    <pubDate>Thu, 26 Feb 2026 00:00:00 GMT</pubDate>
+  </item>
+
+  <item>
+    <title>February 25, 2026</title>
+    <link>https://inspired-it.nl/moments#2026-02-25</link>
+    <guid isPermaLink="true">https://inspired-it.nl/moments#2026-02-25</guid>
+    <content:encoded><![CDATA[<p><a href="https://arxiv.org/pdf/2602.11988">Research</a> shows that <a href="http://AGENTS.md">AGENTS.md</a> is mostly not useful. I have to experiment with that and see for myself. It sounds really counterintuitive.</p>
+]]></content:encoded>
+    <pubDate>Wed, 25 Feb 2026 00:00:00 GMT</pubDate>
+  </item>
+
+  <item>
+    <title>February 23, 2026</title>
+    <link>https://inspired-it.nl/moments#2026-02-23</link>
+    <guid isPermaLink="true">https://inspired-it.nl/moments#2026-02-23</guid>
+    <content:encoded><![CDATA[<blockquote>
+<p>Every good model understands “red/green TDD” as a shorthand for the much longer “use test driven development, write the tests first, confirm that the tests fail before you implement the change that gets them to pass”.</p>
+<p>By <a href="https://simonwillison.net/guides/agentic-engineering-patterns/red-green-tdd/#atom-everything">Simon Willison</a></p>
+</blockquote>
+]]></content:encoded>
+    <pubDate>Mon, 23 Feb 2026 00:00:00 GMT</pubDate>
+  </item>
+
+  <item>
+    <title>February 21, 2026</title>
+    <link>https://inspired-it.nl/moments#2026-02-21</link>
+    <guid isPermaLink="true">https://inspired-it.nl/moments#2026-02-21</guid>
+    <content:encoded><![CDATA[<p>IDEs are dead. Just thought of a new term. We will be working in an AME (Agent Management Environment).</p>
+<hr>
+<p>15k tokens/sec is insane: <a href="https://chatjimmy.ai">https://chatjimmy.ai</a></p>
+]]></content:encoded>
+    <pubDate>Sat, 21 Feb 2026 00:00:00 GMT</pubDate>
+  </item>
+
+  <item>
+    <title>February 20, 2026</title>
+    <link>https://inspired-it.nl/moments#2026-02-20</link>
+    <guid isPermaLink="true">https://inspired-it.nl/moments#2026-02-20</guid>
+    <content:encoded><![CDATA[<p>Pi just added this:</p>
+<blockquote>
+<p>• Added default skill auto-discovery for <code>.agents/skills</code> locations. Pi now discovers project skills from <code>.agents/skills</code> in <code>cwd</code> and ancestor directories (up to git repo root, or filesystem root when not in a repo), and global skills from <code>~/.agents/skills</code>, in addition to existing <code>.pi</code> skill paths.</p>
+</blockquote>
+<p>Nice improvement. OpenCode supports it too. It would be nice if it didn’t stop at the Git repo root, but kept going up instead. That would allow for <code>~/projects/clientA/.agents</code> and <code>~/projects/clientB/.agents</code> — all projects for a specific client could inherit the correct skills.</p>
+<hr>
+<p>I just made a release of agentdeps with <code>.agents</code> support for pi and opencode: <a href="https://github.com/jgordijn/agentdeps/releases/tag/v0.5.0">jgordijn/agentdeps:0.5.0</a></p>
+<hr>
+<p>I wonder why people who are pro-AI feel the need to tone it down by saying that AI still makes errors. You still need to check. AI cannot do this or that. It’s a user problem, not an AI problem. As <a href="https://aishepherd.nl/moments">JD</a> says: PICNIM (Problem In Chair, Not In Model)</p>
+<hr>
+<p>I can relate to this post by <a href="https://simonwillison.net/2026/Feb/19/recovering-lost-code/#atom-everything">Simon Willison</a>. I sometimes find myself searching for something I think I made. Did I make it? Where did I do it?</p>
+]]></content:encoded>
+    <pubDate>Fri, 20 Feb 2026 00:00:00 GMT</pubDate>
+  </item>
+
+  <item>
+    <title>February 19, 2026</title>
+    <link>https://inspired-it.nl/moments#2026-02-19</link>
+    <guid isPermaLink="true">https://inspired-it.nl/moments#2026-02-19</guid>
+    <content:encoded><![CDATA[<p>MCPs are a way to restrict what an Agent can do. Not to give it more power: <a href="https://inspired-it.nl/blog/mcp-to-restrict-agents/">MCP to restrict agents</a></p>
+<hr>
+<p>And another model is released. Gemini 3.1 Pro. And Simon made another nice <a href="https://simonwillison.net/2026/Feb/19/gemini-31-pro/">writeup</a>. I wonder what the rest of 2026 will bring.</p>
+<hr>
+<p>Found on <a href="https://aishepherd.nl/moments">JD</a>: <a href="https://ampcode.com/news/the-coding-agent-is-dead">The Coding Agent Is Dead</a>. Amp may be ahead of the curve, but if you’re still working in the IDE, you’d better pay attention. You’re doing it wrong. The CLI is also not it, but it is for now. Amp is going to self destruct the vscode extension. How cool!</p>
+<p>They also mention this:</p>
+<blockquote>
+<p>Think of it as a ladder: we use it to climb up to the next level and then we might not need it.</p>
+</blockquote>
+<p>That’s why I made <a href="https://inspired-it.nl/blog/the-ai-coding-ladder/">The AI Coding Ladder</a></p>
+]]></content:encoded>
+    <pubDate>Thu, 19 Feb 2026 00:00:00 GMT</pubDate>
+  </item>
+
+  <item>
+    <title>February 18, 2026</title>
+    <link>https://inspired-it.nl/moments#2026-02-18</link>
+    <guid isPermaLink="true">https://inspired-it.nl/moments#2026-02-18</guid>
+    <content:encoded><![CDATA[<p>Nice quote from the same article:</p>
+<blockquote>
+<p>In a system where agent throughput far exceeds human attention, corrections are cheap, and waiting is expensive.</p>
+</blockquote>
+<p><a href="https://openai.com/index/harness-engineering/">OpenAI Harness engineering</a></p>
+<hr>
+<p><a href="https://www.oneusefulthing.org/p/a-guide-to-which-ai-to-use-in-the?r=i5f7&amp;utm_campaign=post&amp;utm_medium=web&amp;triedRedirect=true">A Guide to Which AI to Use in the Agentic Era</a> by Ethan Mollick. Using AI is no longer about talking back-and-forth with the chatbot, but assigning tasks to your agent.</p>
+<hr>
+<blockquote>
+<p>The shift from chatbot to agent is the most important change in how people use AI since ChatGPT launched. It is still early, and these tools are still hard to figure out and will still do baffling things. But an AI that does things is fundamentally more useful than an AI that says things, and learning to use it that way is worth your time.
+<a href="https://www.oneusefulthing.org/p/a-guide-to-which-ai-to-use-in-the?r=i5f7&amp;utm_campaign=post&amp;utm_medium=web&amp;triedRedirect=true">Ethan Mollick</a></p>
+</blockquote>
+]]></content:encoded>
+    <pubDate>Wed, 18 Feb 2026 00:00:00 GMT</pubDate>
+  </item>
+
+  <item>
+    <title>February 17, 2026</title>
+    <link>https://inspired-it.nl/moments#2026-02-17</link>
+    <guid isPermaLink="true">https://inspired-it.nl/moments#2026-02-17</guid>
+    <content:encoded><![CDATA[<p>Building my own RSS reader with AI summary and filtering. Using Minimax via OpenRouter is a massive cost reduction compared to using Anthropic Sonnet.</p>
+<hr>
+<p><a href="https://www.anthropic.com/news/claude-sonnet-4-6">Sonnet 4.6</a> dropped. Nearing Opus 4.6 for lower cost. Better than Sonnet 4.5 and Opus 4.5. Most information is about computer use, so apparently it’s very good at that.</p>
+<p><img src="https://inspired-it.nl/images/moments/2026-02-17-203509-1.png" alt="image"></p>
+<hr>
+<p>Just saw this in <a href="https://aishepherd.nl/moments">JDs moments</a>:</p>
+<blockquote>
+<p>Agents optimize for outcomes, not attention.</p>
+</blockquote>
+<p>Via <a href="https://x.com/garrytan/status/2023773343124537411?s=46">https://x.com/garrytan/status/2023773343124537411?s=46</a></p>
+<p>We need to build good services to win. Not the most popular. 🤔 Interesting thought!</p>
+<hr>
+<blockquote>
+<p>One of the earliest lessons we learned was simple: <em>give Codex a map, not a 1,000-page instruction manual.</em></p>
+</blockquote>
+<p><a href="https://openai.com/index/harness-engineering/">OpenAI Harness engineering</a>. This map/index keeps coming back. We need to provide the robot with indexes so it can discover the information it needs. <a href="https://aishepherd.nl">JD</a> is on the right track with his markdown references approach.</p>
+<blockquote>
+<p>So instead of treating <code>AGENTS.md</code> as the encyclopedia, we treat it as <em>the table of contents</em>.</p>
+</blockquote>
+]]></content:encoded>
+    <pubDate>Tue, 17 Feb 2026 00:00:00 GMT</pubDate>
+  </item>
+
+  <item>
+    <title>February 16, 2026</title>
+    <link>https://inspired-it.nl/moments#2026-02-16</link>
+    <guid isPermaLink="true">https://inspired-it.nl/moments#2026-02-16</guid>
+    <content:encoded><![CDATA[<p>Peter Steinberger (creator of OpenClaw) is joining OpenAI to work on personal agents. OpenAI will apparently support OpenClaw. <a href="https://x.com/sama/status/2023150230905159801?s=46">Sam Altman on X</a></p>
+<hr>
+<blockquote>
+<p>Spotify says its best developers haven’t written a line of code since December, thanks to AI</p>
+</blockquote>
+<p><a href="https://techcrunch.com/2026/02/12/spotify-says-its-best-developers-havent-written-a-line-of-code-since-december-thanks-to-ai/">https://techcrunch.com/2026/02/12/spotify-says-its-best-developers-havent-written-a-line-of-code-since-december-thanks-to-ai/</a></p>
+<hr>
+<blockquote>
+<p>The question isn’t whether AI matches the very best engineer you know.
+It’s whether it’s better than the average engineer.</p>
+</blockquote>
+<p><a href="https://x.com/thorstenball/status/2022935662949994854">Thorsten Ball on X</a></p>
+<hr>
+<p>Jarred Summer asking for issues to fix on <a href="https://x.com/jarredsumner/status/2022808648263831986?s=20">X</a>:</p>
+<blockquote>
+<p>if you have a bun GitHub issue open for awhile with a clear reproduction, reply with a link below &amp; I will have Claude try to fix it today</p>
+</blockquote>
+<p>And a whole bunch of issues got fixed.</p>
+]]></content:encoded>
+    <pubDate>Mon, 16 Feb 2026 00:00:00 GMT</pubDate>
+  </item>
+
+  <item>
+    <title>February 15, 2026</title>
+    <link>https://inspired-it.nl/moments#2026-02-15</link>
+    <guid isPermaLink="true">https://inspired-it.nl/moments#2026-02-15</guid>
+    <content:encoded><![CDATA[<blockquote>
+<p>And for AI to have a dramatic, nothing-will-be-the-same impact on software as an industry, it doesn’t need to be better than the best engineer you know. It only needs to be better than the average.</p>
+</blockquote>
+<p><a href="https://registerspill.thorstenball.com/p/joy-and-curiosity-74">https://registerspill.thorstenball.com/p/joy-and-curiosity-74</a></p>
+]]></content:encoded>
+    <pubDate>Sun, 15 Feb 2026 00:00:00 GMT</pubDate>
+  </item>
+
+  <item>
+    <title>February 14, 2026</title>
+    <link>https://inspired-it.nl/moments#2026-02-14</link>
+    <guid isPermaLink="true">https://inspired-it.nl/moments#2026-02-14</guid>
+    <content:encoded><![CDATA[<p>OpenAI introduced <a href="https://openai.com/index/introducing-gpt-5-3-codex-spark/">GPT-5.3-Codex Spark</a> which can run at 1000 tokens/sec. But this has little value if your tech stack is slow in compiling and testing. Working with Kotlin and Spring with Maven, this is becoming a real pain.</p>
+<hr>
+<p>I’m the bottleneck now: <a href="https://x.com/thorstenball/status/2022310010391302259?s=46">https://x.com/thorstenball/status/2022310010391302259?s=46</a></p>
+<hr>
+<p>For the first time, I can see myself actually doing some work on an iPad. <a href="https://replay.software/echo">Echo SSH</a> is really nice. SSH into the dev server and start <a href="https://pi.dev">pi</a> inside <a href="https://github.com/tmux/tmux/wiki">tmux</a> and you’re off.</p>
+<hr>
+<p>Pi has <code>/export</code>. It creates a nice export of the session to an HTML file.</p>
+<hr>
+<p>You build it, you own it. The cost of ownership in <a href="https://x.com/maxmusing/status/2021990855741936072?s=46">The vibe coding trap</a>. Can’t the issue mentioned be mostly mitigated by a bot that inspects the internet for regulation changes and other shifts that impact your code? Of course, a fool with a tool is still a fool. Just blindly copying with AI will lead to issues.</p>
+<hr>
+<p>The open-weight models are getting really good. All Chinese: Kimi K2.5, GLM 5, MiniMax. How long until we can really run these open-weight models ourselves? It performed really good on the vending machine simulation, with a different strategy than other models, investing more in the beginning, to later pivot and become really profitable.</p>
+]]></content:encoded>
+    <pubDate>Sat, 14 Feb 2026 00:00:00 GMT</pubDate>
+  </item>
+
+  <item>
+    <title>February 13, 2026</title>
+    <link>https://inspired-it.nl/moments#2026-02-13</link>
+    <guid isPermaLink="true">https://inspired-it.nl/moments#2026-02-13</guid>
+    <content:encoded><![CDATA[<p>Lead by example by Steve Yegge to get a better health balance: <a href="https://steve-yegge.medium.com/the-ai-vampire-eda6e4f07163">https://steve-yegge.medium.com/the-ai-vampire-eda6e4f07163</a></p>
+<hr>
+<p>After reading this article: <a href="https://blog.can.ac/2026/02/12/the-harness-problem/">https://blog.can.ac/2026/02/12/the-harness-problem/</a> (see earlier moment) and seeing the conversation of <a href="https://aishepherd.nl/moments/">JD</a> with Mario Zechner on X <a href="https://x.com/jeroendee/status/2022099377674911838?s=20">https://x.com/jeroendee/status/2022099377674911838?s=20</a>. I fixed my clanker:</p>
+<p><img src="https://inspired-it.nl/images/moments/2026-02-13-162249-1.png" alt="image"></p>
+<hr>
+<p>Added an events page to the website: <a href="https://inspired-it.nl/events/">https://inspired-it.nl/events/</a></p>
+]]></content:encoded>
+    <pubDate>Fri, 13 Feb 2026 00:00:00 GMT</pubDate>
+  </item>
+
+  <item>
+    <title>February 12, 2026</title>
+    <link>https://inspired-it.nl/moments#2026-02-12</link>
+    <guid isPermaLink="true">https://inspired-it.nl/moments#2026-02-12</guid>
+    <content:encoded><![CDATA[<p><a href="https://aishepherd.nl/moments/">JD</a> pointed me to <a href="https://deepwiki.com">deepwiki.com</a>. Really awesome. Here’s the documentation for <code>agentdeps</code>: <a href="https://deepwiki.com/jgordijn/agentdeps">https://deepwiki.com/jgordijn/agentdeps</a></p>
+<hr>
+<p>This is actually a really good find! The edit tool is quite “simple” in how it searches and replaces, and apparently we can make it much better.</p>
+<p>More accurate, fewer tokens: <a href="https://blog.can.ac/2026/02/12/the-harness-problem/">https://blog.can.ac/2026/02/12/the-harness-problem/</a></p>
+]]></content:encoded>
+    <pubDate>Thu, 12 Feb 2026 00:00:00 GMT</pubDate>
+  </item>
+
+  <item>
+    <title>February 11, 2026</title>
+    <link>https://inspired-it.nl/moments#2026-02-11</link>
+    <guid isPermaLink="true">https://inspired-it.nl/moments#2026-02-11</guid>
+    <content:encoded><![CDATA[<blockquote>
+<p>If you look at the security measures in other coding agents, they’re mostly security theater. As soon as your agent can write code and run code, it’s pretty much game over.</p>
+</blockquote>
+<p><a href="https://mariozechner.at/posts/2025-11-30-pi-coding-agent/">https://mariozechner.at/posts/2025-11-30-pi-coding-agent/</a></p>
+<hr>
+<p>The rate at which new projects get popular is amazing.</p>
+<p><img src="https://inspired-it.nl/images/moments/2026-02-11-112846-1.png" alt="image"></p>
+<hr>
+<p>Quite a wake up call:</p>
+<blockquote>
+<p><em>I am no longer needed for the actual technical work of my job.</em></p>
+</blockquote>
+<p><a href="https://shumer.dev/something-big-is-happening">https://shumer.dev/something-big-is-happening</a></p>
+]]></content:encoded>
+    <pubDate>Wed, 11 Feb 2026 00:00:00 GMT</pubDate>
+  </item>
+
+  <item>
+    <title>February 10, 2026</title>
+    <link>https://inspired-it.nl/moments#2026-02-10</link>
+    <guid isPermaLink="true">https://inspired-it.nl/moments#2026-02-10</guid>
+    <content:encoded><![CDATA[<p>After a remark about missing dark mode I gave the following prompt to Claude mobile app, in the code tab:</p>
+<blockquote>
+<p>The website has no dark mode. I need the site to have a dark mode. It should listen to system preference by default, but it should also be possible to toggle manually.
+The toggle should be easy to see but not too much in your face.
+Make a PR for this.</p>
+</blockquote>
+<p>Now the site has dark mode!</p>
+<hr>
+<p>You build code with AI and you have a lot of information in the context how and why it is built this way. But after the session we throw this away. No more! Commit the session together with the code. New project by former GitHub CEO (Thomas Dohmke). Funded with $60mln in the seed round.</p>
+<p><a href="https://entire.io/">https://entire.io/</a></p>
+]]></content:encoded>
+    <pubDate>Tue, 10 Feb 2026 00:00:00 GMT</pubDate>
+  </item>
 
   <item>
     <title>February 9, 2026</title>

@@ -1,62 +1,78 @@
 ---
 title: Closing the Loop
-description: "Automating the feedback loop for AI agents removes frustration and dramatically improves code quality"
+description: "Why I automate every step of the development process so the only thing left for me is reviewing the proof"
 date: "2026-03-16"
 tags:
   - AI
   - Coding
+  - Workflow
 cover: /images/ai-closing-the-loop.png
 ---
 
 # Closing the Loop
 
-I am continuously trying to improve the output of the AI tools I work with. AI agents can generate a lot of code quickly, but how do you make sure it's actually good?
+I don't want to test. I don't want to run the app and click around. I don't want to verify that the code compiles. I don't even want to review the code myself. I want my robot to do all of that and then prove to me that it works.
 
-To do this, I need to give it feedback. I can do this manually, but a better way is to automate this feedback loop. Automating the feedback loop allows the agent to run much longer without human intervention and greatly improves the quality of the generated code. This is closing the loop.
+That's the goal. Automate every step of the feedback loop so the only thing left for me as a human is looking at the proof and deciding: is this correct?
 
-## The Basics
+## Why Automation Matters
 
-The most basic way to improve the quality of the generated code is to have the agent follow normal development best practices. This means compiling the code, running static code analyzers, and writing tests.
+AI agents can generate a lot of code quickly. But without feedback, they'll happily produce code that doesn't compile, fails edge cases, or is different than your standards. The agent doesn't know it's wrong unless something tells it. 
 
-Compilation is the first test to see if the AI at least created code that compiles and can potentially work. Static code analyzers give more in-depth feedback on code quality. Maybe the most important part of software development is creating tests to prove that it actually works.
+> [!IMPORTANT]
+> The agent doesn't know it's wrong unless something tells it.
 
-These are practices we should already have in place as developers. Why should it be different for AI agents? This will lead us to [level 5](/blog/the-ai-coding-ladder/#level-5-the-agentic-coder) on the AI coding ladder.
+If I need to tell all errors to the robot, than I am the bottleneck. Every time I need to manually test, manually review, or manually point out issues, I'm slowing the whole process down. 
 
-AI can write unit tests, but it can also do "manual" testing by controlling a browser. It can navigate to the web page, take screenshots, and compare them to expected results.
+Every time you find yourselft doing something again and again, you should ask yourself: "can I delegate this to the robot?". The answer is most definitely: "yes!". The robot is very good at performing repetitive tasks and generate it's own feedback. Compilation fails? The agent sees the error and fixes it. Tests fail? Same thing. Linter complains? It knows immediately. These are the basic things. But also think about testing through the browser. Checking if the deployment succeeded when it created a PR on GitHub. This is what I mean by closing the loop.
 
-## Test, Testing, Testing
+## The Feedback Stack
 
-I'm pushing harder and harder for 100% test coverage. Apart from these tests, I want a [showboat](https://github.com/simonw/showboat) document that proves to me that the functionality works. For UI changes, it can use [rodney](https://github.com/simonw/rodney) to control the browser and take screenshots of the function in action. Thanks to [Simon Willison](https://simonwillison.net) for making such nice tools and giving some inspiration.
+There are different gates that need to pass before I consider it worthwhile to really put my own time into it.
 
-The bottom line is that I want my robot to prove to me that the functionality is working and of good quality.
+**Compilation** is the first gate. If it doesn't compile, nothing else matters. This is mostly out of the box and most agents will automatically do this.
 
-## Reviewing
+**Static analysis and linting** catch style issues, potential bugs, and deviations from project standards. This should already be part of you build setup.
 
-I don't fully trust my robot to write and test the functionality, even if it proves to me that everything is working. It may have missed some cases or introduced a bug it didn't catch.
+**Tests** are where the real proof lives. I'm pushing harder and harder for 100% test coverage. This is where you need to nudge the agent into doing this. Make it part of you projects documentation or AGENTS.md. By driving it to 100% coverage you are sure that all code is covered and thought of. Make sure it will not make non-sense tests. Review it and put it in your description.
 
-Therefore I call in the help of another model. Lately, I'm gravitating towards writing code with GPT 5.4, so then I let Opus 4.6 review the code. Sometimes I'll throw in another instance of GPT 5.4 as well. The reviewer often comes back with very useful feedback about missed corner cases or missing functionality. It can also point out that the code is not following the coding standards in the codebase (although with the latest models, this happens far less).
+**Browser testing** takes it further. The agent can use [playwright](https://playwright.dev) or [rodney](https://github.com/simonw/rodney) to control a browser, navigate to pages, take screenshots, and verify that the UI looks right. This catches so many errors before I need to lift a finger.
 
-This way we can close the loop completely and have the agent generate high-quality code with minimal human intervention.
+**Showboat documents** are my recent found and really nice. A [showboat](https://github.com/simonw/showboat) document is an executable markdown file that runs code, captures output, and produces a readable proof of the work. I let the robot build a showboat document to prove to me that the functionality works. Thanks to [Simon Willison](https://simonwillison.net) for creating showboat and rodney.
 
-I've created a command which instructs the agent to follow a workflow where it delegates work to specialized sub-agents.
+This is just during the development phase (although the showboat and browser tests can span to deployment). When I create a PR, it is automatically deployed to a test environment, we can continue there:
 
-```mermaid
-flowchart TD
-    A((Start)) --> B[Select Task from OpenSpec]
-    B --> C[Delegate to Coding Agent]
-    C --> D[Delegate to Review Agent]
-    D --> H{Is Code Good Enough?}
-    H -- Yes --> I[Mark Task as Done & Commit]
-    H -- No (max 5x) --> C
-    I --> J((End))
-```
+**Monitor deployments** to verify that the PR will be deployed correctly. Using [showboat](https://github.com/simonw/showboat) again to prove that it works on test. 
 
-This process keeps running and I can even put this in a [ralph-loop](/blog/ralph-wiggum-agentic-loops/) to implement the OpenSpec proposal.
+**Monitor the PR** for feedback from automatic tools, or team members.
+
+If during any of these steps an issue pops-up, the robot can fix it without me intervening. I do have to figure out how to **Monitor the PR** automatically. Right now I nudge the robot when I see that there is feedback on the PR.
+
+## Code Review Without Me
+
+Even with all that automation, the agent might still miss things. Subtle logic errors, forgotten edge cases, or code that works but violates the project's conventions. That's where I bring in a [reviewer agent](/blog/the-reviewer/). Another model, or the same model, but a fresh session. It's only job is to check if the code is complete, correct and according to our standards. The result of the review is passed to the coding agent to fix the code and resubmit. This cycle runs automatically until the reviewer gives a pass.
+
+I wrote about this in detail in [The Reviewer](/blog/the-reviewer/). 
+
+## What's Left for Me?
+
+I want to get to a stage where I can focus on what really matters: The functionality. Code has become commodity and I should not need to worry about it. When the robot is done, I get:
+- Code that compiles and passes linting
+- A full test suite that passes
+- Screenshots of the UI in action
+- A showboat document proving the functionality works
+- A code review that's already been addressed
+
+My job is to look at all of this and decide: does this solve the problem? Is the approach sound? That's a much better use of my time than copy pasting errors to the robot. 
 
 ## Lean In
 
-If you notice that the robot is not delivering the correct end result, then instead of cursing it, lean in. Really try to give it the tools to catch this and continue working until the result is good. Can you define what "good" means to you?
+When the agent keeps getting something wrong, the temptation is to just fix it yourself. Don't. Instead, figure out why it's failing and automate the check. Can you write a test for it? A reviewer instruction?
+
+Every time you manually correct the agent, you're doing a one-time fix. Every time you automate the feedback, you're fixing it forever.
 
 ## Go Slower to Go Faster
 
-Is this slower than generating just the code? Yes, it's way slower. But the results are better on the first try. So, in the end, it will be faster. You'll notice that you're waiting longer for the end result, but when you get the result, it's more likely to be right immediately.
+All this will make for a slower process. However, the quality of the end result is way better. It needs some investment from us, to get this right.
+
+I spent my time in crafting the OpenSpec proposal and reviewing the end result. I have become [The Architect](blog/the-ai-coding-ladder/#level-6-the-architect).
