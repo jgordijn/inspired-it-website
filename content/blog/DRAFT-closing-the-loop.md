@@ -1,7 +1,7 @@
 ---
 title: Closing the Loop
-description: "Changing code tomorrow is cheaper than doing it today."
-date: "2026-01-03"
+description: "Testing the output removes a lot of frustration"
+date: "2026-03-16"
 tags:
   - AI
   - Coding
@@ -15,13 +15,19 @@ I am continuously trying to improve the output of the AI tools I work with. AI a
 
 ## The basics
 
-The most basic way to improve the quality of the generated code is to have the agent follow normal development best practices. This means compiling the code, running static code analyzers, and writing tests. Intorspection of the code by the AI agent is becoming more standard as they start to embrace LSP (Language Server Protocol), which gives real-time feedback as the code is being written. Without LSP, the agent can still compile the code and use that feedback to at least deliver technically correct code. Static code analyzers are also easy to integrate and give more in-depth feedback on code quality. These are practices we should already have in place as developers. Tests are also an essential part of software development. Human developers should always have tests, so why should it be different for AI agents? This will lead us to [level 5](/blog/the-ai-coding-ladder/#level-5-the-agentic-coder) on the AI coding ladder.
+The most basic way to improve the quality of the generated code is to have the agent follow normal development best practices. This means compiling the code, running static code analyzers, and writing tests. Compilation is the first test to see if the AI at least created code that compiles and can potentially work. Static code analyzers give more in-depth feedback on code quality. Maybe the most important part of Software development is creating tests to prove that it actually works. These are practices we should already have in place as developers. Why should it be different for AI agents? This will lead us to [level 5](/blog/the-ai-coding-ladder/#level-5-the-agentic-coder) on the AI coding ladder.
 
 AI can write unit tests, but it can also do "manual" testing by controlling a browser. It can navigate to the web page, take screenshots, and compare them to expected results.
 
+## Test, testing, testing
+
+I'm starting to hammer more and more on going to 100% test coverage. Apart from these tests, I want a [showboat](https://github.com/simonw/showboat) document that proves to me that the functionality works. For UI changes, it may use [rodney](https://github.com/simonw/rodney) to use the browser and take screenshots of the function in action. Thanks [Simon Willison](https://simonwillison.net) for making such nice tools and giving some inspiration.
+
+The bottom line is that I want my robot to prove to me that the functionality is working and of good quality.
+
 ## Reviewing
 
-Lately I've been experimenting with the AI reviewing the generated code. After a generation loop where the agent has generated code, compiled it, run analyzers, and written tests, it's not done yet. I let another model review the code. I've had very good results using Opus 4.5 as the programming model and GPT-5.2 as the reviewer. The reviewer often comes back with very useful feedback about missed corner cases or missing functionality. It can also point out that the code is not following the coding standards in the codebase. This way we can close the loop completely and have the agent generate high-quality code with minimal human intervention.
+I don't fully trust my robot to write and test the functionality. Even if it proves to me that everything is working. It may have missed some cases, or introduced a bug it missed. Therefore I call the help of another model. Lately I'm gravitating towards writing code with GPT 5.4, so then I let Opus 4.6 review the code. Sometimes also another instance of GPT 5.4. The reviewer often comes back with very useful feedback about missed corner cases or missing functionality. It can also point out that the code is not following the coding standards in the codebase (although with the latest models, this happens far less). This way we can close the loop completely and have the agent generate high-quality code with minimal human intervention.
 
 I've created a command which instructs the agent to follow a workflow where it delegates work to specialized sub-agents.
 
@@ -36,15 +42,12 @@ flowchart TD
     I --> J((End))
 ```
 
-This process keeps running and I can even put this in a loop to implement the OpenSpec proposal.
+This process keeps running and I can even put this in a [ralph-loop](/blog/ralph-wiggum-agentic-loops/) to implement the OpenSpec proposal.
 
+## Lean in
 
-## Compilation and Analyzers
-
-One of the biggest problems with AI-generated code is hallucination. The AI simply makes stuff up. It can invent functions that do not exist, or use APIs incorrectly. A compiler will catch these issues and is the first step in closing the loop. Your agent can compile the code and use the compiler feedback to fix the issues. The current trend is to use LSP (Language Server Protocol) in the agents, such that the agent can get real-time feedback from the compiler as it writes code, like a human developer would do using an IDE. This already improves the quality of the generated code significantly. Adding static code analyzers further improves the quality of the code.
-
-You can give the reviewer the context you want. If you want it to focus on a limited number of tests, or on testing just one functionality per test case, you can instruct it to do so. The reviewer can also check if the code follows the coding standards of the project. It's not necessary to get this right the first time. Every time you see issues during your own review, you can add that to the prompt for the reviewer. Over time you will get better and better results.
+If you notice that the robot is not delivering the correct end result, than instead of cursing it, lean in. Really try to give it the tools to catch this and continue working until the result is good. Can you define what good means to you?
 
 # Go slower to go faster.
 
-Is this slower than generating just the code? Yes — it's way slower. But the results are better on the first try. So, in the end, it will be faster. You'll notice that you're waiting longer for the end result, but when you get the result, it's more likely to be right immediately.
+Is this slower than generating just the code? Yes, it's way slower. But the results are better on the first try. So, in the end, it will be faster. You'll notice that you're waiting longer for the end result, but when you get the result, it's more likely to be right immediately.
