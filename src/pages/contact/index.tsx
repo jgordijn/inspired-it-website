@@ -86,6 +86,12 @@ export default function Contact() {
               <h3 className="font-semibold mb-3">Info</h3>
               <div className="space-y-2 text-slate-200">
                 <p>📍 Hilversum, Netherlands</p>
+                <a
+                  href="mailto:jeroen@inspired-it.nl"
+                  className="block hover:text-white transition-colors"
+                >
+                  ✉️ jeroen@inspired-it.nl
+                </a>
               </div>
             </div>
           </div>
