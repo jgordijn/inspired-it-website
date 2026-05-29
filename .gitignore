@@ -44,9 +44,4 @@ Thumbs.db
 # TypeScript incremental build cache
 *.tsbuildinfo
 
-!.beads
 
-
-
-# bv (beads viewer) local config and caches
-.bv/
