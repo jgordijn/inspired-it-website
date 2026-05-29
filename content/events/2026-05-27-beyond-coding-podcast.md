@@ -2,9 +2,11 @@
 title: Beyond Coding Podcast
 dates:
   - '2026-05-27'
-description: >
-  Recorded an episode of the Beyond Coding Podcast with Patrick Akil, together with [Jeroen Dee](https://aishepherd.nl/). Release date TBD.
+description: |
+  Recorded an episode of the Beyond Coding Podcast with Patrick Akil, together with [Jeroen Dee](https://aishepherd.nl/).
   Watch the podcast on the Beyond Coding YouTube channel.
+
+  Release date: **TBD**.
 image: /images/events/beyond-coding.jpg
 image_fit: contain
 image_alt: Beyond Coding Podcast logo
