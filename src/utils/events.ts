@@ -18,6 +18,7 @@ export interface EventItem {
   image: string | null;
   imageAlt: string;
   imageCredit: string | null;
+  imageFit: 'cover' | 'contain';
   publish_status: 'draft' | 'published' | null;
 }
 
@@ -62,6 +63,7 @@ export function getEvents(): EventItem[] {
         image: data.image || null,
         imageAlt: data.image_alt || data.title || 'Event image',
         imageCredit: data.image_credit || null,
+        imageFit: data.image_fit === 'contain' ? 'contain' : 'cover',
         publish_status: data.publish_status || null,
       } as EventItem;
     })

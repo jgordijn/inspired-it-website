@@ -34,6 +34,9 @@ function isFutureEvent(dates: string[]): boolean {
 
 function EventCard({ event }: { event: EventItem }) {
   const [isPlanned, setIsPlanned] = useState(false);
+  const imageClassName = event.imageFit === 'contain'
+    ? 'w-full h-56 object-contain'
+    : 'w-full h-56 object-cover';
 
   useEffect(() => {
     setIsPlanned(isFutureEvent(event.dates));
@@ -51,7 +54,7 @@ function EventCard({ event }: { event: EventItem }) {
           <img
             src={event.image}
             alt={event.imageAlt || event.title}
-            className="w-full h-56 object-cover"
+            className={imageClassName}
           />
           {isPlanned && (
             <span className="absolute top-3 right-3 bg-blue-600 text-white text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full shadow-lg">
