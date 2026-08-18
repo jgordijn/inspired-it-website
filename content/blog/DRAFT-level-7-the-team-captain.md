@@ -43,6 +43,6 @@ I am still experimenting with this setup and discovering what works and what doe
 
 ## The Shape of a Team
 
-Bringing agents to life by giving them their own personalities isn't just fun; it really feels like an actual team. I'm stepping out of the loop for some tasks, as Ada knows the goal and helps delegate the work to the right member. Only blocking issues need to come back to me. I'm not there yet, but this is where I'm heading with my team.
+Bringing agents to life by giving them their own personalities isn't just fun. It really feels like an actual team. I'm stepping out of the loop for some tasks, as Ada knows the goal and helps delegate the work to the right member. Only blocking issues need to come back to me. I'm not there yet, but this is where I'm heading with my team.
 
 Level 6 was about planning and thinking ahead before implementing. This is what the whole team can help me with by combining their knowledge. They collect this knowledge over time. Level 7 feels like managing a team: refining stories together and then having the team implement them. I'm the Team Captain.
