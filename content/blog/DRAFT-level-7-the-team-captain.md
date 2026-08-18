@@ -38,7 +38,7 @@ This feels liberating. I get the feeling I can accomplish more and am better sup
 
 ## Memory and Handoffs
 
-Each agent has its own role and character, a handoff, skills, and a knowledge base. The character and role are defined in the AGENTS.md. The handoff is the anti-clonking device, as Steve calls it in his blog. It gives the agent the option to wrap up and store information for next time, instead of a rough exit. The llm-wiki allows each agent to collect long-term knowledge, while its skills are either self-developed or imported.
+Each agent has its own role and character, a handoff, skills, and a knowledge base. The character and role are defined in the AGENTS.md. The handoff is the anti-clonking device, as Steve calls it in his blog. It gives the agent the option to wrap up and store information for next time, instead of a rough exit. The [LLM Wiki](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) allows each agent to collect long-term knowledge, while its skills are either self-developed or imported.
 
 I am still experimenting with this setup and discovering what works and what doesn't. Working with this team already feels very interesting and powerful.
 
