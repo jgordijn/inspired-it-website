@@ -1,7 +1,7 @@
 ---
 title: "Level 7: The Team Captain"
 description: "The next step after becoming the Architect: building a team of AI agents that collaborate like real team members."
-date: "2026-08-18"
+date: "2026-08-22"
 author: "Jeroen Gordijn"
 tags:
   - AI
@@ -9,7 +9,6 @@ tags:
   - Workflow
   - Tools
 cover: /images/ai-coding-team.png
-publish_status: draft
 ---
 
 # Level 7: The Team Captain
@@ -47,3 +46,5 @@ I am still experimenting with this setup and discovering what works and what doe
 Bringing agents to life by giving them their own personalities isn't just fun. It really feels like an actual team. I'm stepping out of the loop for some tasks, as Ada knows the goal and helps delegate the work to the right member. Only blocking issues need to come back to me. Small decisions can be made by the team. I'm not there yet, but this is where I'm heading with my team.
 
 Level 6 was about planning and thinking ahead before implementing. This is what the whole team can help me with by combining their knowledge. They collect this knowledge over time. Level 7 feels like managing a team: refining stories together and then having the team implement them. I'm the Team Captain.
+
+This has been working for me for the past week. My next experiment is to make the roster less rigid. Assemble the right team for a goal, instead of a fixed team. Level 7 is about managing a team, let's discover how this team should be created.
